@@ -8,6 +8,12 @@ import {
     Mail, Phone, MapPin, Instagram, Youtube, Sparkles,
     ShieldCheck, Zap, Code, BarChart, Cpu
 } from 'lucide-react';
+import dynamic from 'next/dynamic';
+
+const GlobalGlobe = dynamic(() => import('./GlobalGlobe'), {
+    ssr: false,
+    loading: () => <div className="w-full h-full bg-transparent" />
+});
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -75,134 +81,102 @@ export default function Footer() {
 
     return (
         <footer className="bg-wl-dark pt-32 pb-12 border-t border-white/5 relative overflow-hidden">
-            {/* SEO Keyword Cloud (Transparent) */}
-            <div className="sr-only">
-                Best AI Development Company India, Top Software Engineering Punjab,
-                Blockchain Development Services, Digital Growth Marketing Agency,
-                AI Recruitment Platforms, Next.js Experts 2026.
-            </div>
-
             {/* Ambient Background Glows */}
-            <div className="absolute bottom-0 left-1/4 w-1/2 h-1/2 bg-wl-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
-            <div className="absolute top-0 right-0 w-1/4 h-1/4 bg-wl-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-wl-accent/5 rounded-full blur-[120px] pointer-events-none -mr-64 -mt-64"></div>
 
             <div className="container-custom relative z-10">
-                {/* Top Section: Brand & Newsletter */}
+                {/* Main Footer Content */}
                 <div className="grid lg:grid-cols-12 gap-16 mb-24">
-                    <div className="lg:col-span-5 space-y-8">
+                    {/* Brand Section */}
+                    <div className="lg:col-span-4 space-y-10">
                         <Link href="/" className="inline-block group">
                             <Image
                                 src="/images/loper__3_-removebg-preview-e1748296489675-r6eacdc8yg79qwd174wcap96495w22bgh5a75gm6tc.png"
                                 alt="Wloper Logo"
-                                width={160}
-                                height={50}
-                                className="h-10 w-auto brightness-0 invert group-hover:scale-105 transition-transform"
+                                width={140}
+                                height={44}
+                                className="h-9 w-auto brightness-0 invert opacity-80 group-hover:opacity-100 transition-all"
                             />
                         </Link>
-                        <p className="text-wl-muted-dark text-xl leading-relaxed max-w-md font-medium">
-                            Wloper is where AI development meets digital growth. We build high-performance products that redefine industries.
+                        <p className="text-wl-muted-dark text-lg leading-relaxed font-medium">
+                            Architecting the next era of <span className="text-white">Intelligent Systems</span> and digital dominance.
                         </p>
 
-                        {/* Trust Badges */}
-                        <div className="flex items-center gap-6 pt-4">
-                            <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10">
-                                <ShieldCheck className="w-4 h-4 text-wl-accent" />
-                                <span className="text-[10px] font-bold uppercase tracking-widest text-white">GDPR Compliant</span>
+                        <div className="space-y-6">
+                            <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
+                                    <MapPin className="w-4 h-4 text-wl-accent" />
+                                </div>
+                                <div className="text-xs">
+                                    <p className="text-white font-bold opacity-60 uppercase mb-0.5">Global Headquarters</p>
+                                    <p className="text-wl-muted-dark">Punjab, India</p>
+                                </div>
                             </div>
-                            <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10">
-                                <Zap className="w-4 h-4 text-wl-accent" />
-                                <span className="text-[10px] font-bold uppercase tracking-widest text-white">AI-First 2026</span>
+                            <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
+                                    <Mail className="w-4 h-4 text-wl-accent" />
+                                </div>
+                                <div className="text-xs">
+                                    <p className="text-white font-bold opacity-60 uppercase mb-0.5">Direct Inquiry</p>
+                                    <p className="text-wl-muted-dark font-mono">ops@wloper.tech</p>
+                                </div>
                             </div>
                         </div>
 
-                        {/* Social Links */}
-                        <div className="flex space-x-3 pt-6">
+                        <div className="flex gap-3">
                             {socials.map((social) => (
                                 <a
                                     key={social.name}
                                     href={social.href}
-                                    className="w-12 h-12 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center transition-all duration-300 hover:bg-wl-accent hover:border-wl-accent hover:text-black text-wl-muted-dark"
-                                    aria-label={social.name}
+                                    className="w-10 h-10 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center transition-all duration-300 hover:bg-wl-accent hover:text-black text-wl-muted-dark"
                                 >
-                                    <social.icon className="w-5 h-5" />
+                                    <social.icon className="w-4 h-4" />
                                 </a>
                             ))}
                         </div>
                     </div>
 
-                    <div className="lg:col-span-1 hidden lg:block"></div>
-
-                    <div className="lg:col-span-6">
-                        <div className="glass-strong p-10 rounded-[3rem] border border-wl-accent/10 relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-wl-accent/5 blur-3xl rounded-full group-hover:bg-wl-accent/10 transition-all"></div>
-                            <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
-                                <Sparkles className="w-6 h-6 text-wl-accent" />
-                                Join the AI Revolution
-                            </h3>
-                            <p className="text-wl-muted-dark mb-8 font-medium">Get the latest industry insights and technical breakdowns delivered to your inbox.</p>
-                            <form className="flex flex-col sm:flex-row gap-4">
-                                <input
-                                    type="email"
-                                    placeholder="Enter your work email"
-                                    className="flex-1 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/30 focus:border-wl-accent focus:bg-white/10 focus:outline-none transition-all font-medium"
-                                />
-                                <button className="bg-wl-accent text-black px-10 py-4 rounded-2xl font-black hover:brightness-110 transition-all hover:scale-105 active:scale-95">
-                                    Subscribe
-                                </button>
-                            </form>
-                        </div>
+                    {/* Links Grid */}
+                    <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-12">
+                        {footerSections.slice(0, 3).map((section) => (
+                            <div key={section.title} className="space-y-6">
+                                <h4 className="text-white font-black text-[10px] uppercase tracking-[0.4em] opacity-40">{section.title}</h4>
+                                <ul className="space-y-4">
+                                    {section.links.map((link) => (
+                                        <li key={link.name}>
+                                            <Link
+                                                href={link.href}
+                                                className="text-wl-muted-dark hover:text-wl-accent transition-colors text-sm font-medium flex items-center gap-1 group"
+                                            >
+                                                {link.name}
+                                                <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-y-1 translate-x-1 transition-all" />
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
-                </div>
 
-                {/* Footer Links Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 lg:gap-8 mb-24 border-y border-white/5 py-16">
-                    {footerSections.map((section) => (
-                        <div key={section.title} className="space-y-8">
-                            <h4 className="text-white font-black text-xs uppercase tracking-[0.3em]">{section.title}</h4>
-                            <ul className="space-y-5">
-                                {section.links.map((link) => (
-                                    <li key={link.name}>
-                                        <Link
-                                            href={link.href}
-                                            className="group flex items-center text-wl-muted-dark hover:text-wl-accent transition-colors duration-200 text-base font-medium"
-                                        >
-                                            {link.name}
-                                            <ArrowUpRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-all" />
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
+                    {/* Globe Visualization */}
+                    <div className="lg:col-span-3 h-[400px] lg:-mt-20 relative pointer-events-auto">
+                        <div className="absolute inset-0 bg-wl-accent/5 rounded-full blur-[100px] scale-75"></div>
+                        <GlobalGlobe />
+                        <div className="absolute bottom-10 left-0 right-0 text-center">
+                            <p className="text-[9px] font-black text-wl-accent uppercase tracking-[0.5em] animate-pulse">Live Global Operations</p>
                         </div>
-                    ))}
-                </div>
-
-                {/* Global Presence & Legal */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 items-center mb-12">
-                    <div className="flex items-start gap-4 text-wl-muted-dark">
-                        <MapPin className="w-6 h-6 text-wl-accent shrink-0" />
-                        <div>
-                            <p className="text-sm font-bold text-white mb-1">Global HQ (India)</p>
-                            <p className="text-xs leading-relaxed">53, Arya College Road, Kharar, Punjab 140301</p>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-4 text-wl-muted-dark">
-                        <Globe className="w-6 h-6 text-wl-accent shrink-0" />
-                        <div>
-                            <p className="text-sm font-bold text-white mb-1">Worldwide Reach</p>
-                            <p className="text-xs leading-relaxed">Serving clients in UK, USA, UAE, and APAC regions.</p>
-                        </div>
-                    </div>
-                    <div className="flex justify-start lg:justify-end gap-10">
-                        <Link href="/privacy" className="text-xs font-bold uppercase tracking-widest text-wl-muted-dark hover:text-white transition-colors">Privacy Policy</Link>
-                        <Link href="/terms" className="text-xs font-bold uppercase tracking-widest text-wl-muted-dark hover:text-white transition-colors">Terms of Service</Link>
                     </div>
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="border-t border-white/5 pt-12 text-center">
-                    <p className="text-wl-muted-dark text-sm font-medium">
-                        © {currentYear} Wloper Technologies. All Rights Reserved. Engineered with AI in Kharar, Punjab.
+                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                    <p className="text-wl-muted-dark text-[11px] font-medium uppercase tracking-widest">
+                        © {currentYear} WLOPER Labs. All Systems Nominal.
                     </p>
+                    <div className="flex gap-10">
+                        <Link href="/privacy" className="text-[10px] font-bold text-white/30 hover:text-wl-accent transition-colors uppercase tracking-widest">Privacy Protocol</Link>
+                        <Link href="/terms" className="text-[10px] font-bold text-white/30 hover:text-wl-accent transition-colors uppercase tracking-widest">Service Terms</Link>
+                    </div>
                 </div>
             </div>
         </footer>

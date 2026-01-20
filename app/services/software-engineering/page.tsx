@@ -32,11 +32,11 @@ export default function SoftwareEngineeringPage() {
     return (
         <div className="bg-wl-dark text-white overflow-hidden pb-40">
             {/* Hero Section */}
-            <section className="section-padding relative pt-32 lg:pt-48 min-h-[80vh] flex items-center">
+            <section className="relative min-h-[70vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--wl-accent)_0%,_transparent_70%)] opacity-[0.03] pointer-events-none"></div>
 
                 <div className="container-custom relative z-10">
-                    <div className="max-w-4xl">
+                    <div className="flex flex-col items-center text-center">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -48,23 +48,22 @@ export default function SoftwareEngineeringPage() {
                         <motion.h1
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="heading-xl mb-10"
+                            className="heading-xl mb-10 max-w-6xl text-balance"
                         >
-                            Digital <br /><span className="heading-gradient">Architectures.</span>
+                            Digital <br /><span className="text-wl-accent">Architectures.</span>
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="subtitle-lg"
+                            className="subtitle-lg mx-auto mb-14 text-white/60"
                         >
-                            We don't just write code; we engineer systems that define industries. From cloud-native apps to critical SaaS infrastructure.
+                            We don't just write code; we engineer systems that define industries. From cloud-native apps to critical SaaS infrastructure and distributed clusters.
                         </motion.p>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="mt-12"
                         >
                             <button onClick={openDemoModal} className="btn-primary inline-flex items-center gap-3">
                                 Start Building <ArrowRight className="w-5 h-5" />

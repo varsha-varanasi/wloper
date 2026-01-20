@@ -1,259 +1,169 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
-import CTAButton from '@/components/CTAButton';
-import { Smartphone, RotateCcw, Globe, BarChart3, LayoutDashboard, Video, Users, Building, Rocket, GraduationCap, Check } from 'lucide-react';
 import { useDemo } from '@/context/DemoContext';
+import dynamic from 'next/dynamic';
+import { Terminal, Shield, Zap, Cpu, Code2, Server, Check, ArrowUpRight } from 'lucide-react';
+
+const NeuralBackground = dynamic(() => import('@/components/NeuralBackground'), { ssr: false });
 
 export default function ProductsPage() {
     const { openDemoModal } = useDemo();
-    const features = [
-        {
-            title: 'Live AI Interviewer',
-            description: 'Conduct real-time interviews with intelligent AI that adapts to candidate responses seamlessly.',
-            icon: Smartphone,
-        },
-        {
-            title: 'Custom Interview Flows',
-            description: 'Design interview processes tailored to your specific role requirements and company culture.',
-            icon: RotateCcw,
-        },
-        {
-            title: 'Multi-Language Support',
-            description: 'Interview candidates in their preferred language with real-time AI translation capabilities.',
-            icon: Globe,
-        },
-        {
-            title: 'Real-Time Scoring',
-            description: 'Get instant evaluation scores based on predefined technical and soft-skill criteria.',
-            icon: BarChart3,
-        },
-        {
-            title: 'Candidate Dashboard',
-            description: 'Compare candidates side-by-side with comprehensive analytics and performance insights.',
-            icon: LayoutDashboard,
-        },
-        {
-            title: 'Interview Recordings',
-            description: 'Access full playback, transcripts, and sentiment analysis for thorough review.',
-            icon: Video,
-        },
-    ];
 
-    const targetAudience = [
-        { title: 'HR Teams', icon: Users, description: 'Streamline High-Volume Recruitment' },
-        { title: 'Agencies', icon: Building, description: 'Scale Operations Efficiently' },
-        { title: 'Startups', icon: Rocket, description: 'Find Top Talent Fast' },
-        { title: 'EdTech', icon: GraduationCap, description: 'Assess Student Capabilities' },
-    ];
-
-    const benefits = [
-        'Reduce hiring time by up to 70%',
-        'Eliminate scheduling conflicts completely',
-        'Consistent interview experience for all',
-        'Data-driven hiring decisions with AI insights',
-        'Scalable solution for mass hiring campaigns',
-        'Reduce unconscious bias in recruitment',
-        'Lower cost-per-hire significantly',
-        'Improve overall candidate experience',
+    const technicalSpecs = [
+        { title: 'Latency Control', value: '< 200ms', icon: Zap },
+        { title: 'Processing Nodes', value: '4,000+', icon: Server },
+        { title: 'Model Accuracy', value: '98.4%', icon: Cpu },
+        { title: 'Security Protocol', value: 'AES-256', icon: Shield },
     ];
 
     return (
-        <div className="bg-wl-dark text-white overflow-hidden">
+        <div className="bg-wl-dark text-white overflow-hidden pb-40">
             {/* Hero Section */}
-            <section className="section-padding relative pt-40 lg:pt-64 overflow-hidden">
-                {/* Background Image */}
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop"
-                        alt="Products Background"
-                        fill
-                        className="object-cover opacity-20"
-                        priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-wl-dark/95 via-wl-dark/80 to-wl-dark"></div>
-                </div>
-
-                <div className="container-custom relative z-10 h-auto">
-                    <div className="text-center max-w-4xl mx-auto">
+            <section className="relative min-h-[80vh] flex items-center justify-center pt-32 overflow-hidden">
+                <NeuralBackground />
+                <div className="container-custom relative z-10">
+                    <div className="flex flex-col items-center text-center">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="tag-label mx-auto"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="tag-label"
                         >
-                            <Rocket className="w-4 h-4 text-wl-accent" />
-                            AI-Powered Product
+                            <Terminal className="w-4 h-4 text-wl-accent" />
+                            Core Architecture v4.0
                         </motion.div>
-
                         <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 }}
-                            className="heading-xl mb-12"
+                            className="heading-xl mb-10 max-w-6xl text-balance"
                         >
-                            Wloper AI <br /><span className="heading-gradient">Interview Platform</span>
+                            The AI <br /><span className="text-wl-accent">Build Engine.</span>
                         </motion.h1>
-
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2 }}
-                            className="subtitle-lg mx-auto mb-16 h-auto"
+                            transition={{ delay: 0.1 }}
+                            className="subtitle-lg mx-auto mb-14 text-white/60"
                         >
-                            An AI-powered platform that conducts live interviews for technical and non-technical
-                            roles using intelligent questioning and real-time evaluation.
+                            Beyond simple tools. We provide the comprehensive neural infrastructure required to deploy autonomous interview systems at global scale.
                         </motion.p>
+                    </div>
+                </div>
+            </section>
 
+            {/* Technical Specs */}
+            <section className="section-padding pt-0">
+                <div className="container-custom">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                        {technicalSpecs.map((spec, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="glass-strong p-10 rounded-[2.5rem] border border-white/5 group hover:border-wl-accent/20 transition-all"
+                            >
+                                <spec.icon className="w-6 h-6 text-wl-accent mb-6 opacity-40 group-hover:opacity-100 transition-opacity" />
+                                <div className="text-4xl font-black text-white mb-1">{spec.value}</div>
+                                <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30">{spec.title}</div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Technical Blueprint */}
+            <section className="section-padding bg-wl-dark relative">
+                <div className="container-custom">
+                    <div className="grid lg:grid-cols-2 gap-20 items-center">
+                        <div className="space-y-12">
+                            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight">
+                                Modular <br /><span className="text-wl-accent">Infrastructure.</span>
+                            </h2>
+                            <div className="space-y-8">
+                                {[
+                                    { title: 'Neural Core', desc: 'Custom LLM fine-tuning for industry-specific terminology.' },
+                                    { title: 'Global Mesh', desc: 'Edge processing for zero-latency video streaming.' },
+                                    { title: 'Bias Sentinel', desc: 'Real-time auditing of evaluation algorithms.' }
+                                ].map((item, idx) => (
+                                    <div key={idx} className="flex gap-6 items-start">
+                                        <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                                            <div className="w-2 h-2 rounded-full bg-wl-accent animate-pulse" />
+                                        </div>
+                                        <div>
+                                            <h4 className="text-xl font-bold mb-1">{item.title}</h4>
+                                            <p className="text-wl-muted-dark font-medium">{item.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            className="glass-strong rounded-[4rem] border border-white/5 overflow-hidden aspect-square p-2 group"
                         >
-                            <CTAButton onClick={openDemoModal} variant="primary">
-                                Book a Live Demo
-                            </CTAButton>
+                            <img
+                                src="https://images.unsplash.com/photo-1551288049-bbbda51658f7?q=80&w=2070&auto=format&fit=crop"
+                                alt="System Architecture"
+                                className="w-full h-full object-cover rounded-[3.8rem] grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
+                            />
                         </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* Product Visual Showcase */}
-            <section className="section-padding pt-0 bg-wl-dark">
-                <div className="container-custom px-4 lg:px-20">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className="glass-strong rounded-[4rem] overflow-hidden border border-white/10 aspect-[16/9] relative group shadow-[0_0_80px_rgba(202,246,72,0.05)]"
-                    >
-                        <img
-                            src="https://images.unsplash.com/photo-1551288049-bbbda51658f7?q=80&w=2070&auto=format&fit=crop"
-                            alt="AI Interview Platform Dashboard"
-                            className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-wl-dark/60 via-transparent to-transparent opacity-40"></div>
-
-                        {/* Floating Status Badge */}
-                        <div className="absolute top-10 left-10 glass px-6 py-3 rounded-2xl border border-wl-accent/20 flex items-center gap-3">
-                            <div className="w-3 h-3 rounded-full bg-wl-accent animate-pulse"></div>
-                            <span className="text-xs font-bold uppercase tracking-widest text-white">Live AI Analysis Engine</span>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Target Audience */}
-            <section className="section-padding bg-wl-dark relative">
-                <div className="container-custom relative z-10">
-                    <h2 className="heading-md text-center mb-16">
-                        Who It's For
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {targetAudience.map((audience, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="glass p-8 rounded-[2rem] border border-white/5 text-center hover:border-wl-accent/30 hover:-translate-y-1 transition-all group"
-                            >
-                                <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 text-wl-accent group-hover:bg-wl-accent group-hover:text-black transition-all">
-                                    <audience.icon className="w-8 h-8" />
-                                </div>
-                                <h3 className="text-xl font-bold text-white mb-2">
-                                    {audience.title}
-                                </h3>
-                                <p className="text-wl-muted-dark text-sm font-medium">
-                                    {audience.description}
-                                </p>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Core Features */}
-            <section className="section-padding bg-wl-dark relative">
-                <div className="absolute top-1/2 left-0 w-[40%] h-[40%] bg-wl-accent/5 rounded-full blur-[140px] pointer-events-none"></div>
-
-                <div className="container-custom relative z-10">
-                    <h2 className="heading-md text-center mb-16">
-                        Core Features
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {features.map((feature, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="glass-strong p-10 rounded-[2.5rem] border border-white/10 hover:border-wl-accent/20 transition-all"
-                            >
-                                <div className="w-12 h-12 bg-wl-accent/10 rounded-xl flex items-center justify-center mb-6 text-wl-accent">
-                                    <feature.icon className="w-6 h-6" />
-                                </div>
-                                <h3 className="text-2xl font-bold text-white mb-4">
-                                    {feature.title}
-                                </h3>
-                                <p className="text-wl-muted-dark leading-relaxed font-medium">
-                                    {feature.description}
-                                </p>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Benefits */}
-            <section className="section-padding bg-wl-dark relative">
+            {/* API Ecosystem */}
+            <section className="section-padding">
                 <div className="container-custom">
-                    <div className="max-w-5xl mx-auto">
-                        <h2 className="heading-md text-center mb-16">
-                            Benefits That Matter
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {benefits.map((benefit, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="flex items-center gap-4 glass p-6 rounded-2xl border border-white/5 hover:bg-white/5 transition-all"
-                                >
-                                    <div className="w-8 h-8 rounded-full bg-wl-accent/20 flex items-center justify-center shrink-0 text-wl-accent">
-                                        <Check className="w-4 h-4" />
-                                    </div>
-                                    <span className="text-wl-muted-dark font-medium text-lg">{benefit}</span>
-                                </motion.div>
-                            ))}
+                    <div className="glass-strong border border-white/5 rounded-[4rem] p-12 md:p-24 relative overflow-hidden">
+                        <div className="grid lg:grid-cols-2 gap-16 items-center">
+                            <div className="space-y-8">
+                                <Code2 className="w-12 h-12 text-wl-accent" />
+                                <h2 className="text-4xl md:text-6xl font-black tracking-tighter">SDK & API <br />First Access.</h2>
+                                <p className="text-xl text-wl-muted-dark font-medium">Integrate our neural interviewing engine into your existing ATS or HCM platform with just four lines of code.</p>
+                                <ul className="space-y-4 text-wl-accent font-bold uppercase tracking-widest text-[10px]">
+                                    <li className="flex items-center gap-2"><Check className="w-4 h-4" /> Node.js / Python SDKs</li>
+                                    <li className="flex items-center gap-2"><Check className="w-4 h-4" /> Webhook Event Layer</li>
+                                    <li className="flex items-center gap-2"><Check className="w-4 h-4" /> Custom Model Support</li>
+                                </ul>
+                            </div>
+                            <div className="bg-[#0D0D0D] rounded-3xl p-8 border border-white/5 font-mono text-xs overflow-hidden shadow-2xl">
+                                <div className="flex gap-2 mb-8">
+                                    <div className="w-3 h-3 rounded-full bg-red-500/20" />
+                                    <div className="w-3 h-3 rounded-full bg-yellow-500/20" />
+                                    <div className="w-3 h-3 rounded-full bg-green-500/20" />
+                                </div>
+                                <div className="space-y-2">
+                                    <p className="text-wl-muted-dark font-mono text-[10px] opacity-50">// Initialize WLOPER Node</p>
+                                    <p className="text-wl-accent">const <span className="text-white">wloper</span> = <span className="text-blue-400">new</span> WLOPER(&quot;KEY&quot;);</p>
+                                    <p>&nbsp;</p>
+                                    <p className="text-wl-muted-dark font-mono text-[10px] opacity-50">// Start Protocol</p>
+                                    <p className="text-white">await wloper.initialize({'{'}</p>
+                                    <p className="ml-4">id: <span className="text-green-400">&quot;WL_85&quot;</span>,</p>
+                                    <p className="ml-4">model: <span className="text-green-400">&quot;Neural_v4&quot;</span></p>
+                                    <p className="text-white">{'}'});</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* CTA Section */}
-            <section className="section-padding bg-wl-dark relative overflow-hidden">
-                <div className="container-custom relative z-10">
+            {/* CTA */}
+            <section className="section-padding">
+                <div className="container-custom text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="glass-strong border border-wl-accent/20 rounded-[3rem] p-12 lg:p-20 text-center relative overflow-hidden max-w-5xl mx-auto"
+                        className="glass-strong border border-wl-accent/20 rounded-[4rem] p-16 md:p-32 relative overflow-hidden max-w-6xl mx-auto"
                     >
-                        <div className="absolute inset-0 bg-wl-accent/5 pointer-events-none"></div>
-                        <h2 className="heading-md mb-6">
-                            Ready to Transform Your Hiring?
-                        </h2>
-                        <p className="text-xl text-wl-muted-dark mb-10 max-w-2xl mx-auto font-medium">
-                            See how our AI Interview Platform can revolutionize your recruitment process
-                        </p>
-                        <CTAButton onClick={openDemoModal} variant="primary">
-                            Schedule Your Demo Today
-                        </CTAButton>
+                        <h2 className="text-5xl md:text-8xl font-black mb-12 tracking-tighter">Scale Your <br /><span className="text-wl-accent">Operations.</span></h2>
+                        <button onClick={openDemoModal} className="btn-primary h-20 px-16 text-xl">
+                            Request SDK Access
+                        </button>
                     </motion.div>
                 </div>
             </section>

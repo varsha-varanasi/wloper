@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Sparkles, Globe } from 'lucide-react';
 
+import SpotlightCard from './SpotlightCard';
+
 export default function Industries() {
     const industries = [
         'Startups & SaaS',
@@ -71,10 +73,11 @@ export default function Industries() {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: index * 0.1 }}
-                                        className="group flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-wl-accent/20 hover:bg-white/10 transition-all cursor-default"
                                     >
-                                        <div className="w-2 h-2 rounded-full bg-wl-accent opacity-40 group-hover:opacity-100 transition-all"></div>
-                                        <span className="text-sm font-bold text-white/80 group-hover:text-white transition-colors uppercase tracking-widest">{industry}</span>
+                                        <SpotlightCard className="p-5 flex items-center gap-4 border-white/5 hover:border-wl-accent/20 cursor-default group">
+                                            <div className="w-2 h-2 rounded-full bg-wl-accent opacity-40 group-hover:opacity-100 transition-all"></div>
+                                            <span className="text-sm font-bold text-white/80 group-hover:text-white transition-colors uppercase tracking-widest">{industry}</span>
+                                        </SpotlightCard>
                                     </motion.div>
                                 ))}
                             </div>

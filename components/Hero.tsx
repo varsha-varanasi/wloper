@@ -2,11 +2,15 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import CTAButton from './CTAButton';
 import { ArrowRight, Sparkles } from 'lucide-react';
-
 import { useDemo } from '@/context/DemoContext';
+import dynamic from 'next/dynamic';
+
+const NeuralBackground = dynamic(() => import('./NeuralBackground'), {
+    ssr: false,
+    loading: () => <div className="absolute inset-0 bg-wl-dark" />
+});
 
 export default function Hero() {
     const { openDemoModal } = useDemo();
@@ -45,30 +49,8 @@ export default function Hero() {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-wl-dark pt-32 pb-20">
-            {/* Background Container */}
-            <div className="absolute inset-0 z-0 overflow-hidden">
-                {/* Hero Background Image */}
-                <div className="absolute inset-0">
-                    <Image
-                        src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop"
-                        alt="AI Technology Background"
-                        fill
-                        sizes="100vw"
-                        className="object-cover opacity-20"
-                        priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-wl-dark/95 via-wl-dark/90 to-wl-dark"></div>
-                </div>
-
-                {/* Gradient Background & Noise */}
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2232&auto=format&fit=crop')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
-
-                {/* Ambient Glows */}
-                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-wl-accent/10 rounded-full blur-[120px] animate-pulse-slow"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-wl-accent/5 rounded-full blur-[120px] animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
-            </div>
-
-
+            {/* 3D Neural Background */}
+            <NeuralBackground />
 
             <div className="container-custom relative z-10 w-full">
                 <motion.div

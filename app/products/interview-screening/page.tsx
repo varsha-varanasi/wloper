@@ -41,7 +41,7 @@ export default function InterviewScreeningPage() {
         <div className="bg-wl-dark min-h-screen text-white selection:bg-wl-accent selection:text-black pb-32">
 
             {/* Hero Section */}
-            <section className="relative pt-40 lg:pt-64 pb-20 overflow-hidden">
+            <section className="relative min-h-[70vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                     <Image
@@ -55,48 +55,50 @@ export default function InterviewScreeningPage() {
                     <div className="absolute inset-0 bg-gradient-to-b from-wl-dark/95 via-wl-dark/80 to-wl-dark"></div>
                 </div>
 
-                <div className="container-custom relative z-10 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-wl-accent/10 border border-wl-accent/20 mb-8"
-                    >
-                        <Bot className="w-4 h-4 text-wl-accent" />
-                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-wl-accent">Next-Gen HR Tech</span>
-                    </motion.div>
+                <div className="container-custom relative z-10">
+                    <div className="flex flex-col items-center text-center">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="tag-label"
+                        >
+                            <Bot className="w-4 h-4 text-wl-accent" />
+                            Next-Gen HR Tech
+                        </motion.div>
 
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="heading-xl mb-8"
-                    >
-                        AI Interview <span className="heading-gradient">Screening Platform</span>
-                    </motion.h1>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="heading-xl mb-10 max-w-6xl text-balance"
+                        >
+                            AI Interview <br /><span className="text-wl-accent">Screening Platform</span>
+                        </motion.h1>
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="subtitle-lg mx-auto mb-12 h-auto"
-                    >
-                        Automate your technical and behavioral assessments. An intelligent AI platform that conducts live interviews and evaluates responses in real-time.
-                    </motion.p>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                            className="subtitle-lg mx-auto mb-14 text-white/60"
+                        >
+                            Automate your technical and behavioral assessments. An intelligent AI platform that conducts live interviews and evaluates responses in real-time.
+                        </motion.p>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="flex flex-wrap justify-center gap-6"
-                    >
-                        <button onClick={openDemoModal} className="btn-primary group h-16 px-10">
-                            Request Live Demo
-                            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </button>
-                        <div className="flex items-center gap-4 text-wl-muted-dark border border-white/10 px-6 py-4 rounded-full glass">
-                            <ShieldCheck className="w-5 h-5 text-wl-accent" />
-                            <span className="text-xs font-bold uppercase tracking-widest">Enterprise Ready</span>
-                        </div>
-                    </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="flex flex-wrap justify-center gap-6"
+                        >
+                            <button onClick={openDemoModal} className="btn-primary h-16 px-12 group">
+                                Request Live Demo
+                                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                            </button>
+                            <div className="flex items-center gap-4 text-white/40 border border-white/10 px-8 py-4 rounded-full glass">
+                                <ShieldCheck className="w-5 h-5 text-wl-accent" />
+                                <span className="text-[10px] font-black uppercase tracking-widest leading-none">Enterprise Ready</span>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 

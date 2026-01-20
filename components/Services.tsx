@@ -1,8 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Brain, Cpu, Code2, TrendingUp, Sparkles, ArrowUpRight } from 'lucide-react';
+import { Brain, Cpu, Code2, TrendingUp, Sparkles, ArrowUpRight, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+
+import SpotlightCard from './SpotlightCard';
 
 export default function Services() {
     const services = [
@@ -77,30 +79,41 @@ export default function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className={`group relative ${index % 2 === 1 ? 'md:mt-12' : ''}`}
+                            className="group/card"
                         >
-                            <Link href={service.href} className="block relative z-10 p-10 md:p-12 rounded-[3rem] glass-strong border border-white/5 hover:border-wl-accent/20 transition-all duration-500 overflow-hidden">
-                                {/* Hover Gradient */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-wl-accent/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                                <div className="relative z-10">
-                                    <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:bg-wl-accent group-hover:text-black transition-all duration-500 text-wl-accent">
-                                        <service.icon className="w-8 h-8" />
+                            <Link href={service.href}>
+                                <SpotlightCard className="p-10 md:p-12 h-full relative overflow-hidden">
+                                    {/* Idea D: Code Reflection */}
+                                    <div className="absolute top-4 right-4 text-[8px] font-mono text-wl-accent/0 group-hover/card:text-wl-accent/20 transition-all duration-700 pointer-events-none select-none">
+                                        <pre>
+                                            {`function refineAI(data) {
+  return data.map(n => ({
+    ...n,
+    neural: true,
+    scale: 'infinite'
+  }));
+}`}
+                                        </pre>
                                     </div>
-                                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-wl-accent transition-colors">
+
+                                    <div className="neural-point w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover/card:bg-wl-accent group-hover/card:text-black transition-all duration-500 text-wl-accent relative">
+                                        <service.icon className="w-8 h-8" />
+
+                                        {/* Pulse Effect */}
+                                        <div className="absolute inset-0 rounded-2xl bg-wl-accent/20 animate-ping opacity-0 group-hover/card:opacity-100"></div>
+                                    </div>
+
+                                    <h3 className="text-2xl font-bold text-white mb-4 group-hover/card:text-wl-accent transition-colors">
                                         {service.title}
                                     </h3>
-                                    <p className="text-wl-muted-dark leading-relaxed mb-8 font-medium">
+                                    <p className="text-wl-muted-dark leading-relaxed mb-8">
                                         {service.desc}
                                     </p>
-                                    <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-wl-accent/50 group-hover:text-wl-accent transition-colors">
-                                        Learn More <ArrowUpRight className="w-4 h-4" />
+                                    <div className="flex items-center gap-2 text-wl-accent font-bold text-sm">
+                                        Explore <ArrowRight className="w-4 h-4 transition-transform group-hover/card:translate-x-2" />
                                     </div>
-                                </div>
+                                </SpotlightCard>
                             </Link>
-
-                            {/* Background Decorative Element */}
-                            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-wl-accent/5 rounded-full blur-[60px] group-hover:bg-wl-accent/10 transition-all duration-500"></div>
                         </motion.div>
                     ))}
                 </div>

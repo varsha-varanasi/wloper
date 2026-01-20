@@ -39,7 +39,7 @@ export default function AIChatbotPage() {
         <div className="bg-wl-dark min-h-screen text-white selection:bg-wl-accent selection:text-black pb-32">
 
             {/* Hero Section */}
-            <section className="relative pt-40 lg:pt-64 pb-20 overflow-hidden">
+            <section className="relative min-h-[70vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                     <Image
@@ -53,48 +53,50 @@ export default function AIChatbotPage() {
                     <div className="absolute inset-0 bg-gradient-to-b from-wl-dark/95 via-wl-dark/80 to-wl-dark"></div>
                 </div>
 
-                <div className="container-custom relative z-10 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-wl-accent/10 border border-wl-accent/20 mb-8"
-                    >
-                        <MessageSquare className="w-4 h-4 text-wl-accent" />
-                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-wl-accent">Conversational Intelligence</span>
-                    </motion.div>
+                <div className="container-custom relative z-10">
+                    <div className="flex flex-col items-center text-center">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="tag-label"
+                        >
+                            <MessageSquare className="w-4 h-4 text-wl-accent" />
+                            Conversational Intelligence
+                        </motion.div>
 
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="heading-xl mb-8"
-                    >
-                        Customized <span className="heading-gradient">AI Chatbots</span>
-                    </motion.h1>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="heading-xl mb-10 max-w-6xl text-balance"
+                        >
+                            Customized <br /><span className="text-wl-accent">AI Chatbots.</span>
+                        </motion.h1>
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="subtitle-lg mx-auto mb-12 h-auto"
-                    >
-                        Automate your customer engagement with neural conversation models. Fully custom chatbots designed to understand, learn, and convert visitors 24/7.
-                    </motion.p>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                            className="subtitle-lg mx-auto mb-14 text-white/60"
+                        >
+                            Automate your customer engagement with neural conversation models. Fully custom chatbots designed to understand, learn, and convert visitors 24/7.
+                        </motion.p>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="flex flex-wrap justify-center gap-6"
-                    >
-                        <button onClick={openDemoModal} className="btn-primary group h-16 px-10">
-                            Deploy My Agent
-                            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </button>
-                        <div className="flex items-center gap-4 text-wl-muted-dark border border-white/10 px-6 py-4 rounded-full glass">
-                            <Languages className="w-5 h-5 text-wl-accent" />
-                            <span className="text-xs font-bold uppercase tracking-widest">Global - 95+ Languages</span>
-                        </div>
-                    </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="flex flex-wrap justify-center gap-6"
+                        >
+                            <button onClick={openDemoModal} className="btn-primary h-16 px-12 group">
+                                Deploy My Agent
+                                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                            </button>
+                            <div className="flex items-center gap-4 text-white/40 border border-white/10 px-8 py-4 rounded-full glass">
+                                <Languages className="w-5 h-5 text-wl-accent" />
+                                <span className="text-[10px] font-black uppercase tracking-widest leading-none">Global - 95+ Languages</span>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 
@@ -161,7 +163,7 @@ export default function AIChatbotPage() {
                                 </div>
                                 <div className="mt-12 p-8 rounded-3xl bg-wl-accent/5 border border-wl-accent/10">
                                     <p className="text-[10px] font-black uppercase tracking-widest text-wl-accent mb-2">Technical Highlight</p>
-                                    <p className="text-sm font-medium leading-relaxed italic">
+                                    <p className="text-sm font-medium leading-relaxed">
                                         "Our chatbots maintain persistent memory and state, allowing for complex multi-turn conversations that feel human."
                                     </p>
                                 </div>
@@ -175,7 +177,7 @@ export default function AIChatbotPage() {
             <section className="container-custom">
                 <div className="glass-strong p-12 md:p-24 rounded-[4rem] text-center border border-white/10 relative overflow-hidden group">
                     <Sparkles className="w-12 h-12 text-wl-accent mx-auto mb-10" />
-                    <h2 className="text-3xl md:text-5xl font-black mb-10 leading-tight italic">Your Business. Our AI. <span className="text-wl-accent">Zero Latency.</span></h2>
+                    <h2 className="text-3xl md:text-5xl font-black mb-10 leading-tight">Your Business. Our AI. <span className="text-wl-accent">Zero Latency.</span></h2>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">
                         <button onClick={openDemoModal} className="btn-primary h-16 px-12">
                             Deploy Custom Agent

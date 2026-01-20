@@ -40,7 +40,7 @@ export default function BlogPage() {
     return (
         <div className="bg-wl-dark text-white overflow-hidden pb-32">
             {/* Hero Section */}
-            <section className="section-padding relative pt-40 lg:pt-64 pb-20 overflow-hidden">
+            <section className="relative min-h-[70vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                     <Image
@@ -55,28 +55,28 @@ export default function BlogPage() {
                 </div>
 
                 <div className="container-custom relative z-10">
-                    <div className="max-w-4xl mx-auto text-center">
+                    <div className="flex flex-col items-center text-center">
                         <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-wl-accent/10 border border-wl-accent/20 mb-8"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="tag-label"
                         >
                             <Rss className="w-4 h-4 text-wl-accent" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-wl-accent">Wloper Intelligence</span>
+                            Wloper Intelligence
                         </motion.div>
 
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-5xl md:text-8xl font-black leading-tight mb-8"
+                            className="heading-xl mb-10 max-w-6xl text-balance"
                         >
-                            The <span className="heading-gradient">Knowledge</span> Hub
+                            The <span className="text-wl-accent">Knowledge</span> Hub
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-xl md:text-2xl text-wl-muted-dark leading-relaxed max-w-3xl mx-auto font-medium"
+                            className="subtitle-lg mx-auto mb-14 text-white/60"
                         >
                             100+ expert articles covering AI, Blockchain, Website Development, and Digital Marketing.
                         </motion.p>

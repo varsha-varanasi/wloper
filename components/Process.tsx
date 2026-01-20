@@ -86,88 +86,33 @@ export default function Process() {
                     </motion.p>
                 </div>
 
-                <div className="relative max-w-6xl mx-auto">
-                    {/* Central Animated Line */}
-                    <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/10 md:-translate-x-1/2 rounded-full overflow-hidden">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                    {steps.map((step, index) => (
                         <motion.div
-                            style={{ scaleY }}
-                            className="absolute top-0 left-0 right-0 h-full bg-gradient-to-b from-wl-accent via-wl-accent/50 to-transparent origin-top"
-                        />
-                    </div>
-
-                    <div className="space-y-24 md:space-y-48">
-                        {steps.map((step, index) => (
-                            <div key={index} className={`relative flex items-center gap-12 md:gap-0 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-
-                                {/* Step Content */}
-                                <motion.div
-                                    initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true, margin: "-100px" }}
-                                    transition={{ duration: 0.8 }}
-                                    className="w-full md:w-[42%] pl-20 md:pl-0"
-                                >
-                                    <div className="group relative">
-                                        {/* Floating Badge */}
-                                        <div className="absolute -top-6 left-0 px-4 py-1 rounded-lg bg-wl-accent/10 border border-wl-accent/20 text-[10px] font-bold uppercase tracking-widest text-wl-accent">
-                                            Stage 0{index + 1} • {step.tag}
-                                        </div>
-
-                                        <div className="glass-strong p-10 md:p-14 rounded-[3.5rem] border border-white/5 hover:border-wl-accent/20 transition-all duration-500 overflow-hidden group">
-                                            {/* Corner Glow */}
-                                            <div className="absolute top-0 right-0 w-32 h-32 bg-wl-accent/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-
-                                            <div className="relative z-10">
-                                                <h3 className="heading-sm mb-6 group-hover:text-wl-accent transition-colors">
-                                                    {step.title}
-                                                </h3>
-                                                <p className="subtitle-md">
-                                                    {step.desc}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </motion.div>
-
-                                {/* Center Icon Pillar */}
-                                <div className="absolute left-0 md:left-1/2 top-1/2 -translate-y-1/2 md:-translate-x-1/2 flex flex-col items-center">
-                                    <motion.div
-                                        initial={{ scale: 0 }}
-                                        whileInView={{ scale: 1 }}
-                                        viewport={{ once: true }}
-                                        className="w-16 h-16 rounded-3xl bg-wl-dark border-2 border-white/10 flex items-center justify-center relative z-20 shadow-[0_0_30px_rgba(0,0,0,0.5)] group hover:border-wl-accent transition-colors duration-500"
-                                    >
-                                        <div className="absolute inset-0 bg-wl-accent/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                        <step.icon className="w-7 h-7 text-wl-accent" />
-                                    </motion.div>
-
-                                    {/* Number Circle for Mobile/Detail */}
-                                    <div className="md:hidden mt-4 text-xs font-black text-white/20 uppercase tracking-widest">
-                                        Stage {index + 1}
-                                    </div>
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            className="relative group"
+                        >
+                            <div className="glass-strong p-8 rounded-[2.5rem] border border-white/5 hover:border-wl-accent/20 transition-all duration-500 h-full flex flex-col">
+                                <div className="w-14 h-14 rounded-2xl bg-wl-accent/10 flex items-center justify-center mb-6 group-hover:bg-wl-accent group-hover:text-black transition-all">
+                                    <step.icon className="w-7 h-7" />
                                 </div>
-
-                                {/* Placeholder for Alignment */}
-                                <div className="hidden md:block md:w-[42%]"></div>
+                                <div className="text-[10px] font-bold text-wl-accent uppercase tracking-[0.2em] mb-3">
+                                    Stage 0{index + 1}
+                                </div>
+                                <h3 className="text-xl font-bold text-white mb-4 leading-tight">
+                                    {step.title}
+                                </h3>
+                                <p className="text-sm text-wl-muted-dark font-medium leading-relaxed">
+                                    {step.desc}
+                                </p>
                             </div>
-                        ))}
-                    </div>
+                        </motion.div>
+                    ))}
                 </div>
-
-                {/* Bottom Connector CTA (Subtle) */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5 }}
-                    className="mt-48 text-center"
-                >
-                    <div className="inline-block p-1 rounded-full bg-white/5 border border-white/10 scale-110">
-                        <div className="px-10 py-4 rounded-full bg-wl-dark text-wl-accent font-bold uppercase tracking-widest text-xs">
-                            Ready to begin?
-                        </div>
-                    </div>
-                </motion.div>
             </div>
         </section>
     );

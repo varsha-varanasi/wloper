@@ -38,11 +38,11 @@ export default function AIStrategyPage() {
     return (
         <div className="bg-wl-dark text-white overflow-hidden pb-40">
             {/* Hero Section */}
-            <section className="section-padding relative pt-32 lg:pt-48 min-h-[80vh] flex items-center">
+            <section className="relative min-h-[70vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--wl-accent)_0%,_transparent_70%)] opacity-[0.03] pointer-events-none"></div>
 
                 <div className="container-custom relative z-10">
-                    <div className="max-w-4xl">
+                    <div className="flex flex-col items-center text-center">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -54,23 +54,22 @@ export default function AIStrategyPage() {
                         <motion.h1
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="heading-xl mb-10"
+                            className="heading-xl mb-10 max-w-6xl text-balance"
                         >
-                            AI Strategy <br /><span className="heading-gradient">& Consulting.</span>
+                            AI Strategy <br /><span className="text-wl-accent">& Consulting.</span>
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="subtitle-lg"
+                            className="subtitle-lg mx-auto mb-14 text-white/60"
                         >
-                            Navigating the AI landscape requires more than code—it requires a vision. We help you architect the future of your enterprise.
+                            Navigating the AI landscape requires more than code—it requires a vision. We help you architect the future of your enterprise with technical blueprints.
                         </motion.p>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="mt-12"
                         >
                             <button onClick={openDemoModal} className="btn-primary flex items-center gap-3 w-fit">
                                 Start Free Roadmap <ArrowRight className="w-5 h-5" />
@@ -136,7 +135,7 @@ export default function AIStrategyPage() {
                                 <div className="absolute inset-0 flex items-center justify-center p-12">
                                     <div className="text-center">
                                         <Zap className="w-24 h-24 text-wl-accent mx-auto mb-6 animate-pulse" />
-                                        <p className="text-5xl font-black uppercase tracking-tighter italic">Zero Lag.<br />High Impact.</p>
+                                        <p className="text-5xl font-black uppercase tracking-tighter">Zero Lag.<br />High Impact.</p>
                                     </div>
                                 </div>
                             </div>

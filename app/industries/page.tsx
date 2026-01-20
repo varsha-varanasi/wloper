@@ -103,7 +103,7 @@ export default function IndustriesPage() {
             <div className="absolute top-0 right-1/2 translate-x-1/2 w-[60%] h-[60%] bg-wl-accent/5 rounded-full blur-[160px] pointer-events-none"></div>
 
             {/* Hero Section */}
-            <section className="section-padding relative pt-32 lg:pt-48">
+            <section className="relative min-h-[70vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
                 {/* Hero Background Image */}
                 <div className="absolute inset-0 z-0 opacity-10">
                     <img
@@ -115,30 +115,30 @@ export default function IndustriesPage() {
                 </div>
 
                 <div className="container-custom relative z-10">
-                    <div className="max-w-4xl mx-auto text-center">
+                    <div className="flex flex-col items-center text-center">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-wl-accent/10 border border-wl-accent/20 mb-8"
+                            className="tag-label"
                         >
                             <Briefcase className="w-4 h-4 text-wl-accent" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-wl-accent">Our Expertise</span>
+                            Our Expertise
                         </motion.div>
 
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="heading-xl mb-6"
+                            className="heading-xl mb-10 max-w-6xl text-balance"
                         >
-                            Industries We <span className="heading-gradient">Serve</span>
+                            Industries We <span className="text-wl-accent">Serve.</span>
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-xl text-wl-muted-dark leading-relaxed max-w-2xl mx-auto"
+                            className="subtitle-lg mx-auto mb-14 text-white/60"
                         >
-                            Delivering specialized solutions across diverse industries with deep domain expertise
+                            Delivering specialized solutions across diverse industries with deep domain expertise and technical supremacy.
                         </motion.p>
                     </div>
                 </div>

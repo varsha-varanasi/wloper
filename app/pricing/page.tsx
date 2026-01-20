@@ -95,26 +95,34 @@ export default function PricingPage() {
     return (
         <div className="bg-wl-dark text-white overflow-hidden">
             {/* Hero Section */}
-            <section className="section-padding relative pt-32 lg:pt-48">
+            <section className="relative min-h-[70vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
                 {/* Background Glow */}
                 <div className="absolute top-0 right-1/4 w-[40%] h-[40%] bg-wl-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
 
                 <div className="container-custom relative z-10">
-                    <div className="max-w-4xl mx-auto text-center">
+                    <div className="flex flex-col items-center text-center">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="tag-label"
+                        >
+                            <Check className="w-4 h-4 text-wl-accent" />
+                            Pricing Protocols
+                        </motion.div>
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="heading-xl mb-6"
+                            className="heading-xl mb-10 max-w-6xl text-balance"
                         >
-                            Simple, Transparent <span className="heading-gradient">Pricing</span>
+                            Simple, Transparent <span className="text-wl-accent">Investment.</span>
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-xl text-wl-muted-dark leading-relaxed"
+                            className="subtitle-lg mx-auto mb-14 text-white/60"
                         >
-                            Choose the perfect plan for your business needs. No hidden fees.
+                            Choose the perfect plan for your business needs. No hidden fees. Optimized for high-growth enterprises and specialized labs.
                         </motion.p>
                     </div>
                 </div>
