@@ -66,6 +66,19 @@ export default function DevTerminal() {
                 return;
             case '/hire-us':
                 result = 'Smart Choice. Signal sent to HR... [SUCCESS] We will find you.';
+                // Notify sales
+                try {
+                    fetch('/api/contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: 'Terminal User',
+                            email: 'terminal@wloper.com',
+                            subject: 'Hire Us Command Used',
+                            message: 'A visitor just used the /hire-us command in the Dev Terminal.'
+                        }),
+                    });
+                } catch (e) { }
                 break;
             default:
                 result = `Command not recognized: ${cmd}. Type /help for options.`;

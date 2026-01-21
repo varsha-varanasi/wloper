@@ -12,18 +12,50 @@ interface DemoModalProps {
 export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        interest: 'Predictive AI Analytics'
+    });
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        setIsSubmitting(false);
-        setIsSuccess(true);
-        setTimeout(() => {
-            setIsSuccess(false);
-            onClose();
-        }, 3000);
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    subject: 'Demo Request',
+                    message: `Requested Blueprint session for: ${formData.interest}`
+                }),
+            });
+
+            if (response.ok) {
+                setIsSuccess(true);
+                import('canvas-confetti').then(confetti => {
+                    confetti.default({
+                        particleCount: 100,
+                        spread: 70,
+                        origin: { y: 0.6 },
+                        colors: ['#caf648', '#ffffff']
+                    });
+                });
+                setTimeout(() => {
+                    setIsSuccess(false);
+                    onClose();
+                }, 4000);
+            } else {
+                alert('Connection failed. Please try again.');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -79,6 +111,8 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                                                 <input
                                                     type="text"
                                                     required
+                                                    value={formData.name}
+                                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-wl-accent focus:bg-white/10 focus:outline-none transition-all font-medium"
                                                     placeholder="John Silver"
                                                 />
@@ -88,6 +122,8 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                                                 <input
                                                     type="email"
                                                     required
+                                                    value={formData.email}
+                                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-wl-accent focus:bg-white/10 focus:outline-none transition-all font-medium"
                                                     placeholder="john@wloper.ai"
                                                 />
@@ -96,11 +132,15 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
 
                                         <div className="space-y-2">
                                             <label className="text-[10px] font-black uppercase tracking-widest text-wl-muted-dark ml-1">Specialization Interest</label>
-                                            <select className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-wl-accent focus:bg-white/10 focus:outline-none transition-all font-medium appearance-none">
-                                                <option className="bg-wl-dark">Predictive AI Analytics</option>
-                                                <option className="bg-wl-dark">Autonomous Agents</option>
-                                                <option className="bg-wl-dark">Blockchain Infrastructure</option>
-                                                <option className="bg-wl-dark">Growth SEO Systems</option>
+                                            <select
+                                                value={formData.interest}
+                                                onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
+                                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-wl-accent focus:bg-white/10 focus:outline-none transition-all font-medium appearance-none"
+                                            >
+                                                <option className="bg-wl-dark" value="Predictive AI Analytics">Predictive AI Analytics</option>
+                                                <option className="bg-wl-dark" value="Autonomous Agents">Autonomous Agents</option>
+                                                <option className="bg-wl-dark" value="Blockchain Infrastructure">Blockchain Infrastructure</option>
+                                                <option className="bg-wl-dark" value="Growth SEO Systems">Growth SEO Systems</option>
                                             </select>
                                         </div>
 

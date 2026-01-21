@@ -17,7 +17,7 @@ const AUTO_RESPONSES: Record<string, string> = {
     'hi': "Hi there! How can WLOPER assist you today?",
     'services': "We provide a range of next-gen services: AI Strategy Consulting, Custom Bot Development, Web & Mobile App Development, and Digital Marketing.",
     'ai': "Our AI expertise includes Natural Language Processing, Computer Vision, and custom LLM integrations. We help businesses automate workflows and enhance user experiences.",
-    'contact': "You can reach us through our contact page, or drop us an email at hello@wloper.com. We'd love to hear from you!",
+    'contact': "You can reach us through our contact page, via email at sales@wloper.com, or call us directly at +91-8433462546.",
     'pricing': "Our pricing is flexible and depends on the project scope. We offer everything from startup packages to enterprise solutions. Let's discuss your requirements!",
     'who': "WLOPER is a next-generation tech company dedicated to building scalable, AI-driven solutions for the modern world.",
     'strategy': "Our AI strategy helps businesses identify high-impact AI opportunities and implement them efficiently.",

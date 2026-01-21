@@ -181,8 +181,12 @@ export default function Footer() {
                             <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Punjab, India</span>
                         </div>
                         <div className="flex items-center gap-3">
+                            <Phone className="w-4 h-4 text-wl-accent/40" />
+                            <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest font-mono">+91-8433462546</span>
+                        </div>
+                        <div className="flex items-center gap-3">
                             <Mail className="w-4 h-4 text-wl-accent/40" />
-                            <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest font-mono">ops@wloper.tech</span>
+                            <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest font-mono">sales@wloper.com</span>
                         </div>
                     </div>
                     <div className="flex flex-wrap md:justify-end gap-x-10 gap-y-4">

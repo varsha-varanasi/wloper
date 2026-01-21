@@ -25,16 +25,35 @@ export default function NewsletterPopup() {
         localStorage.setItem('wl-popup-seen', 'true');
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('loading');
-        // Simulate API call
-        setTimeout(() => {
-            setStatus('success');
-            setTimeout(() => {
-                handleClose();
-            }, 2000);
-        }, 1500);
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: 'Newsletter Subscriber',
+                    email: email,
+                    subject: 'New Newsletter Subscription',
+                    message: `A new user has subscribed to the newsletter: ${email}`
+                }),
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                setTimeout(() => {
+                    handleClose();
+                }, 3000);
+            } else {
+                alert('Connection failed. Please try again.');
+                setStatus('idle');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            setStatus('idle');
+        }
     };
 
     return (

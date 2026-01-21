@@ -29,12 +29,28 @@ export default function SiteAuditTerminal() {
         "ALMOST DONE - Formatting report..."
     ];
 
-    const runScan = (e: React.FormEvent) => {
+    const runScan = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!url) return;
         setIsScanning(true);
         setLogs([]);
         setShowResults(false);
+
+        // Notify sales of audit request
+        try {
+            fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: 'System Audit',
+                    email: 'audit@wloper.com',
+                    subject: 'New Audit Request',
+                    message: `A visitor just ran a site audit for: ${url}`
+                }),
+            });
+        } catch (e) {
+            console.error('Audit notification failed', e);
+        }
 
         let i = 0;
         const interval = setInterval(() => {
