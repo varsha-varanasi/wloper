@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
 :root {
   --wl-accent: #CAF648;
@@ -35,14 +35,14 @@ html {
 body {
   background: var(--wl-bg);
   color: #FFFFFF;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* Titles use Plus Jakarta Sans */
+/* Titles use Space Grotesk */
 h1,
 h2,
 h3,
@@ -54,7 +54,7 @@ h6,
 .heading-md,
 .heading-sm,
 .tag-label {
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-family: 'Space Grotesk', sans-serif !important;
 }
 
 /* Buttons / CTA */

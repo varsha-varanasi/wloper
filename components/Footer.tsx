@@ -96,9 +96,9 @@ export default function Footer() {
                                 <Image
                                     src="/images/loper__3_-removebg-preview-e1748296489675-r6eacdc8yg79qwd174wcap96495w22bgh5a75gm6tc.png"
                                     alt="Wloper Logo"
-                                    width={140}
-                                    height={44}
-                                    className="h-8 w-auto brightness-0 invert opacity-60 group-hover:opacity-100 transition-all"
+                                    width={160}
+                                    height={50}
+                                    className="h-10 w-auto brightness-0 invert opacity-60 group-hover:opacity-100 transition-all"
                                 />
                             </Link>
                             <p className="text-wl-muted-dark text-lg leading-relaxed font-medium max-w-sm">

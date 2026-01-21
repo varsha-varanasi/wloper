@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion';
 import {
-    Layout, CheckCircle2, ArrowRight, Zap, Target,
-    ShieldCheck, BarChart3, Bot, Users, Search,
+    CheckCircle2, ArrowRight, Zap,
+    ShieldCheck, BarChart3, Bot, Users,
     Cpu, Database, Sparkles
 } from 'lucide-react';
 import Link from 'next/link';
@@ -40,19 +40,17 @@ export default function InterviewScreeningPage() {
     return (
         <div className="bg-wl-dark min-h-screen text-white selection:bg-wl-accent selection:text-black pb-32">
 
-            {/* Hero Section */}
-            <section className="relative min-h-[70vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
-                {/* Background Image */}
+            {/* Cinematic Hero */}
+            <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/images/ai-interview.png"
+                        src="/images/envato-labs-ai-bce5f816-6df6-4577-a0b5-b11da7c85d69.jpg"
                         alt="Interview Screening Background"
                         fill
-                        sizes="100vw"
-                        className="object-cover opacity-20"
+                        className="object-cover opacity-30"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-wl-dark/95 via-wl-dark/80 to-wl-dark"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-wl-dark/95 via-wl-dark/40 to-wl-dark"></div>
                 </div>
 
                 <div className="container-custom relative z-10">
@@ -78,9 +76,9 @@ export default function InterviewScreeningPage() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="subtitle-lg mx-auto mb-14 text-white/60"
+                            className="subtitle-lg mx-auto mb-14 text-white/50"
                         >
-                            Automate your technical and behavioral assessments. An intelligent AI platform that conducts live interviews and evaluates responses in real-time.
+                            Automate your technical and behavioral assessments with an intelligent AI platform that conducts live interviews and evaluates responses in real-time.
                         </motion.p>
 
                         <motion.div
@@ -89,12 +87,12 @@ export default function InterviewScreeningPage() {
                             transition={{ delay: 0.2 }}
                             className="flex flex-wrap justify-center gap-6"
                         >
-                            <button onClick={openDemoModal} className="btn-primary h-16 px-12 group">
+                            <button onClick={openDemoModal} className="btn-primary h-20 px-12 group text-lg">
                                 Request Live Demo
-                                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
                             </button>
-                            <div className="flex items-center gap-4 text-white/40 border border-white/10 px-8 py-4 rounded-full glass">
-                                <ShieldCheck className="w-5 h-5 text-wl-accent" />
+                            <div className="flex items-center gap-4 text-white/40 border border-white/10 px-10 rounded-[2rem] glass-strong">
+                                <ShieldCheck className="w-6 h-6 text-wl-accent" />
                                 <span className="text-[10px] font-black uppercase tracking-widest leading-none">Enterprise Ready</span>
                             </div>
                         </motion.div>
@@ -103,52 +101,54 @@ export default function InterviewScreeningPage() {
             </section>
 
             {/* Product Snapshot: Three Pillars */}
-            <section className="section-padding py-20 bg-wl-dark/50 border-y border-white/5">
+            <section className="section-padding py-32 bg-wl-dark/50 border-y border-white/5">
                 <div className="container-custom">
                     <div className="grid md:grid-cols-3 gap-12">
-                        <div className="group">
-                            <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 border border-white/10 group-hover:bg-wl-accent group-hover:text-black transition-all">
-                                <Zap className="w-8 h-8" />
+                        <div className="group glass-strong p-12 rounded-[3rem] border border-white/5 hover:border-wl-accent/20 transition-all">
+                            <div className="w-20 h-20 rounded-[2rem] bg-white/5 flex items-center justify-center mb-10 group-hover:bg-wl-accent group-hover:text-black transition-all">
+                                <Zap className="w-10 h-10" />
                             </div>
-                            <h3 className="text-2xl font-bold mb-4">Zero Friction</h3>
-                            <p className="text-wl-muted-dark font-medium leading-relaxed">No software for candidates to download. Built directly for the modern mobile web.</p>
+                            <h3 className="text-3xl font-bold mb-6">Zero Friction</h3>
+                            <p className="text-white/40 font-medium leading-relaxed">No software for candidates to download. Built directly for the modern mobile web ecosystem.</p>
                         </div>
-                        <div className="group">
-                            <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 border border-white/10 group-hover:bg-wl-accent group-hover:text-black transition-all">
-                                <BarChart3 className="w-8 h-8" />
+                        <div className="group glass-strong p-12 rounded-[3rem] border border-white/5 hover:border-wl-accent/20 transition-all">
+                            <div className="w-20 h-20 rounded-[2rem] bg-white/5 flex items-center justify-center mb-10 group-hover:bg-wl-accent group-hover:text-black transition-all">
+                                <BarChart3 className="w-10 h-10" />
                             </div>
-                            <h3 className="text-2xl font-bold mb-4">Data Evidence</h3>
-                            <p className="text-wl-muted-dark font-medium leading-relaxed">Every hiring decision is backed by transparent, explainable AI scoring data.</p>
+                            <h3 className="text-3xl font-bold mb-6">Data Evidence</h3>
+                            <p className="text-white/40 font-medium leading-relaxed">Every hiring decision is backed by transparent, explainable AI scoring protocols and data logic.</p>
                         </div>
-                        <div className="group">
-                            <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 border border-white/10 group-hover:bg-wl-accent group-hover:text-black transition-all">
-                                <Users className="w-8 h-8" />
+                        <div className="group glass-strong p-12 rounded-[3rem] border border-white/5 hover:border-wl-accent/20 transition-all">
+                            <div className="w-20 h-20 rounded-[2rem] bg-white/5 flex items-center justify-center mb-10 group-hover:bg-wl-accent group-hover:text-black transition-all">
+                                <Users className="w-10 h-10" />
                             </div>
-                            <h3 className="text-2xl font-bold mb-4">Human-Centric</h3>
-                            <p className="text-wl-muted-dark font-medium leading-relaxed">Designed to enhance recruiter productivity, not replace human judgment.</p>
+                            <h3 className="text-3xl font-bold mb-6">Human-Centric</h3>
+                            <p className="text-white/40 font-medium leading-relaxed">Designed to enhance recruiter productivity and streamline technical pipelines for engineers.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Deep Breakdown Sections */}
-            <section className="section-padding py-32">
+            <section className="section-padding py-32 relative">
+                <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-wl-accent/5 rounded-full blur-[120px] pointer-events-none -ml-64" />
+
                 <div className="container-custom">
                     <div className="grid lg:grid-cols-12 gap-20">
                         {/* Sidebar: Feature List */}
                         <div className="lg:col-span-5">
                             <div className="sticky top-32 space-y-12">
-                                <h2 className="text-4xl md:text-5xl font-black leading-tight">Comprehensive <br /><span className="text-wl-accent">Feature Logic</span></h2>
+                                <h2 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter">Feature <br /><span className="text-wl-accent">Logic Map.</span></h2>
                                 {featureGroups.map((group, idx) => (
                                     <div key={idx} className="space-y-8">
-                                        <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white/40">{group.title}</h4>
+                                        <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">{group.title}</h4>
                                         <div className="space-y-6">
                                             {group.features.map((f, i) => (
-                                                <div key={i} className="flex gap-4 group">
-                                                    <CheckCircle2 className="w-5 h-5 text-wl-accent shrink-0 group-hover:scale-125 transition-transform" />
+                                                <div key={i} className="flex gap-6 group">
+                                                    <CheckCircle2 className="w-6 h-6 text-wl-accent shrink-0 group-hover:scale-125 transition-transform" />
                                                     <div>
-                                                        <h5 className="font-bold mb-1">{f.name}</h5>
-                                                        <p className="text-sm text-wl-muted-dark">{f.desc}</p>
+                                                        <h5 className="text-xl font-bold mb-2">{f.name}</h5>
+                                                        <p className="text-white/40 leading-relaxed">{f.desc}</p>
                                                     </div>
                                                 </div>
                                             ))}
@@ -158,34 +158,29 @@ export default function InterviewScreeningPage() {
                             </div>
                         </div>
 
-                        {/* Visual representation: The Architecture */}
+                        {/* Visual representation: Architecture Image Inserted Here */}
                         <div className="lg:col-span-7">
-                            <div className="glass-strong p-12 md:p-20 rounded-[4rem] border border-white/10 relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-wl-accent/5 rounded-full blur-3xl"></div>
+                            <div className="glass-strong rounded-[4rem] border border-white/10 relative overflow-hidden h-[800px] mb-12">
+                                <Image
+                                    src="/images/envato-labs-ai-cc98af26-6a98-45ef-9c86-a4618f68b6e2.jpg"
+                                    alt="Architecture Illustration"
+                                    fill
+                                    className="object-cover opacity-60"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-wl-dark via-wl-dark/40 to-transparent" />
 
-                                <h3 className="text-3xl font-black mb-12 flex items-center gap-4">
-                                    <Cpu className="w-10 h-10 text-wl-accent" />
-                                    The Architecture
-                                </h3>
-
-                                <div className="space-y-12">
-                                    {techSpecs.map((spec, i) => (
-                                        <div key={i} className="p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:border-wl-accent/20 transition-all">
-                                            <p className="text-xs font-black uppercase tracking-widest text-wl-accent mb-4">{spec.label}</p>
-                                            <p className="text-lg font-medium text-white">{spec.value}</p>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="mt-16 pt-12 border-t border-white/5">
-                                    <div className="flex items-center gap-6">
-                                        <div className="w-12 h-12 rounded-2xl bg-wl-accent text-black flex items-center justify-center">
-                                            <Database className="w-6 h-6" />
-                                        </div>
-                                        <div>
-                                            <p className="text-xs font-bold text-wl-muted-dark uppercase tracking-widest">Data Sovereignty</p>
-                                            <p className="font-bold">Enterprise Encryption Built-in</p>
-                                        </div>
+                                <div className="absolute bottom-12 left-12 right-12">
+                                    <h3 className="text-4xl font-black mb-8 flex items-center gap-6">
+                                        <Cpu className="w-12 h-12 text-wl-accent" />
+                                        Neural Architecture
+                                    </h3>
+                                    <div className="grid gap-4">
+                                        {techSpecs.map((spec, i) => (
+                                            <div key={i} className="p-6 rounded-[2rem] bg-black/60 backdrop-blur-xl border border-white/10">
+                                                <p className="text-[9px] font-black uppercase tracking-[0.3em] text-wl-accent mb-2">{spec.label}</p>
+                                                <p className="text-base font-bold text-white/90">{spec.value}</p>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
@@ -194,21 +189,36 @@ export default function InterviewScreeningPage() {
                 </div>
             </section>
 
-            {/* Final Conversion Sub-section */}
-            <section className="container-custom">
-                <div className="bg-gradient-to-br from-wl-accent/20 to-transparent p-1 px-1 rounded-[4rem]">
-                    <div className="bg-wl-dark p-12 md:p-24 rounded-[3.9rem] text-center">
-                        <Sparkles className="w-12 h-12 text-wl-accent mx-auto mb-10" />
-                        <h2 className="text-3xl md:text-5xl font-black mb-10 leading-tight">Transform Your Hiring Pipeline Today</h2>
-                        <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                            <button onClick={openDemoModal} className="btn-primary h-16 px-12">
-                                Contact Sales Pod
-                            </button>
-                            <Link href="/about" className="btn-secondary h-16 px-12">
-                                View Case Studies
-                            </Link>
+            {/* Final Conversion */}
+            <section className="section-padding pt-0 pb-40">
+                <div className="container-custom">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        className="glass-strong p-20 lg:p-40 rounded-[4rem] border border-wl-accent/20 text-center relative overflow-hidden"
+                    >
+                        <div className="absolute inset-0 z-0">
+                            <Image
+                                src="/images/envato-labs-ai-ff99b861-f73a-4b32-8972-7e241b722b3b.jpg"
+                                alt="Final Call Image"
+                                fill
+                                className="object-cover opacity-20"
+                            />
+                            <div className="absolute inset-0 bg-wl-dark/60" />
                         </div>
-                    </div>
+                        <div className="relative z-10">
+                            <Sparkles className="w-16 h-16 text-wl-accent mx-auto mb-10" />
+                            <h2 className="text-5xl md:text-8xl font-black mb-12 leading-tight tracking-tighter">Scalable <br /><span className="text-wl-accent">Assesment Hub.</span></h2>
+                            <div className="flex flex-wrap justify-center gap-6">
+                                <button onClick={openDemoModal} className="btn-primary h-20 px-16 text-xl">
+                                    Contact Sales Pod
+                                </button>
+                                <Link href="/blog" className="btn-secondary h-20 px-16 text-xl">
+                                    Review Research
+                                </Link>
+                            </div>
+                        </div>
+                    </motion.div>
                 </div>
             </section>
         </div>

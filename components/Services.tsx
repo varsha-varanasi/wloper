@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Brain, Cpu, Code2, TrendingUp, Sparkles, ArrowUpRight, ArrowRight } from 'lucide-react';
+import { Brain, Cpu, Code2, TrendingUp, Sparkles, ArrowUpRight, ArrowRight, Blocks, Smartphone as MobileIcon } from 'lucide-react';
 import Link from 'next/link';
 
 import SpotlightCard from './SpotlightCard';
@@ -9,7 +9,19 @@ import SpotlightCard from './SpotlightCard';
 export default function Services() {
     const services = [
         {
-            title: 'AI Strategy & Consulting',
+            title: 'Blockchain & Web3',
+            desc: 'Engineering trustless architectures, smart contracts, and decentralized data ecosystems.',
+            icon: Blocks,
+            href: '/services/blockchain-solutions'
+        },
+        {
+            title: 'Mobile Architecture',
+            desc: 'High-performance iOS and Android applications built for speed, immersion and global scale.',
+            icon: MobileIcon,
+            href: '/services/mobile-app-development'
+        },
+        {
+            title: 'AI Strategy',
             desc: 'Identify high-impact AI opportunities and define clear tech roadmaps for your business.',
             icon: Brain,
             href: '/services/ai-strategy'
@@ -27,7 +39,7 @@ export default function Services() {
             href: '/services/software-engineering'
         },
         {
-            title: 'Growth & SEO',
+            title: 'Digital Growth',
             desc: 'Boost your visibility and organic traffic through data-driven digital growth strategies.',
             icon: TrendingUp,
             href: '/services/digital-growth'
@@ -71,7 +83,7 @@ export default function Services() {
                     </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
                     {services.map((service, index) => (
                         <motion.div
                             key={service.title}

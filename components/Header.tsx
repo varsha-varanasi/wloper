@@ -8,7 +8,8 @@ import { useInterface } from '@/context/InterfaceContext';
 import { useDemo } from '@/context/DemoContext';
 import {
     Menu, X, ChevronRight, Layout, MessageSquare, Users, Sparkles,
-    ChevronDown, Compass, Cpu, Code2, TrendingUp, Terminal as TerminalIcon
+    ChevronDown, Compass, Cpu, Code2, TrendingUp, Terminal as TerminalIcon,
+    Blocks, Smartphone as MobileIcon
 } from 'lucide-react';
 
 export default function Header() {
@@ -28,7 +29,7 @@ export default function Header() {
         { name: 'Home', href: '/' },
         {
             name: 'Products',
-            href: '#',
+            href: '/products',
             hasDropdown: true,
             dropdownItems: [
                 {
@@ -56,7 +57,7 @@ export default function Header() {
         },
         {
             name: 'Services',
-            href: '#',
+            href: '/services',
             hasDropdown: true,
             dropdownItems: [
                 {
@@ -79,6 +80,20 @@ export default function Header() {
                     icon: Code2,
                     href: '/services/software-engineering',
                     cta: 'Start a Project'
+                },
+                {
+                    title: 'Blockchain & Web3 Solutions',
+                    desc: 'Decentralized architectures, smart contracts, and Web3 ecosystem engineering.',
+                    icon: Blocks,
+                    href: '/services/blockchain-solutions',
+                    cta: 'Enter Web3'
+                },
+                {
+                    title: 'Mobile App Development',
+                    desc: 'High-performance iOS and Android applications built for speed and global scale.',
+                    icon: MobileIcon,
+                    href: '/services/mobile-app-development',
+                    cta: 'View Framework'
                 },
                 {
                     title: 'Growth, SEO & Digital Enablement',
@@ -107,9 +122,9 @@ export default function Header() {
                         <Image
                             src="/images/loper__3_-removebg-preview-e1748296489675-r6eacdc8yg79qwd174wcap96495w22bgh5a75gm6tc.png"
                             alt="Wloper Logo"
-                            width={130}
-                            height={40}
-                            className="h-8 w-auto relative z-10 transition-all duration-300 group-hover:scale-105 brightness-0 invert"
+                            width={160}
+                            height={50}
+                            className="h-10 w-auto relative z-10 transition-all duration-300 group-hover:scale-105 brightness-0 invert"
                             priority
                         />
                     </Link>
@@ -134,24 +149,24 @@ export default function Header() {
                                 {/* Mega Menu Dropdown */}
                                 {item.hasDropdown && (
                                     <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-300 ${activeDropdown === item.name ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
-                                        <div className={`glass-strong rounded-3xl p-6 shadow-2xl border-white/10 bg-[#0A0A0A]/95 backdrop-blur-3xl grid gap-4 ${item.dropdownItems?.length && item.dropdownItems.length > 3 ? 'w-[900px] grid-cols-2' : 'w-[800px] grid-cols-3'
+                                        <div className={`glass-strong rounded-[2.5rem] p-6 shadow-2xl border-white/10 bg-[#0A0A0A]/95 backdrop-blur-3xl grid gap-4 ${item.name === 'Services' ? 'w-[840px] grid-cols-3' : 'w-[580px] grid-cols-2'
                                             }`}>
                                             {item.dropdownItems?.map((drop) => (
                                                 <Link
                                                     key={drop.title}
                                                     href={drop.href}
-                                                    className="group/card flex flex-col p-5 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-300 h-full"
+                                                    className="group/card flex flex-col p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-300 h-full"
                                                 >
-                                                    <div className="w-10 h-10 rounded-xl bg-wl-accent/10 flex items-center justify-center mb-4 text-wl-accent group-hover/card:scale-110 group-hover/card:bg-wl-accent group-hover/card:text-black transition-all">
+                                                    <div className="w-10 h-10 rounded-xl bg-wl-accent/10 flex items-center justify-center mb-3 text-wl-accent group-hover/card:scale-110 group-hover/card:bg-wl-accent group-hover/card:text-black transition-all">
                                                         <drop.icon className="w-5 h-5" />
                                                     </div>
-                                                    <h4 className="text-sm font-bold text-white mb-2 group-hover/card:text-wl-accent transition-colors">
+                                                    <h4 className="text-[13px] font-bold text-white mb-2 group-hover/card:text-wl-accent transition-colors">
                                                         {drop.title}
                                                     </h4>
-                                                    <p className="text-xs text-wl-muted-dark leading-relaxed mb-6 flex-1">
+                                                    <p className="text-[11px] text-wl-muted-dark leading-relaxed mb-4 flex-1">
                                                         {drop.desc}
                                                     </p>
-                                                    <div className="flex items-center gap-2 text-[10px] font-bold text-wl-accent uppercase tracking-wider">
+                                                    <div className="flex items-center gap-2 text-[9px] font-bold text-wl-accent uppercase tracking-wider">
                                                         {drop.cta} <ChevronRight className="w-3 h-3 group-hover/card:translate-x-1 transition-transform" />
                                                     </div>
                                                 </Link>
