@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -17,6 +18,14 @@ const GlobalGlobe = dynamic(() => import('./GlobalGlobe'), {
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     const footerSections = [
         {
@@ -158,18 +167,20 @@ export default function Footer() {
 
                     {/* Globe Visualization */}
                     <div className="lg:col-span-3">
-                        <div className="relative aspect-square lg:aspect-auto h-[300px] lg:h-full lg:-mt-20 group">
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--wl-accent)_0%,_transparent_70%)] opacity-0 group-hover:opacity-10 transition-opacity"></div>
-                            <GlobalGlobe />
-                            <div className="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
-                                <Link
-                                    href="/contact"
-                                    className="text-[9px] font-black text-wl-accent uppercase tracking-[0.5em] hover:text-white transition-colors animate-pulse"
-                                >
-                                    Live Global Operations
-                                </Link>
+                        {!isMobile && (
+                            <div className="relative aspect-square lg:aspect-auto h-[300px] lg:h-full lg:-mt-20 group">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--wl-accent)_0%,_transparent_70%)] opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                                <GlobalGlobe />
+                                <div className="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
+                                    <Link
+                                        href="/contact"
+                                        className="text-[9px] font-black text-wl-accent uppercase tracking-[0.5em] hover:text-white transition-colors animate-pulse"
+                                    >
+                                        Live Global Operations
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
 

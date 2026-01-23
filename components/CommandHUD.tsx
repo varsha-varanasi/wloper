@@ -8,6 +8,7 @@ import { Activity, Shield, Cpu, Zap, Crosshair } from 'lucide-react';
 export default function CommandHUD() {
     const { isHUDActive } = useInterface();
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+    const [isMobile, setIsMobile] = useState(false);
     const [vitals, setVitals] = useState({
         load: 12,
         temp: 42,
@@ -16,9 +17,17 @@ export default function CommandHUD() {
     });
 
     useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    useEffect(() => {
         if (!isHUDActive) return;
 
         const handleMouseMove = (e: MouseEvent) => {
+            if (isMobile) return;
             setMousePos({ x: e.clientX, y: e.clientY });
         };
 
@@ -29,14 +38,17 @@ export default function CommandHUD() {
                 latency: Math.floor(Math.random() * 10) + 18,
                 temp: Math.floor(Math.random() * 5) + 40
             }));
-        }, 3000);
+        }, isMobile ? 10000 : 3000);
 
-        window.addEventListener('mousemove', handleMouseMove);
+        if (!isMobile) {
+            window.addEventListener('mousemove', handleMouseMove);
+        }
+
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             clearInterval(interval);
         };
-    }, [isHUDActive]);
+    }, [isHUDActive, isMobile]);
 
     return (
         <AnimatePresence>
@@ -120,27 +132,29 @@ export default function CommandHUD() {
                     </motion.div>
 
                     {/* HUD Cursor */}
-                    <motion.div
-                        className="absolute w-12 h-12 border border-wl-accent/40 rounded-full flex items-center justify-center z-[152]"
-                        animate={{
-                            left: mousePos.x - 24,
-                            top: mousePos.y - 24,
-                            rotate: 360
-                        }}
-                        transition={{
-                            left: { type: 'spring', damping: 30, stiffness: 200 },
-                            top: { type: 'spring', damping: 30, stiffness: 200 },
-                            rotate: { duration: 10, repeat: Infinity, ease: 'linear' }
-                        }}
-                    >
-                        <div className="w-[200%] h-[1px] bg-wl-accent/20 rotate-45" />
-                        <div className="w-[200%] h-[1px] bg-wl-accent/20 -rotate-45" />
+                    {!isMobile && (
+                        <motion.div
+                            className="absolute w-12 h-12 border border-wl-accent/40 rounded-full flex items-center justify-center z-[152]"
+                            animate={{
+                                left: mousePos.x - 24,
+                                top: mousePos.y - 24,
+                                rotate: 360
+                            }}
+                            transition={{
+                                left: { type: 'spring', damping: 30, stiffness: 200 },
+                                top: { type: 'spring', damping: 30, stiffness: 200 },
+                                rotate: { duration: 10, repeat: Infinity, ease: 'linear' }
+                            }}
+                        >
+                            <div className="w-[200%] h-[1px] bg-wl-accent/20 rotate-45" />
+                            <div className="w-[200%] h-[1px] bg-wl-accent/20 -rotate-45" />
 
-                        {/* Coords */}
-                        <div className="absolute top-full left-full ml-4 mt-4 text-[8px] font-mono text-wl-accent bg-black/80 px-2 py-1 border border-wl-accent/20 rounded whitespace-nowrap">
-                            DETECTION: [X:{mousePos.x} Y:{mousePos.y}]
-                        </div>
-                    </motion.div>
+                            {/* Coords */}
+                            <div className="absolute top-full left-full ml-4 mt-4 text-[8px] font-mono text-wl-accent bg-black/80 px-2 py-1 border border-wl-accent/20 rounded whitespace-nowrap">
+                                DETECTION: [X:{mousePos.x} Y:{mousePos.y}]
+                            </div>
+                        </motion.div>
+                    )}
                 </div>
             )}
         </AnimatePresence>

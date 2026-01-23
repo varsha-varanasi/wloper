@@ -6,6 +6,8 @@ import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motio
 export default function CustomCursor() {
     const [cursorType, setCursorType] = useState<'default' | 'hover' | 'text' | 'magnetic'>('default');
     const [cursorText, setCursorText] = useState('');
+    const [isVisible, setIsVisible] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     const [nearestPos, setNearestPos] = useState<{ x: number; y: number } | null>(null);
 
@@ -19,6 +21,19 @@ export default function CustomCursor() {
     const neuralPointsPosRef = useRef<{ x: number, y: number }[]>([]);
 
     useEffect(() => {
+        const checkMobile = () => {
+            const mobile = window.innerWidth < 1024 || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+            setIsMobile(mobile);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        if (isMobile) {
+            return () => {
+                window.removeEventListener('resize', checkMobile);
+            };
+        }
         // Cache neural points positions to avoid layout thrashing
         const updatePoints = () => {
             const elements = Array.from(document.querySelectorAll('.neural-point'));
@@ -91,12 +106,13 @@ export default function CustomCursor() {
         window.addEventListener('mouseover', handleOver, { passive: true });
 
         return () => {
-            window.removeEventListener('scroll', updatePoints);
-            window.removeEventListener('resize', updatePoints);
+            window.removeEventListener('resize', checkMobile);
+            window.removeEventListener('scroll', debouncedUpdate);
+            window.removeEventListener('resize', debouncedUpdate);
             window.removeEventListener('mousemove', moveMouse);
             window.removeEventListener('mouseover', handleOver);
         };
-    }, [mouseX, mouseY]);
+    }, [mouseX, mouseY, isMobile]);
 
     return (
         <div className="fixed inset-0 pointer-events-none z-[9999] hidden lg:block">

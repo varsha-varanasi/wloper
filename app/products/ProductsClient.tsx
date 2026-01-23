@@ -4,11 +4,21 @@ import { motion } from 'framer-motion';
 import { useDemo } from '@/context/DemoContext';
 import dynamic from 'next/dynamic';
 import { Terminal, Shield, Zap, Cpu, Code2, Server, Check, ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 const NeuralBackground = dynamic(() => import('@/components/NeuralBackground'), { ssr: false });
 
 export default function ProductsClient() {
     const { openDemoModal } = useDemo();
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     const technicalSpecs = [
         { title: 'Latency Control', value: '< 200ms', icon: Zap },
@@ -21,7 +31,7 @@ export default function ProductsClient() {
         <div className="bg-wl-dark text-white overflow-hidden pb-40">
             {/* Hero Section */}
             <section className="relative min-h-[80vh] flex items-center justify-center pt-32 overflow-hidden">
-                <NeuralBackground />
+                {!isMobile && <NeuralBackground />}
                 <div className="container-custom relative z-10">
                     <div className="flex flex-col items-center text-center">
                         <motion.div
@@ -102,12 +112,13 @@ export default function ProductsClient() {
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
-                            className="glass-strong rounded-[4rem] border border-white/5 overflow-hidden aspect-square p-2 group"
+                            className="glass-strong rounded-[4rem] border border-white/5 overflow-hidden aspect-square p-2 group relative"
                         >
-                            <img
+                            <Image
                                 src="/images/envato-labs-ai-b7fc9d9b-9c99-40aa-ab36-c7dfe95fac5a.jpg"
                                 alt="System Architecture"
-                                className="w-full h-full object-cover rounded-[3.8rem] grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
+                                fill
+                                className="object-cover rounded-[3.8rem] grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
                             />
                         </motion.div>
                     </div>

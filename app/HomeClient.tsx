@@ -18,18 +18,25 @@ export default function HomeClient() {
     return (
         <div className="bg-wl-dark text-white selection:bg-wl-accent selection:text-black">
             <Hero />
-            <WloperForge />
+
+            <div className="hidden md:block">
+                <WloperForge />
+            </div>
+
             <SiteAuditTerminal />
-            <PerformanceOracle />
-            <ArchitecturePreviewer />
+
+            <div className="hidden md:block">
+                <PerformanceOracle />
+                <ArchitecturePreviewer />
+            </div>
 
             <AIProductShowcase />
 
             <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8 }}
             >
                 <Services />
                 <Process />

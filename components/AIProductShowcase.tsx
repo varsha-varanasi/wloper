@@ -80,8 +80,9 @@ export default function AIProductShowcase() {
                                 src="/images/envato-labs-ai-6c11c598-851f-40f7-9155-eb9146bff990.jpg"
                                 alt="WLOPER AI Product Ecosystem"
                                 fill
-                                sizes="100vw"
+                                sizes="(max-width: 1024px) 100vw, 50vw"
                                 className="object-cover"
+                                priority
                             />
                             {/* Floating labels logic would go here if needed, keeping it clean for now */}
                         </div>

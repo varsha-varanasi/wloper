@@ -6,6 +6,7 @@ import {
     Target, LineChart, ShieldCheck, Zap, Sparkles
 } from 'lucide-react';
 import Link from 'next/link';
+import NextImage from 'next/image';
 import { useDemo } from '@/context/DemoContext';
 
 export default function AIStrategyPage() {
@@ -126,10 +127,11 @@ export default function AIStrategyPage() {
                         </motion.div>
                         <div className="relative">
                             <div className="glass-strong rounded-[4rem] overflow-hidden border border-white/10 h-[600px] relative">
-                                <img
+                                <NextImage
                                     src="/images/envato-labs-ai-cc98af26-6a98-45ef-9c86-a4618f68b6e2.jpg"
                                     alt="Data Strategy"
-                                    className="w-full h-full object-cover grayscale opacity-30"
+                                    fill
+                                    className="object-cover grayscale opacity-30"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-wl-dark to-transparent"></div>
                                 <div className="absolute inset-0 flex items-center justify-center p-12">

@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
-
 :root {
   --wl-accent: #CAF648;
   --wl-accent-2: #CAF649;
@@ -35,7 +33,7 @@ html {
 body {
   background: var(--wl-bg);
   color: #FFFFFF;
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-manrope), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -54,7 +52,7 @@ h6,
 .heading-md,
 .heading-sm,
 .tag-label {
-  font-family: 'Space Grotesk', sans-serif !important;
+  font-family: var(--font-space-grotesk), sans-serif !important;
 }
 
 /* Buttons / CTA */
@@ -144,6 +142,20 @@ h6,
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
     border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Optimized for Mobile */
+  @media (max-width: 768px) {
+    .glass {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .glass-strong {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(5, 5, 5, 0.95);
+    }
   }
 
   .glass-hover {

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { blogPosts } from '@/data/blogPosts';
 import { ArrowRight, Calendar, Clock, ChevronRight } from 'lucide-react';
 
@@ -60,11 +61,12 @@ export default function BlogPreview() {
                             <Link href={`/blog/${post.slug}`} className="absolute inset-0 z-20"></Link>
 
                             {/* Post Image Container */}
-                            <div className="relative h-64 overflow-hidden">
-                                <img
+                            <div className="relative h-64 overflow-hidden bg-white/5">
+                                <Image
                                     src={post.image || "/images/envato-labs-ai-8c704ec1-bca5-4f0e-9049-c06414cf0508.jpg"}
                                     alt={post.title}
-                                    className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                                    fill
+                                    className="object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-wl-dark via-transparent to-transparent opacity-60"></div>
 

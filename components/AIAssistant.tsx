@@ -31,6 +31,7 @@ export default function AIAssistant() {
     const [isListening, setIsListening] = useState(false);
     const [isTyping, setIsTyping] = useState(false);
     const [inputValue, setInputValue] = useState('');
+    const [isMobile, setIsMobile] = useState(false);
     const [messages, setMessages] = useState<Message[]>([
         {
             id: '1',
@@ -42,8 +43,17 @@ export default function AIAssistant() {
 
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        messagesEndRef.current?.scrollIntoView({ behavior: isMobile ? "auto" : "smooth" });
     };
 
     useEffect(() => {
@@ -158,7 +168,7 @@ export default function AIAssistant() {
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="absolute bottom-20 right-0 w-[350px] md:w-[400px] max-w-[calc(100vw-2rem)] glass-strong rounded-[2.5rem] border border-white/10 shadow-2xl overflow-hidden flex flex-col"
+                        className={`absolute bottom-20 right-0 ${isMobile ? 'w-[calc(100vw-2rem)] h-[500px]' : 'w-[400px] h-[600px]'} glass-strong rounded-[2.5rem] border border-white/10 shadow-2xl overflow-hidden flex flex-col`}
                     >
                         {/* Header */}
                         <div className="bg-wl-accent p-6 flex items-center justify-between shrink-0">

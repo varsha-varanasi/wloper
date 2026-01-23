@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import NextImage from 'next/image';
 import { Stethoscope, Landmark, GraduationCap, ShoppingBag, Building2, Car, Utensils, Cpu, ArrowRight, Briefcase } from 'lucide-react';
 import { useDemo } from '@/context/DemoContext';
 
@@ -106,10 +107,12 @@ export default function IndustriesPage() {
             <section className="relative min-h-[70vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
                 {/* Hero Background Image */}
                 <div className="absolute inset-0 z-0 opacity-10">
-                    <img
+                    <NextImage
                         src="/images/envato-labs-ai-fccc6df9-0659-4f2e-9c05-9c652f034c3f.jpg"
                         alt="Industries Hero Background"
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
+                        priority
                     />
                     <div className="absolute inset-0 bg-wl-dark/60"></div>
                 </div>
