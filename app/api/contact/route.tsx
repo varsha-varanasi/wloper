@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import React from 'react';
 import { ContactFormEmail } from '@/components/emails/ContactFormEmail';
 
 // This is a placeholder. You should add your RESEND_API_KEY to your .env file
@@ -24,7 +25,7 @@ export async function POST(request: Request) {
             from: 'WLOPER Contact <onboarding@resend.dev>',
             to: recipients,
             subject: `New Lead: ${subject || 'No Subject'}`,
-            react: ContactFormEmail({ name, email, subject, message }),
+            react: <ContactFormEmail name={name} email={email} subject={subject} message={message} />,
         });
 
         if (error) {
@@ -49,7 +50,7 @@ export async function POST(request: Request) {
                     from: 'WLOPER Contact <onboarding@resend.dev>',
                     to: recipients[0],
                     subject: `New Lead (Fallback): ${subject || 'No Subject'}`,
-                    react: ContactFormEmail({ name, email, subject, message }),
+                    react: <ContactFormEmail name={name} email={email} subject={subject} message={message} />,
                 });
 
                 if (!fallback.error) {
