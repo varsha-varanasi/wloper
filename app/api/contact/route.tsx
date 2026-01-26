@@ -30,7 +30,23 @@ export async function POST(request: Request) {
             from: 'WLOPER Contact <onboarding@resend.dev>',
             to: recipients,
             subject: `New Lead: ${subject || 'No Subject'}`,
-            react: <ContactFormEmail name={name} email={email} subject={subject} message={message} />,
+            html: `
+                <div style="font-family: sans-serif; padding: 20px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #eee;">
+                    <h1 style="color: #000; font-size: 24px; margin-bottom: 20px;">New Contact Form Submission</h1>
+                    <div style="background-color: #fff; padding: 20px; border-radius: 8px;">
+                        <p><strong>Name:</strong> ${name}</p>
+                        <p><strong>Email:</strong> ${email}</p>
+                        <p><strong>Subject:</strong> ${subject || 'General Inquiry'}</p>
+                        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+                            <p><strong>Message:</strong></p>
+                            <p style="white-space: pre-wrap;">${message}</p>
+                        </div>
+                    </div>
+                    <div style="margin-top: 30px; font-size: 12px; color: #666;">
+                        This message was sent from the WLOPER contact form.
+                    </div>
+                </div>
+            `,
         });
 
         if (error) {
@@ -55,7 +71,23 @@ export async function POST(request: Request) {
                     from: 'WLOPER Contact <onboarding@resend.dev>',
                     to: recipients[0],
                     subject: `New Lead (Fallback): ${subject || 'No Subject'}`,
-                    react: <ContactFormEmail name={name} email={email} subject={subject} message={message} />,
+                    html: `
+                        <div style="font-family: sans-serif; padding: 20px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #eee;">
+                            <h1 style="color: #000; font-size: 24px; margin-bottom: 20px;">New Contact Form Submission (Fallback)</h1>
+                            <div style="background-color: #fff; padding: 20px; border-radius: 8px;">
+                                <p><strong>Name:</strong> ${name}</p>
+                                <p><strong>Email:</strong> ${email}</p>
+                                <p><strong>Subject:</strong> ${subject || 'General Inquiry'}</p>
+                                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+                                    <p><strong>Message:</strong></p>
+                                    <p style="white-space: pre-wrap;">${message}</p>
+                                </div>
+                            </div>
+                            <div style="margin-top: 30px; font-size: 12px; color: #666;">
+                                This message was sent from the WLOPER contact form.
+                            </div>
+                        </div>
+                    `,
                 });
 
                 if (!fallback.error) {
