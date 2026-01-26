@@ -24,10 +24,9 @@ export async function POST(request: Request) {
 
         const recipients = ['wlopersinc@gmail.com', 'sales@wloper.com'];
 
-        // Note: If using onboarding@resend.dev, you can only send to the email 
-        // address associated with your Resend account.
+        // Note: Using verified domain after DNS update
         const { data, error } = await resend.emails.send({
-            from: 'WLOPER Contact <onboarding@resend.dev>',
+            from: 'WLOPER Contact <contact@wloper.com>',
             to: recipients,
             subject: `New Lead: ${subject || 'No Subject'}`,
             html: `
@@ -68,7 +67,7 @@ export async function POST(request: Request) {
             if (recipients.length > 1) {
                 console.log('Attempting fallback to primary recipient...');
                 const fallback = await resend.emails.send({
-                    from: 'WLOPER Contact <onboarding@resend.dev>',
+                    from: 'WLOPER Contact <contact@wloper.com>',
                     to: recipients[0],
                     subject: `New Lead (Fallback): ${subject || 'No Subject'}`,
                     html: `
