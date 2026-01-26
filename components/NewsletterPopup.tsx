@@ -47,7 +47,8 @@ export default function NewsletterPopup() {
                     handleClose();
                 }, 3000);
             } else {
-                alert('Connection failed. Please try again.');
+                const data = await response.json();
+                alert(data.error || 'Connection failed. Please try again.');
                 setStatus('idle');
             }
         } catch (error) {

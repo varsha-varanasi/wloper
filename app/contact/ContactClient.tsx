@@ -13,6 +13,7 @@ export default function ContactClient() {
     const [interest, setInterest] = useState('AI Solution');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [statusMessage, setStatusMessage] = useState<string | null>(null);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -22,6 +23,7 @@ export default function ContactClient() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setStatusMessage(null);
 
         try {
             const response = await fetch('/api/contact', {
@@ -32,6 +34,8 @@ export default function ContactClient() {
                     subject: `Interest in ${interest}`
                 }),
             });
+
+            const data = await response.json();
 
             if (response.ok) {
                 setIsSuccess(true);
@@ -44,10 +48,11 @@ export default function ContactClient() {
                 setFormData({ name: '', email: '', message: '' });
                 setTimeout(() => setIsSuccess(false), 5000);
             } else {
-                alert('Connection failed. Please try again.');
+                setStatusMessage(data.error || 'Connection Protocol Failure. Please retry.');
             }
         } catch (error) {
             console.error('Submission error:', error);
+            setStatusMessage('Neural Link Interrupted. Check your connectivity.');
         } finally {
             setIsSubmitting(false);
         }
@@ -223,6 +228,16 @@ export default function ContactClient() {
                                         />
                                     </div>
                                 </div>
+
+                                {statusMessage && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-bold"
+                                    >
+                                        {statusMessage}
+                                    </motion.div>
+                                )}
 
                                 <button
                                     type="submit"

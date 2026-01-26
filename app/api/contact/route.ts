@@ -28,10 +28,20 @@ export async function POST(request: Request) {
         });
 
         if (error) {
-            console.error('Resend error details:', {
+            console.error('Resend Error Protocol:', {
                 name: error.name,
                 message: error.message,
+                status: (error as any).status
             });
+
+            // Specific handling for domain/onboarding restrictions
+            if (error.name === 'validation_error' || error.message.includes('onboarding@resend.dev')) {
+                return NextResponse.json(
+                    { error: 'System restricted: Please verify your domain in Resend or check your recipient permissions.' },
+                    { status: 403 }
+                );
+            }
+
             // If it fails with multiple recipients, try sending only to the primary
             if (recipients.length > 1) {
                 console.log('Attempting fallback to primary recipient...');
@@ -41,14 +51,20 @@ export async function POST(request: Request) {
                     subject: `New Lead (Fallback): ${subject || 'No Subject'}`,
                     react: ContactFormEmail({ name, email, subject, message }),
                 });
-                if (!fallback.error) return NextResponse.json({ success: true, data: fallback.data });
+
+                if (!fallback.error) {
+                    console.log('Fallback successful.');
+                    return NextResponse.json({ success: true, data: fallback.data });
+                }
             }
             return NextResponse.json({ error: error.message }, { status: 500 });
         }
 
         return NextResponse.json({ success: true, data });
     } catch (error: any) {
-        console.error('API Error:', error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        console.error('API System Error:', error);
+        return NextResponse.json({
+            error: error.message || 'Intruder detected in API layer. Execution halted.'
+        }, { status: 500 });
     }
 }

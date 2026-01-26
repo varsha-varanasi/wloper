@@ -49,7 +49,8 @@ export default function DemoModal({ isOpen, onClose }: DemoModalProps) {
                     onClose();
                 }, 4000);
             } else {
-                alert('Connection failed. Please try again.');
+                const data = await response.json();
+                alert(data.error || 'Connection failed. Please try again.');
             }
         } catch (error) {
             console.error('Submission error:', error);

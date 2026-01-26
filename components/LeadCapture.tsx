@@ -50,7 +50,8 @@ export default function LeadCapture() {
                 setFormData({ name: '', email: '', website: '', industry: 'ecommerce', message: '' });
                 setTimeout(() => setStatus('idle'), 5000);
             } else {
-                alert('Submission failed. Please try again.');
+                const data = await response.json();
+                alert(data.error || 'Submission failed. Please try again.');
                 setStatus('idle');
             }
         } catch (error) {
