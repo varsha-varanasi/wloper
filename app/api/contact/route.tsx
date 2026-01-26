@@ -1,13 +1,18 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import React from 'react';
+import * as React from 'react';
 import { ContactFormEmail } from '@/components/emails/ContactFormEmail';
-
-// This is a placeholder. You should add your RESEND_API_KEY to your .env file
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
     try {
+        const apiKey = process.env.RESEND_API_KEY;
+
+        if (!apiKey) {
+            console.error('RESEND_API_KEY is missing from environment variables');
+            return NextResponse.json({ error: 'System configuration error: API Key missing' }, { status: 500 });
+        }
+
+        const resend = new Resend(apiKey);
         const { name, email, subject, message } = await request.json();
 
         if (!name || !email || !message) {
@@ -25,7 +30,7 @@ export async function POST(request: Request) {
             from: 'WLOPER Contact <onboarding@resend.dev>',
             to: recipients,
             subject: `New Lead: ${subject || 'No Subject'}`,
-            react: <ContactFormEmail name={name} email={email} subject={subject} message={message} />,
+            react: React.createElement(ContactFormEmail, { name, email, subject, message }),
         });
 
         if (error) {
@@ -50,7 +55,7 @@ export async function POST(request: Request) {
                     from: 'WLOPER Contact <onboarding@resend.dev>',
                     to: recipients[0],
                     subject: `New Lead (Fallback): ${subject || 'No Subject'}`,
-                    react: <ContactFormEmail name={name} email={email} subject={subject} message={message} />,
+                    react: React.createElement(ContactFormEmail, { name, email, subject, message }),
                 });
 
                 if (!fallback.error) {
