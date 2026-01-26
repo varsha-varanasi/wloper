@@ -30,7 +30,7 @@ export async function POST(request: Request) {
             from: 'WLOPER Contact <onboarding@resend.dev>',
             to: recipients,
             subject: `New Lead: ${subject || 'No Subject'}`,
-            react: React.createElement(ContactFormEmail, { name, email, subject, message }),
+            react: <ContactFormEmail name={name} email={email} subject={subject} message={message} />,
         });
 
         if (error) {
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
                     from: 'WLOPER Contact <onboarding@resend.dev>',
                     to: recipients[0],
                     subject: `New Lead (Fallback): ${subject || 'No Subject'}`,
-                    react: React.createElement(ContactFormEmail, { name, email, subject, message }),
+                    react: <ContactFormEmail name={name} email={email} subject={subject} message={message} />,
                 });
 
                 if (!fallback.error) {
