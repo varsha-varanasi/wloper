@@ -32,6 +32,7 @@ const NewsletterPopup = dynamic(() => import('@/components/NewsletterPopup'), { 
 const DNATransition = dynamic(() => import('@/components/DNATransition'), { ssr: false });
 const CommandHUD = dynamic(() => import('@/components/CommandHUD'), { ssr: false });
 const PersonaSwitcher = dynamic(() => import('@/components/PersonaSwitcher'), { ssr: false });
+const CommandPalette = dynamic(() => import('@/components/CommandPalette'), { ssr: false });
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://wloper.com'),
@@ -205,6 +206,7 @@ export default function RootLayout({
                                 <DevTerminal />
                                 <PersonaSwitcher />
                                 <CommandHUD />
+                                <CommandPalette />
                             </DesktopOnly>
                             <ScrollProgress />
                             <Header />

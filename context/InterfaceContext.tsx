@@ -7,8 +7,11 @@ interface InterfaceContextType {
     setHUDActive: (active: boolean) => void;
     isTerminalOpen: boolean;
     setTerminalOpen: (open: boolean) => void;
+    isSearchOpen: boolean;
+    setSearchOpen: (open: boolean) => void;
     toggleHUD: () => void;
     toggleTerminal: () => void;
+    toggleSearch: () => void;
 }
 
 const InterfaceContext = createContext<InterfaceContextType | undefined>(undefined);
@@ -16,9 +19,11 @@ const InterfaceContext = createContext<InterfaceContextType | undefined>(undefin
 export function InterfaceProvider({ children }: { children: React.ReactNode }) {
     const [isHUDActive, setHUDActive] = useState(false);
     const [isTerminalOpen, setTerminalOpen] = useState(false);
+    const [isSearchOpen, setSearchOpen] = useState(false);
 
     const toggleHUD = () => setHUDActive(prev => !prev);
     const toggleTerminal = () => setTerminalOpen(prev => !prev);
+    const toggleSearch = () => setSearchOpen(prev => !prev);
 
     // Keyboard shortcuts
     useEffect(() => {
@@ -27,6 +32,11 @@ export function InterfaceProvider({ children }: { children: React.ReactNode }) {
             if (e.altKey && e.key.toLowerCase() === 'h') {
                 e.preventDefault();
                 toggleHUD();
+            }
+            // Search Toggle: Cmd/Ctrl + K
+            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                toggleSearch();
             }
             // Terminal Toggle: Ctrl + ` (Already handled in DevTerminal but good to have here for consistency if needed)
         };
@@ -40,8 +50,11 @@ export function InterfaceProvider({ children }: { children: React.ReactNode }) {
             setHUDActive,
             isTerminalOpen,
             setTerminalOpen,
+            isSearchOpen,
+            setSearchOpen,
             toggleHUD,
-            toggleTerminal
+            toggleTerminal,
+            toggleSearch
         }}>
             {children}
         </InterfaceContext.Provider>

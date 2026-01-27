@@ -13,6 +13,7 @@ import { blogPosts } from '@/data/blogPosts';
 import Image from 'next/image';
 import { useDemo } from '@/context/DemoContext';
 import ReadingMode from '@/components/ReadingMode';
+import NeuralSummary from '@/components/NeuralSummary';
 
 export default function BlogPost() {
     const { openDemoModal } = useDemo();
@@ -197,6 +198,8 @@ export default function BlogPost() {
                                     </div>
                                 </motion.div>
                             )}
+
+                            <NeuralSummary content={post.excerpt} />
 
                             <div className={`reading-content ${isReadingMode ? '' : 'glass-strong p-8 md:p-12 rounded-[3.5rem] border border-white/5'} relative overflow-hidden mb-12`}>
                                 <p className={`${isReadingMode ? 'reading-text' : 'text-2xl'} text-white font-medium leading-relaxed`}>

@@ -9,12 +9,12 @@ import { useDemo } from '@/context/DemoContext';
 import {
     Menu, X, ChevronRight, Layout, MessageSquare, Users, Sparkles,
     ChevronDown, Compass, Cpu, Code2, TrendingUp, Terminal as TerminalIcon,
-    Blocks, Smartphone as MobileIcon, ArrowRight, Phone
+    Blocks, Smartphone as MobileIcon, ArrowRight, Phone, Search
 } from 'lucide-react';
 
 export default function Header() {
     const { openDemoModal } = useDemo();
-    const { isHUDActive, toggleHUD, isTerminalOpen, toggleTerminal } = useInterface();
+    const { isHUDActive, toggleHUD, isTerminalOpen, toggleTerminal, toggleSearch } = useInterface();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -200,6 +200,13 @@ export default function Header() {
                     <div className="hidden lg:flex items-center gap-4 shrink-0">
                         <div className="flex items-center gap-2 mr-2 border-r border-white/10 pr-4">
                             <button
+                                onClick={toggleSearch}
+                                className="p-2 rounded-xl text-white/40 border border-white/10 hover:text-wl-accent hover:border-wl-accent/50 hover:bg-white/5 transition-all duration-300"
+                                title="Execute Search (Cmd+K)"
+                            >
+                                <Search className="w-4 h-4" />
+                            </button>
+                            <button
                                 onClick={toggleHUD}
                                 className={`p-2 rounded-xl transition-all duration-300 border ${isHUDActive ? 'bg-wl-accent text-black border-wl-accent' : 'text-white/40 border-white/10 hover:text-wl-accent hover:border-wl-accent/50 hover:bg-white/5'}`}
                                 title="Toggle HUD (Alt+H)"
@@ -324,6 +331,10 @@ export default function Header() {
                                             </button>
 
                                             <div className="flex items-center justify-center gap-4 mt-6">
+                                                <button onClick={() => { toggleSearch(); setIsMobileMenuOpen(false); }} className="flex-1 glass p-4 rounded-2xl flex flex-col items-center gap-2">
+                                                    <Search className="w-5 h-5 text-white/40" />
+                                                    <span className="text-[9px] font-black uppercase tracking-widest opacity-40">Search</span>
+                                                </button>
                                                 <button onClick={() => { toggleHUD(); setIsMobileMenuOpen(false); }} className="flex-1 glass p-4 rounded-2xl flex flex-col items-center gap-2">
                                                     <Layout className={`w-5 h-5 ${isHUDActive ? 'text-wl-accent' : 'text-white/40'}`} />
                                                     <span className="text-[9px] font-black uppercase tracking-widest opacity-40">HUD</span>
