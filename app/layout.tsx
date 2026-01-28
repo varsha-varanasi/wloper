@@ -33,14 +33,23 @@ const DNATransition = dynamic(() => import('@/components/DNATransition'), { ssr:
 const CommandHUD = dynamic(() => import('@/components/CommandHUD'), { ssr: false });
 const PersonaSwitcher = dynamic(() => import('@/components/PersonaSwitcher'), { ssr: false });
 const CommandPalette = dynamic(() => import('@/components/CommandPalette'), { ssr: false });
+const SystemGlobalEffects = dynamic(() => import('@/components/SystemGlobalEffects'), { ssr: false });
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://wloper.com'),
     title: {
-        default: "Wloper – Next-Gen AI, Blockchain & Marketing Engineering Hub",
+        default: "Wloper – AI Development Agency, Blockchain & Website Development Company",
         template: "%s | Wloper"
     },
-    description: "Wloper is a premier engineering powerhouse specializing in AI-driven products, enterprise blockchain solutions, and data-backed digital marketing. We build scalable Web3 ecosystems and high-performance technical assets for global innovative brands.",
+    description: "Wloper is a top-rated AI development agency and website development company. We deliver custom mobile app development, enterprise blockchain engineering, and premium digital marketing services worldwide.",
+    icons: {
+        icon: [
+            { url: '/images/loper__3_-removebg-preview-e1748296489675-r6eacdc8yg79qwd174wcap96495w22bgh5a75gm6tc.png', sizes: '32x32', type: 'image/png' },
+        ],
+        apple: [
+            { url: '/images/loper__3_-removebg-preview-e1748296489675-r6eacdc8yg79qwd174wcap96495w22bgh5a75gm6tc.png', sizes: '180x180', type: 'image/png' },
+        ],
+    },
     keywords: [
         "Website Developement company",
         "Custom Mobile developement Website",
@@ -109,12 +118,16 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${spaceGrotesk.variable} ${manrope.variable}`}>
             <head>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+                <link rel="dns-prefetch" href="https://www.google-analytics.com" />
                 {/* Google Analytics */}
                 <Script
                     src={`https://www.googletagmanager.com/gtag/js?id=G-BPJND5P97V`}
-                    strategy="lazyOnload"
+                    strategy="afterInteractive"
                 />
-                <Script id="google-analytics" strategy="lazyOnload">
+                <Script id="google-analytics" strategy="afterInteractive">
                     {`
                         window.dataLayer = window.dataLayer || [];
                         function gtag(){dataLayer.push(arguments);}
@@ -207,6 +220,7 @@ export default function RootLayout({
                                 <PersonaSwitcher />
                                 <CommandHUD />
                                 <CommandPalette />
+                                <SystemGlobalEffects />
                             </DesktopOnly>
                             <ScrollProgress />
                             <Header />

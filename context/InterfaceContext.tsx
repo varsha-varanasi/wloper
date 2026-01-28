@@ -9,9 +9,11 @@ interface InterfaceContextType {
     setTerminalOpen: (open: boolean) => void;
     isSearchOpen: boolean;
     setSearchOpen: (open: boolean) => void;
-    toggleHUD: () => void;
-    toggleTerminal: () => void;
     toggleSearch: () => void;
+    systemMessage: string | null;
+    showNotification: (msg: string) => void;
+    isProtocolSwitching: boolean;
+    triggerProtocolEffect: () => void;
 }
 
 const InterfaceContext = createContext<InterfaceContextType | undefined>(undefined);
@@ -21,9 +23,22 @@ export function InterfaceProvider({ children }: { children: React.ReactNode }) {
     const [isTerminalOpen, setTerminalOpen] = useState(false);
     const [isSearchOpen, setSearchOpen] = useState(false);
 
+    const [systemMessage, setSystemMessage] = useState<string | null>(null);
+    const [isProtocolSwitching, setIsProtocolSwitching] = useState(false);
+
     const toggleHUD = () => setHUDActive(prev => !prev);
     const toggleTerminal = () => setTerminalOpen(prev => !prev);
     const toggleSearch = () => setSearchOpen(prev => !prev);
+
+    const showNotification = (msg: string) => {
+        setSystemMessage(msg);
+        setTimeout(() => setSystemMessage(null), 4000);
+    };
+
+    const triggerProtocolEffect = () => {
+        setIsProtocolSwitching(true);
+        setTimeout(() => setIsProtocolSwitching(false), 800);
+    };
 
     // Keyboard shortcuts
     useEffect(() => {
@@ -54,7 +69,11 @@ export function InterfaceProvider({ children }: { children: React.ReactNode }) {
             setSearchOpen,
             toggleHUD,
             toggleTerminal,
-            toggleSearch
+            toggleSearch,
+            systemMessage,
+            showNotification,
+            isProtocolSwitching,
+            triggerProtocolEffect
         }}>
             {children}
         </InterfaceContext.Provider>

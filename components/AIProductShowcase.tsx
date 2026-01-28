@@ -36,7 +36,7 @@ export default function AIProductShowcase() {
     ];
 
     return (
-        <section className="section-padding bg-wl-dark relative overflow-hidden" id="products">
+        <section className="pt-20 pb-24 md:pt-28 md:pb-32 bg-wl-dark relative overflow-hidden" id="products">
             {/* Dynamic Background Glows */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-wl-accent/5 rounded-full blur-[140px] pointer-events-none"></div>
 
@@ -86,7 +86,7 @@ export default function AIProductShowcase() {
                                 src="/images/envato-labs-ai-6c11c598-851f-40f7-9155-eb9146bff990.jpg"
                                 alt="WLOPER AI Product Ecosystem - Automated Hiring and HCM Systems"
                                 fill
-                                sizes="(max-width: 1024px) 100vw, 50vw"
+                                sizes="(max-width: 1024px) 100vw, 840px"
                                 className="object-cover"
                                 priority
                             />

@@ -11,6 +11,7 @@ import {
     ChevronDown, Compass, Cpu, Code2, TrendingUp, Terminal as TerminalIcon,
     Blocks, Smartphone as MobileIcon, ArrowRight, Phone, Search
 } from 'lucide-react';
+import MagneticWrapper from './MagneticWrapper';
 
 export default function Header() {
     const { openDemoModal } = useDemo();
@@ -221,15 +222,17 @@ export default function Header() {
                                 <TerminalIcon className="w-4 h-4" />
                             </button>
                         </div>
-                        <button
-                            onClick={openDemoModal}
-                            className="group relative px-7 py-3 bg-wl-accent text-black font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(202,246,72,0.4)] whitespace-nowrap"
-                        >
-                            <span className="relative z-10 flex items-center gap-2">
-                                Get a Demo
-                                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                            </span>
-                        </button>
+                        <MagneticWrapper strength={0.3}>
+                            <button
+                                onClick={openDemoModal}
+                                className="group relative px-7 py-3 bg-wl-accent text-black font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_25px_rgba(202,246,72,0.4)] whitespace-nowrap"
+                            >
+                                <span className="relative z-10 flex items-center gap-2">
+                                    Get a Demo
+                                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </span>
+                            </button>
+                        </MagneticWrapper>
                     </div>
 
                     {/* Mobile Menu Button - Enhanced for touch */}

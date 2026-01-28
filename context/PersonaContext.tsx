@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export type PersonaType = 'CTO' | 'MARKETER' | 'FOUNDER';
+export type PersonaType = 'STRATEGY' | 'ENGINEERING' | 'SCALE';
 
 interface PersonaContextType {
     persona: PersonaType;
@@ -12,7 +12,7 @@ interface PersonaContextType {
 const PersonaContext = createContext<PersonaContextType | undefined>(undefined);
 
 export function PersonaProvider({ children }: { children: React.ReactNode }) {
-    const [persona, setPersona] = useState<PersonaType>('FOUNDER');
+    const [persona, setPersona] = useState<PersonaType>('ENGINEERING');
 
     return (
         <PersonaContext.Provider value={{ persona, setPersona }}>

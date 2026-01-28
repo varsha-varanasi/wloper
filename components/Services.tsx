@@ -9,37 +9,37 @@ import SpotlightCard from './SpotlightCard';
 export default function Services() {
     const services = [
         {
-            title: 'Blockchain & Web3',
+            title: 'Blockchain Engineering',
             desc: 'Engineering trustless architectures, smart contracts, and decentralized data ecosystems.',
             icon: Blocks,
             href: '/services/blockchain-solutions'
         },
         {
-            title: 'Mobile Architecture',
+            title: 'Mobile App Architecture',
             desc: 'High-performance iOS and Android applications built for speed, immersion and global scale.',
             icon: MobileIcon,
             href: '/services/mobile-app-development'
         },
         {
-            title: 'AI Strategy',
+            title: 'AI Strategy & Consulting',
             desc: 'Identify high-impact AI opportunities and define clear tech roadmaps for your business.',
             icon: Brain,
             href: '/services/ai-strategy'
         },
         {
-            title: 'AI Integration',
+            title: 'AI Integration Services',
             desc: 'Seamlessly integrate custom AI models into your existing workflows and legacy systems.',
             icon: Cpu,
             href: '/services/ai-integration'
         },
         {
-            title: 'Custom Engineering',
+            title: 'Website Development',
             desc: 'End-to-end scalable web and app development focused on performance and security.',
             icon: Code2,
             href: '/services/software-engineering'
         },
         {
-            title: 'Digital Growth',
+            title: 'Digital Growth & SEO',
             desc: 'Boost your visibility and organic traffic through data-driven digital growth strategies.',
             icon: TrendingUp,
             href: '/services/digital-growth'
@@ -47,7 +47,7 @@ export default function Services() {
     ];
 
     return (
-        <section className="section-padding bg-wl-dark relative overflow-hidden" id="services">
+        <section className="pt-20 pb-24 md:pt-28 md:pb-32 bg-wl-dark relative overflow-hidden" id="services">
             {/* Background Glows */}
             <div className="absolute top-1/4 left-0 w-1/3 h-1/2 bg-wl-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
 

@@ -83,7 +83,9 @@ export default function NewsletterPopup() {
                                 src="/images/envato-labs-ai-8c704ec1-bca5-4f0e-9049-c06414cf0508.jpg"
                                 alt="AI Intelligence"
                                 fill
+                                sizes="(max-width: 1024px) 100vw, 448px"
                                 className="object-cover opacity-60 group-hover:scale-110 transition-transform duration-[3s]"
+                                priority
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-wl-dark via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-wl-dark/50"></div>
 

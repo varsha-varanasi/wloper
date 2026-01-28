@@ -1,17 +1,37 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Compass, Cpu, Zap } from 'lucide-react';
+import { useInterface } from '@/context/InterfaceContext';
 import { usePersona, PersonaType } from '@/context/PersonaContext';
-import { User, Shield, BarChart3 } from 'lucide-react';
 
 export default function PersonaSwitcher() {
     const { persona, setPersona } = usePersona();
+    const { showNotification, triggerProtocolEffect } = useInterface();
 
     const personas: { id: PersonaType; label: string; icon: any }[] = [
-        { id: 'FOUNDER', label: 'Founder', icon: User },
-        { id: 'MARKETER', label: 'Marketer', icon: BarChart3 },
-        { id: 'CTO', label: 'CTO', icon: Shield },
+        { id: 'STRATEGY', label: 'STRATEGY', icon: Compass },
+        { id: 'ENGINEERING', label: 'ENGINEERING', icon: Cpu },
+        { id: 'SCALE', label: 'SCALE', icon: Zap },
     ];
+
+    const handleProtocolSwitch = (id: PersonaType) => {
+        if (id === persona) return;
+
+        // Trigger cinematic effects
+        triggerProtocolEffect();
+
+        // Update state
+        setPersona(id);
+
+        // Show high-tech notification
+        const messages = {
+            STRATEGY: "STRATEGIC AUDIT DEPOT ENGAGED: ARCHITECTING VISION",
+            ENGINEERING: "NEURAL FORGE ACTIVE: DEEP-STACK CORE INITIALIZED",
+            SCALE: "APEX PROTOCOL ONLINE: OPTIMIZING REVENUE VELOCITY"
+        };
+        showNotification(messages[id]);
+    };
 
     return (
         <div className="fixed bottom-10 left-10 z-[60] hidden lg:block">
@@ -22,10 +42,10 @@ export default function PersonaSwitcher() {
                     return (
                         <button
                             key={p.id}
-                            onClick={() => setPersona(p.id)}
+                            onClick={() => handleProtocolSwitch(p.id)}
                             className={`flex items-center gap-2 px-5 py-3 rounded-full transition-all duration-300 relative group overflow-hidden ${isActive
-                                    ? 'text-black font-bold'
-                                    : 'text-white/40 hover:text-white'
+                                ? 'text-black font-bold'
+                                : 'text-white/40 hover:text-white'
                                 }`}
                         >
                             {isActive && (

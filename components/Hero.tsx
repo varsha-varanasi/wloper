@@ -7,6 +7,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { useDemo } from '@/context/DemoContext';
 import { usePersona } from '@/context/PersonaContext';
 import dynamic from 'next/dynamic';
+import MagneticWrapper from './MagneticWrapper';
 
 const NeuralBackground = dynamic(() => import('./NeuralBackground'), {
     ssr: false,
@@ -27,20 +28,20 @@ export default function Hero() {
     }, []);
 
     const personaContent = {
-        CTO: {
-            badge: "Deep Tech Node",
-            words: ["Rust Performance", "Edge Scalability", "Hardened Security"],
-            sub: "We engineer zero-latency systems that don't just work—they dominate. From Rust-powered backends to Next.js 15 edge nodes, we build the tech CTOs dream of."
+        STRATEGY: {
+            badge: "Intelligent Blueprint",
+            words: ["AI Roadmaps", "Strategic Audits", "Future Mapping"],
+            sub: "Don't build in the dark. We architect the technical and strategic foundation for your AI transition, ensuring every line of code serves a business outcome."
         },
-        MARKETER: {
-            badge: "Conversion Engine",
-            words: ["Revenue Velocity", "SEO Supremacy", "Conversion Mastery"],
-            sub: "Stop losing traffic to slow loads and poor UX. We build high-intent digital machines that turn cold sessions into loyal revenue streams."
+        ENGINEERING: {
+            badge: "Neural Forge",
+            words: ["Rust Stacks", "LLM Integration", "Edge Nodes"],
+            sub: "We engineer zero-latency systems that don't just work—they dominate. From Rust-powered backends to Next.js 15 edge logic, we build the elite tech the market demands."
         },
-        FOUNDER: {
-            badge: "Product Alpha Lab",
-            words: ["Market Ready Assets", "Institutional Scaling", "AI Dominance"],
-            sub: "Your vision requires a partner that thinks like a builder, not a vendor. We build scalable, venture-ready assets that stand up to institutional scrutiny."
+        SCALE: {
+            badge: "Apex Protocol",
+            words: ["Global Reach", "Web3 Systems", "Revenue Engines"],
+            sub: "Your vision requires a platform that thinks like a builder, not a vendor. We architect scalable, venture-ready assets that stand up to institutional-grade scrutiny."
         }
     };
 
@@ -86,6 +87,8 @@ export default function Hero() {
                         loop
                         muted
                         playsInline
+                        poster="/images/hero-bg.png"
+                        preload="auto"
                         className="absolute inset-0 w-full h-full object-cover opacity-60"
                     >
                         <source src="/images/digital-tech-green-background-2023-11-27-05-00-41-utc.mp4" type="video/mp4" />
@@ -119,6 +122,7 @@ export default function Hero() {
                         variants={itemVariants}
                         className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-10 max-w-6xl text-balance tracking-tighter leading-tight"
                     >
+                        <span className="sr-only">Wloper: Leading AI Development Agency & Website Development Company. </span>
                         <span className="heading-gradient">Building the Future of</span>
                         <br />
                         <div className="relative h-[1.2em] inline-block w-full overflow-hidden">
@@ -153,14 +157,19 @@ export default function Hero() {
                         variants={itemVariants}
                         className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
                     >
-                        <CTAButton onClick={openDemoModal} variant="primary" className="w-full sm:w-auto py-5 sm:py-6 text-lg sm:text-base">
-                            <span className="flex items-center gap-2 justify-center">
-                                Start Protocol <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                            </span>
-                        </CTAButton>
-                        <CTAButton href="/services" variant="secondary" className="w-full sm:w-auto py-5 sm:py-6 text-lg sm:text-base">
-                            Explore Capabilities
-                        </CTAButton>
+                        <MagneticWrapper strength={0.3}>
+                            <CTAButton onClick={openDemoModal} variant="primary" className="w-full sm:w-auto py-5 sm:py-6 text-lg sm:text-base">
+                                <span className="flex items-center gap-2 justify-center">
+                                    Start Protocol <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                </span>
+                            </CTAButton>
+                        </MagneticWrapper>
+
+                        <MagneticWrapper strength={0.2}>
+                            <CTAButton href="/services" variant="secondary" className="w-full sm:w-auto py-5 sm:py-6 text-lg sm:text-base">
+                                Explore Capabilities
+                            </CTAButton>
+                        </MagneticWrapper>
                     </motion.div>
                 </motion.div>
             </div>

@@ -31,5 +31,11 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
     "vercel": "^50.4.9"
-  }
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ]
 }

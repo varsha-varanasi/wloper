@@ -37,21 +37,27 @@ export default function CustomCursor() {
         // Cache neural points positions to avoid layout thrashing
         const updatePoints = () => {
             const elements = Array.from(document.querySelectorAll('.neural-point'));
+            const scrollX = window.scrollX;
+            const scrollY = window.scrollY;
             neuralPointsPosRef.current = elements.map(el => {
                 const rect = el.getBoundingClientRect();
                 return {
-                    x: rect.left + rect.width / 2,
-                    y: rect.top + rect.height / 2
+                    x: rect.left + scrollX + rect.width / 2,
+                    y: rect.top + scrollY + rect.height / 2
                 };
             });
         };
 
-        // Initial update and listeners
+        // Initial update
         updatePoints();
-        const debouncedUpdate = () => requestAnimationFrame(updatePoints);
 
-        window.addEventListener('scroll', debouncedUpdate, { passive: true });
-        window.addEventListener('resize', debouncedUpdate, { passive: true });
+        // Only update on resize or when content might change
+        const handleResize = () => {
+            checkMobile();
+            requestAnimationFrame(updatePoints);
+        };
+
+        window.addEventListener('resize', handleResize, { passive: true });
 
         // Optimized mouse handler
         const moveMouse = (e: MouseEvent) => {
@@ -60,24 +66,29 @@ export default function CustomCursor() {
             mouseX.set(x);
             mouseY.set(y);
 
-            // Calculation using cached positions
+            // Calculation using cached positions adjusted for scroll
             if (neuralPointsPosRef.current.length > 0) {
-                let minDistSq = 300 * 300; // Squared distance comparison is faster
+                const scrollX = window.scrollX;
+                const scrollY = window.scrollY;
+                let minDistSq = 300 * 300;
                 let closest: { x: number; y: number } | null = null;
 
-                // Simple loop is faster than forEach for high frequency
                 const points = neuralPointsPosRef.current;
                 const len = points.length;
 
                 for (let i = 0; i < len; i++) {
                     const point = points[i];
-                    const dx = x - point.x;
-                    const dy = y - point.y;
+                    // Convert document-relative to viewport-relative
+                    const vx = point.x - scrollX;
+                    const vy = point.y - scrollY;
+
+                    const dx = x - vx;
+                    const dy = y - vy;
                     const distSq = dx * dx + dy * dy;
 
                     if (distSq < minDistSq) {
                         minDistSq = distSq;
-                        closest = point;
+                        closest = { x: vx, y: vy };
                     }
                 }
                 setNearestPos(closest);
@@ -107,8 +118,7 @@ export default function CustomCursor() {
 
         return () => {
             window.removeEventListener('resize', checkMobile);
-            window.removeEventListener('scroll', debouncedUpdate);
-            window.removeEventListener('resize', debouncedUpdate);
+            window.removeEventListener('resize', handleResize);
             window.removeEventListener('mousemove', moveMouse);
             window.removeEventListener('mouseover', handleOver);
         };

@@ -31,19 +31,19 @@ export default function WloperForge() {
     }, []);
 
     const personaMetrics = {
-        CTO: [
+        ENGINEERING: [
             { label: "Mainnet Uptime", value: `${stats.uplink}%`, icon: Network, color: "text-green-400" },
             { label: "Edge Latency", value: `${stats.latency}ms`, icon: Activity, color: "text-wl-accent" },
             { label: "Total Deployments", value: stats.builds.toLocaleString(), icon: GitBranch, color: "text-blue-400" },
             { label: "Computing Nodes", value: stats.nodes, icon: Cpu, color: "text-purple-400" }
         ],
-        MARKETER: [
+        SCALE: [
             { label: "Avg. Conversion Lift", value: `+${stats.conv}%`, icon: Zap, color: "text-wl-accent" },
             { label: "LCP Load Speed", value: `${stats.speed}s`, icon: Activity, color: "text-green-400" },
             { label: "SEO Visibility", value: "98/100", icon: Globe2, color: "text-blue-400" },
             { label: "ROI Multiplier", value: "4.2x", icon: Database, color: "text-purple-400" }
         ],
-        FOUNDER: [
+        STRATEGY: [
             { label: "Time to Market", value: "24 Days", icon: Zap, color: "text-wl-accent" },
             { label: "Global Reach", value: "190+ Countries", icon: Globe2, color: "text-blue-400" },
             { label: "Uptime SLA", value: "99.99%", icon: Network, color: "text-green-400" },
@@ -51,10 +51,10 @@ export default function WloperForge() {
         ]
     };
 
-    const metrics = personaMetrics[persona] || personaMetrics.FOUNDER;
+    const metrics = personaMetrics[persona] || personaMetrics.ENGINEERING;
 
     return (
-        <section className="section-padding bg-black border-y border-white/5 relative overflow-hidden">
+        <section className="pt-16 pb-20 md:pt-20 md:pb-28 lg:pt-24 lg:pb-32 bg-black border-y border-white/5 relative overflow-hidden">
             <div className="container-custom">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
                     <div className="lg:max-w-xl">

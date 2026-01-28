@@ -23,6 +23,9 @@ export default function HomeClient() {
                 <WloperForge />
             </div>
 
+            <AIProductShowcase />
+            <Services />
+
             <div className="hidden md:block">
                 <SiteAuditTerminal />
             </div>
@@ -32,15 +35,12 @@ export default function HomeClient() {
                 <ArchitecturePreviewer />
             </div>
 
-            <AIProductShowcase />
-
             <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.8 }}
             >
-                <Services />
                 <Process />
                 <Industries />
                 <BlogPreview />

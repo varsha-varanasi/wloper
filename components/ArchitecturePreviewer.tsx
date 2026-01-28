@@ -11,14 +11,14 @@ const layers = [
         title: 'Edge Presentation',
         icon: Layout,
         tech: {
-            CTO: ['Next.js 15', 'TypeScript', 'Framer Motion'],
-            MARKETER: ['99/100 Mobile Score', 'SEO Semantic HTML', 'Instant LCP'],
-            FOUNDER: ['Premium Branding', 'Fast Time-to-Market', 'Global Deployment']
+            STRATEGY: ['High-Fidelity Wireframes', 'Content Flowcharts', 'UX Audits'],
+            ENGINEERING: ['Next.js 15', 'TypeScript', 'Framer Motion'],
+            SCALE: ['Global CDN Edge', 'Optimized SEO Core', 'Instant Load UX']
         },
         desc: {
-            CTO: 'Sub-10ms Time-to-Interactive using globally distributed edge points. We focus on perceptual speed and cinematic UI logic.',
-            MARKETER: 'We engineer the fastest frontends in the industry to ensure lower bounce rates and higher conversion velocity.',
-            FOUNDER: 'Cinematic brand experiences that scale globally without performance degradation as your user base grows.'
+            STRATEGY: 'Sub-10ms Time-to-Interactive using globally distributed edge points. We focus on perceptual speed and cinematic UI logic.',
+            ENGINEERING: 'We engineer the fastest frontends in the industry to ensure lower bounce rates and higher conversion velocity.',
+            SCALE: 'Cinematic brand experiences that scale globally without performance degradation as your user base grows.'
         },
         impactIcon: Gauge
     },
@@ -27,14 +27,14 @@ const layers = [
         title: 'Serverless Compute',
         icon: Cpu,
         tech: {
-            CTO: ['Rust WASM', 'Node.js', 'Edge Functions'],
-            MARKETER: ['Dynamic Personalization', 'Instant A/B Testing', 'Fast APIs'],
-            FOUNDER: ['Auto-scaling Logic', 'Zero Server Mgmt', 'Cost Optimization']
+            STRATEGY: ['Logic Flow Design', 'API Specifications', 'System Reliability'],
+            ENGINEERING: ['Rust WASM', 'Node.js', 'Edge Functions'],
+            SCALE: ['Auto-scaling Edge', 'Dynamic Routing', 'Zero Cold Starts']
         },
         desc: {
-            CTO: 'Auto-scaling compute instances that trigger on-demand, reducing infrastructure overhead and maximizing security.',
-            MARKETER: 'Powering real-time dynamic content delivery so every user gets a tailored high-converting experience.',
-            FOUNDER: 'A compute layer that grows with you. You only pay for what you use, from 1 user to 1 million.'
+            STRATEGY: 'Auto-scaling compute instances that trigger on-demand, reducing infrastructure overhead and maximizing security.',
+            ENGINEERING: 'Powering real-time dynamic content delivery so every user gets a tailored high-converting experience.',
+            SCALE: 'A compute layer that grows with you. You only pay for what you use, from 1 user to 1 million.'
         },
         impactIcon: Rocket
     },
@@ -43,14 +43,14 @@ const layers = [
         title: 'Unified Data Layer',
         icon: Database,
         tech: {
-            CTO: ['PostgreSQL', 'Redis', 'Vector DB'],
-            MARKETER: ['User Analytics', 'Behavior Tracking', 'Fast Search'],
-            FOUNDER: ['Data Ownership', 'Institutional Privacy', 'AI-Ready Data']
+            STRATEGY: ['Schema Architecture', 'Data Privacy Design', 'Goal Tracking'],
+            ENGINEERING: ['PostgreSQL', 'Redis', 'Vector DB'],
+            SCALE: ['Multi-Region Sync', 'Real-time Analytics', 'Infinite Growth']
         },
         desc: {
-            CTO: 'Distributed data clusters with multi-region replication and AI-ready vector indexing for fast semantic search.',
-            MARKETER: 'Capture every user insight with sub-millisecond data writes, allowing for hyper-targeted marketing loops.',
-            FOUNDER: 'Your most valuable asset—data—is secured and structured for future AI models and institutional reporting.'
+            STRATEGY: 'Distributed data clusters with multi-region replication and AI-ready vector indexing for fast semantic search.',
+            ENGINEERING: 'Capture every user insight with sub-millisecond data writes, allowing for hyper-targeted marketing loops.',
+            SCALE: 'Your most valuable asset—data—is secured and structured for future AI models and institutional reporting.'
         },
         impactIcon: TrendingUp
     },
@@ -59,14 +59,14 @@ const layers = [
         title: 'Hardened Perimeter',
         icon: Shield,
         tech: {
-            CTO: ['WAF', 'DDoS Protection', 'AES-256'],
-            MARKETER: ['GDPR Compliant', 'Trust Signals', 'Secure Checkout'],
-            FOUNDER: ['SOC2 Ready', 'Risk Mitigation', 'Enterprise Grade']
+            STRATEGY: ['Compliance Mapping', 'Risk Assessment', 'Security Audit'],
+            ENGINEERING: ['WAF', 'DDoS Protection', 'AES-256'],
+            SCALE: ['Enterprise Privacy', 'Global Compliance', 'GDPR/SOC2 Ready']
         },
         desc: {
-            CTO: 'Institutional grade security protocols embedded at every layer. Zero-trust architecture as standard.',
-            MARKETER: 'We build trust into the code, ensuring your customers feel safe enough to convert and share data.',
-            FOUNDER: 'Protect your equity. Our hardened perimeter prevents breaches that could damage your brand or valuation.'
+            STRATEGY: 'Institutional grade security protocols embedded at every layer. Zero-trust architecture as standard.',
+            ENGINEERING: 'We build trust into the code, ensuring your customers feel safe enough to convert and share data.',
+            SCALE: 'Protect your equity. Our hardened perimeter prevents breaches that could damage your brand or valuation.'
         },
         impactIcon: Lock
     }
@@ -154,14 +154,16 @@ export default function ArchitecturePreviewer() {
                                 </div>
                             </div>
 
-                            <h3 className="text-4xl font-black mb-6">{activeLayer.title}</h3>
+                            <h3 className={`text-4xl font-black mb-6 ${activeLayer.id === 'security' ? 'glitch-wrapper' : ''}`} data-glitch-text={activeLayer.id === 'security' ? activeLayer.title : undefined}>
+                                {activeLayer.title}
+                            </h3>
                             <p className="text-xl text-white/50 leading-relaxed mb-10 font-medium">
                                 {(activeLayer.desc as any)[persona]}
                             </p>
 
                             <div className="space-y-6">
                                 <div className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em]">
-                                    {persona === 'CTO' ? 'Core Technologies' : 'Strategic Impact'}
+                                    {persona === 'ENGINEERING' ? 'Core Technologies' : 'Strategic Impact'}
                                 </div>
                                 <div className="flex flex-wrap gap-3">
                                     {(activeLayer.tech as any)[persona].map((t: string, i: number) => (

@@ -10,6 +10,7 @@ import {
     ShieldCheck, Zap, Code, BarChart, Cpu
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import MagneticWrapper from './MagneticWrapper';
 
 const GlobalGlobe = dynamic(() => import('./GlobalGlobe'), {
     ssr: false,
@@ -132,13 +133,14 @@ export default function Footer() {
 
                         <div className="flex gap-4">
                             {socials.map((social) => (
-                                <a
-                                    key={social.name}
-                                    href={social.href}
-                                    className="w-10 h-10 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center transition-all duration-300 hover:bg-wl-accent hover:text-black text-wl-muted-dark group"
-                                >
-                                    <social.icon className="w-4 h-4 transition-transform group-hover:scale-110" />
-                                </a>
+                                <MagneticWrapper key={social.name} strength={0.4}>
+                                    <a
+                                        href={social.href}
+                                        className="w-10 h-10 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center transition-all duration-300 hover:bg-wl-accent hover:text-black text-wl-muted-dark group"
+                                    >
+                                        <social.icon className="w-4 h-4 transition-transform group-hover:scale-110" />
+                                    </a>
+                                </MagneticWrapper>
                             ))}
                         </div>
                     </div>

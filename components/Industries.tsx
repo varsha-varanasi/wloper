@@ -38,7 +38,7 @@ export default function Industries() {
                                     src="/images/envato-labs-ai-7c142eb8-7887-44d9-8de5-3d14c8bbab75.jpg"
                                     alt="Industries served by Wloper - Healthcare, Finance, and Retail Tech Solutions"
                                     fill
-                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                                     className="object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-wl-dark/80 via-transparent to-transparent"></div>

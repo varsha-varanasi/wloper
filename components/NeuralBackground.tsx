@@ -113,7 +113,7 @@ export default function NeuralBackground() {
         <div className="absolute inset-0 z-0">
             <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
                 <ambientLight intensity={0.5} />
-                <NeuralNodes />
+                <NeuralNodes count={typeof window !== 'undefined' && window.innerWidth < 768 ? 40 : 100} />
             </Canvas>
             <div className="absolute inset-0 bg-gradient-to-b from-wl-dark/40 via-wl-dark/60 to-wl-dark"></div>
         </div>
