@@ -84,8 +84,8 @@ export default function NewsletterPopup() {
                                 alt="AI Intelligence"
                                 fill
                                 sizes="(max-width: 1024px) 100vw, 448px"
+                                quality={80}
                                 className="object-cover opacity-60 group-hover:scale-110 transition-transform duration-[3s]"
-                                priority
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-wl-dark via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-wl-dark/50"></div>
 

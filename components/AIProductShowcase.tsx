@@ -86,7 +86,8 @@ export default function AIProductShowcase() {
                                 src="/images/envato-labs-ai-6c11c598-851f-40f7-9155-eb9146bff990.jpg"
                                 alt="WLOPER AI Product Ecosystem - Automated Hiring and HCM Systems"
                                 fill
-                                sizes="(max-width: 1024px) 100vw, 840px"
+                                sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 700px, 840px"
+                                quality={85}
                                 className="object-cover"
                                 priority
                             />

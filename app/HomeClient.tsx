@@ -1,16 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
-import PerformanceOracle from '@/components/PerformanceOracle';
-import WloperForge from '@/components/WloperForge';
-import SiteAuditTerminal from '@/components/SiteAuditTerminal';
-import ArchitecturePreviewer from '@/components/ArchitecturePreviewer';
-import AIProductShowcase from '@/components/AIProductShowcase';
-import Services from '@/components/Services';
-import Process from '@/components/Process';
-import Industries from '@/components/Industries';
-import BlogPreview from '@/components/BlogPreview';
+const PerformanceOracle = dynamic(() => import('@/components/PerformanceOracle'));
+const WloperForge = dynamic(() => import('@/components/WloperForge'));
+const SiteAuditTerminal = dynamic(() => import('@/components/SiteAuditTerminal'));
+const ArchitecturePreviewer = dynamic(() => import('@/components/ArchitecturePreviewer'));
+const AIProductShowcase = dynamic(() => import('@/components/AIProductShowcase'));
+const Services = dynamic(() => import('@/components/Services'));
+const Process = dynamic(() => import('@/components/Process'));
+const Industries = dynamic(() => import('@/components/Industries'));
+const BlogPreview = dynamic(() => import('@/components/BlogPreview'));
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
