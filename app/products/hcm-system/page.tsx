@@ -74,14 +74,19 @@ export default function HCMSystemPage() {
                             AI-Based <br /><span className="text-wl-accent">HCM System.</span>
                         </motion.h1>
 
-                        <motion.p
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="subtitle-lg mx-auto mb-14 text-white/50"
+                            className="mb-14"
                         >
-                            Redefining talent management with predictive intelligence. Evaluate, hire, and scale your human capital with a system designed for the modern enterprise.
-                        </motion.p>
+                            <p className="subtitle-lg mx-auto mb-6 text-white text-3xl font-bold">
+                                Smarter Talent Management with AI-Powered Insights
+                            </p>
+                            <p className="text-xl text-white/50 max-w-4xl mx-auto leading-relaxed">
+                                Our AI-Based HCM System helps organizations evaluate skills, manage talent, and improve hiring quality through intelligent data-driven insights.
+                            </p>
+                        </motion.div>
 
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -90,69 +95,80 @@ export default function HCMSystemPage() {
                             className="flex flex-wrap justify-center gap-6"
                         >
                             <button onClick={openDemoModal} className="btn-primary h-20 px-12 group text-lg">
-                                Request Enterprise Demo
+                                Request Demo
                                 <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
                             </button>
                             <div className="flex items-center gap-4 text-white/40 border border-white/10 px-10 rounded-[2rem] glass-strong">
                                 <Layers className="w-6 h-6 text-wl-accent" />
-                                <span className="text-[10px] font-black uppercase tracking-widest leading-none">Scalable to 100k+ Users</span>
+                                <span className="text-[10px] font-black uppercase tracking-widest leading-none">Enterprise Ready</span>
                             </div>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* Feature Cards: Enhanced with Background Images */}
-            <section className="section-padding py-32 relative">
+            {/* Target Audience & Core Capabilities */}
+            <section className="section-padding py-32 bg-wl-dark/50 border-y border-white/5">
                 <div className="container-custom">
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {coreFeatures.map((f, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="group relative glass-strong rounded-[4rem] border border-white/5 overflow-hidden min-h-[500px] flex flex-col justify-end p-12 lg:p-16 hover:border-wl-accent/20 transition-all duration-500"
-                            >
-                                <div className="absolute inset-0 z-0">
-                                    <Image
-                                        src={f.image}
-                                        alt={f.title}
-                                        fill
-                                        className="object-cover opacity-20 group-hover:scale-110 transition-transform duration-1000"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-wl-dark via-wl-dark/60 to-transparent" />
-                                </div>
-                                <div className="relative z-10 space-y-6">
-                                    <div className="w-20 h-20 rounded-[2rem] bg-wl-accent flex items-center justify-center text-black mb-10 shadow-[0_0_40px_rgba(202,246,72,0.2)]">
-                                        <f.icon className="w-10 h-10" />
-                                    </div>
-                                    <h3 className="text-4xl font-black text-white">{f.title}</h3>
-                                    <p className="text-xl text-white/40 leading-relaxed font-medium max-w-md">{f.desc}</p>
-                                </div>
-                            </motion.div>
-                        ))}
+                    <div className="grid lg:grid-cols-2 gap-20">
+                        <div className="glass-strong p-16 rounded-[4rem] border border-white/5 relative overflow-hidden">
+                            <h3 className="text-3xl font-bold mb-10 flex items-center gap-4">
+                                <Users className="w-8 h-8 text-wl-accent" />
+                                Designed For
+                            </h3>
+                            <ul className="space-y-6">
+                                {[
+                                    "Enterprises & large organizations",
+                                    "Structured HR departments",
+                                    "Global Talent Management hubs",
+                                    "Skill-intensive industries"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-4 text-white/60">
+                                        <div className="w-2 h-2 rounded-full bg-wl-accent"></div>
+                                        <span className="text-lg font-medium">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="glass-strong p-16 rounded-[4rem] border border-white/5 relative overflow-hidden">
+                            <h3 className="text-3xl font-bold mb-10 flex items-center gap-4">
+                                <Network className="w-8 h-8 text-wl-accent" />
+                                Core Capabilities
+                            </h3>
+                            <ul className="space-y-6">
+                                {[
+                                    "AI-driven skills evaluation",
+                                    "Talent assessment & tracking",
+                                    "Data-backed workforce insights",
+                                    "Predictive retention modeling"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-4 text-white/60">
+                                        <div className="w-2 h-2 rounded-full bg-wl-accent"></div>
+                                        <span className="text-lg font-medium">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Strategic Value: Big Image + Content */}
+            {/* Strategic Value */}
             <section className="section-padding py-32 bg-wl-dark relative overflow-hidden font-display">
                 <div className="absolute top-1/2 left-0 w-[800px] h-[800px] bg-wl-accent/5 rounded-full blur-[140px] pointer-events-none -ml-96" />
 
                 <div className="container-custom relative z-10">
                     <div className="grid lg:grid-cols-2 gap-20 lg:gap-32 items-center">
                         <div className="order-2 lg:order-1">
-                            <h2 className="text-5xl md:text-7xl font-black mb-10 leading-tight tracking-tighter">Talent <br /><span className="text-wl-accent">Sync Engine.</span></h2>
+                            <h2 className="text-5xl md:text-7xl font-black mb-10 leading-tight tracking-tighter">Unified <br /><span className="text-wl-accent">Talent Sync.</span></h2>
                             <p className="text-2xl text-white/40 mb-12 leading-relaxed font-medium">
                                 Traditional HCM systems are data repositories. Ours is a decision-making engine using recursive AI models.
                             </p>
                             <div className="space-y-8">
                                 {[
-                                    "Real-time resource utilization tracking.",
-                                    "Automated technical skill benchmarking.",
-                                    "Enterprise-grade PII data encryption."
+                                    "AI-powered skills matrix generation",
+                                    "Autonomous talent mismatch alerts",
+                                    "Neural workforce forecasting"
                                 ].map((text, i) => (
                                     <div key={i} className="flex gap-6 items-center group">
                                         <div className="w-8 h-8 rounded-xl bg-wl-accent flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
@@ -163,50 +179,32 @@ export default function HCMSystemPage() {
                                 ))}
                             </div>
                         </div>
-                        <div className="order-1 lg:order-2 relative h-[700px]">
+                        <div className="order-1 lg:order-2 relative h-[500px]">
                             <div className="glass-strong rounded-[4rem] border border-white/10 h-full w-full overflow-hidden shadow-2xl relative">
                                 <Image
-                                    src="/images/envato-labs-ai-ff99b861-f73a-4b32-8972-7e241b722b3b.jpg"
+                                    src="/images/envato-labs-ai-cc98af26-6a98-45ef-9c86-a4618f68b6e2.jpg"
                                     alt="System Interface"
                                     fill
                                     className="object-cover opacity-60"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-wl-dark to-transparent" />
-                                <div className="absolute inset-0 flex items-center justify-center p-12">
-                                    <div className="text-center bg-black/40 backdrop-blur-3xl p-16 rounded-[4rem] border border-white/10 border-wl-accent/20">
-                                        <Sparkles className="w-16 h-16 text-wl-accent mx-auto mb-8 animate-pulse" />
-                                        <div className="text-7xl font-black text-white mb-2 tracking-tighter tabular-nums">99.9%</div>
-                                        <div className="text-[10px] font-black uppercase tracking-[0.4em] text-wl-accent">Precision Level</div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* CTA */}
-            <section className="section-padding pb-40">
-                <div className="container-custom">
-                    <div className="glass-strong p-20 lg:p-40 rounded-[4rem] border border-white/5 text-center relative overflow-hidden group">
-                        <div className="absolute inset-0 z-0">
-                            <Image
-                                src="/images/envato-labs-ai-cc98af26-6a98-45ef-9c86-a4618f68b6e2.jpg"
-                                alt="Final CTA BG"
-                                fill
-                                className="object-cover opacity-20 group-hover:scale-105 transition-transform duration-1000"
-                            />
-                        </div>
-                        <div className="relative z-10">
-                            <h2 className="text-5xl md:text-8xl font-black mb-12 tracking-tighter leading-tight">Optimized for <br /><span className="text-wl-accent">Enterprise.</span></h2>
-                            <div className="flex flex-wrap justify-center gap-6">
-                                <button onClick={openDemoModal} className="btn-primary h-20 px-16 text-xl">
-                                    Contact Sales Unit
-                                </button>
-                                <Link href="/products/interview-screening" className="btn-secondary h-20 px-16 text-xl">
-                                    Screening Integration
-                                </Link>
-                            </div>
+            {/* Pricing Section */}
+            <section className="section-padding py-32 bg-wl-dark/30">
+                <div className="container-custom text-center">
+                    <h2 className="text-5xl md:text-7xl font-black mb-16 tracking-tighter">💰 Pricing</h2>
+                    <div className="max-w-4xl mx-auto glass-strong p-20 rounded-[4rem] border border-wl-accent/20">
+                        <p className="text-6xl font-black text-white mb-6">Starts from <span className="text-wl-accent">₹25,000</span> <span className="text-2xl text-white/40">/ month</span></p>
+                        <p className="text-xl text-white/50 mb-12">(Pricing depends on users & customization)</p>
+                        <div className="flex flex-wrap justify-center gap-6">
+                            <button onClick={openDemoModal} className="btn-primary h-20 px-16 text-xl">
+                                Request Demo
+                            </button>
                         </div>
                     </div>
                 </div>

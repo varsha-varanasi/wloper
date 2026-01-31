@@ -69,17 +69,22 @@ export default function AIChatbotPage() {
                             animate={{ opacity: 1, y: 0 }}
                             className="heading-xl mb-10 max-w-6xl text-balance"
                         >
-                            Customized <br /><span className="text-wl-accent">AI Chatbots.</span>
+                            Customised <br /><span className="text-wl-accent">AI Chatbot.</span>
                         </motion.h1>
 
-                        <motion.p
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="subtitle-lg mx-auto mb-14 text-white/60"
+                            className="mb-14"
                         >
-                            Automate your customer engagement with neural conversation models. Fully custom chatbots designed to understand, learn, and convert visitors 24/7.
-                        </motion.p>
+                            <p className="subtitle-lg mx-auto mb-6 text-white text-3xl font-bold">
+                                Never Miss a Lead or Customer Query Again
+                            </p>
+                            <p className="text-xl text-white/50 max-w-4xl mx-auto leading-relaxed">
+                                Our Custom AI Chatbots work 24/7 on your website and WhatsApp to capture leads, answer queries, book appointments, and automate support — without human intervention.
+                            </p>
+                        </motion.div>
 
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -87,104 +92,111 @@ export default function AIChatbotPage() {
                             transition={{ delay: 0.2 }}
                             className="flex flex-wrap justify-center gap-6"
                         >
-                            <button onClick={openDemoModal} className="btn-primary h-16 px-12 group">
-                                Deploy My Agent
-                                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                            <button onClick={openDemoModal} className="btn-primary h-20 px-12 group text-lg">
+                                Get Started
+                                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
                             </button>
-                            <div className="flex items-center gap-4 text-white/40 border border-white/10 px-8 py-4 rounded-full glass">
-                                <Languages className="w-5 h-5 text-wl-accent" />
-                                <span className="text-[10px] font-black uppercase tracking-widest leading-none">Global - 95+ Languages</span>
-                            </div>
+                            <button onClick={openDemoModal} className="btn-secondary h-20 px-12 text-lg">
+                                7-Day Free Trial
+                            </button>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* Core Capability Pillars */}
-            <section className="section-padding py-20 bg-wl-dark/50 border-y border-white/5">
+            {/* Target Audience & Problems Solved */}
+            <section className="section-padding py-32 bg-wl-dark/50 border-y border-white/5">
                 <div className="container-custom">
-                    <div className="grid md:grid-cols-4 gap-8">
-                        {[
-                            { icon: Bot, name: "LLM Powered", desc: "Using OpenAI, Anthropic, or Llama 3." },
-                            { icon: Database, name: "Custom RAG", desc: "Learns from your specific data/PDFs." },
-                            { icon: Headphones, name: "Voice Ready", desc: "Interactive AI voice response options." },
-                            { icon: ShieldCheck, name: "Privacy First", desc: "PII masking and custom data silos." }
-                        ].map((item, i) => (
-                            <div key={i} className="glass p-8 rounded-3xl border border-white/5 group hover:border-wl-accent/20 transition-all">
-                                <item.icon className="w-10 h-10 text-wl-accent mb-6" />
-                                <h3 className="font-bold text-white mb-2">{item.name}</h3>
-                                <p className="text-sm text-wl-muted-dark font-medium leading-relaxed">{item.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Modular Deep Dive */}
-            <section className="section-padding py-32">
-                <div className="container-custom">
-                    <div className="grid lg:grid-cols-12 gap-20 items-start">
-                        <div className="lg:col-span-7">
-                            <h2 className="text-4xl md:text-6xl font-black mb-16 leading-tight">Built for Your <br /><span className="text-wl-accent">Specific Workflow</span></h2>
-
-                            <div className="space-y-16">
-                                {modules.map((m, idx) => (
-                                    <div key={idx} className="space-y-8">
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-12 h-[1px] bg-wl-accent"></div>
-                                            <h4 className="text-xs font-black uppercase tracking-[0.2em] text-wl-accent">{m.title}</h4>
-                                        </div>
-                                        <div className="grid sm:grid-cols-2 gap-6">
-                                            {m.features.map((f, i) => (
-                                                <div key={i} className="p-8 rounded-[2.5rem] bg-white/[0.03] border border-white/5 group hover:bg-white/[0.05] transition-all">
-                                                    <h5 className="font-bold text-lg mb-3">{f.name}</h5>
-                                                    <p className="text-sm text-wl-muted-dark leading-relaxed">{f.desc}</p>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
+                    <div className="grid lg:grid-cols-2 gap-20">
+                        <div className="glass-strong p-16 rounded-[4rem] border border-white/5 relative overflow-hidden">
+                            <h3 className="text-3xl font-bold mb-10 flex items-center gap-4">
+                                <Target className="w-8 h-8 text-wl-accent" />
+                                Best For
+                            </h3>
+                            <ul className="space-y-6">
+                                {[
+                                    "Clinics & healthcare providers",
+                                    "Real estate brokers",
+                                    "Coaching institutes",
+                                    "Service-based businesses"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-4 text-white/60">
+                                        <div className="w-2 h-2 rounded-full bg-wl-accent"></div>
+                                        <span className="text-lg font-medium">{item}</span>
+                                    </li>
                                 ))}
-                            </div>
+                            </ul>
                         </div>
-
-                        <div className="lg:col-span-5 pt-20 lg:pt-0">
-                            <div className="glass-strong p-12 rounded-[4rem] border border-white/10 relative overflow-hidden">
-                                <h3 className="text-2xl font-black mb-10 flex items-center gap-3">
-                                    <Code2 className="w-8 h-8 text-wl-accent" />
-                                    Native Ecosystem
-                                </h3>
-                                <p className="text-wl-muted-dark mb-10 font-medium">We don't just build the bot—we wire it into your existing tools for a seamless automated pipeline.</p>
-                                <div className="grid grid-cols-2 gap-4">
-                                    {integrations.map((app) => (
-                                        <div key={app} className="py-3 px-6 rounded-2xl bg-white/5 border border-white/5 text-center text-xs font-bold text-white/60">
-                                            {app}
-                                        </div>
-                                    ))}
-                                </div>
-                                <div className="mt-12 p-8 rounded-3xl bg-wl-accent/5 border border-wl-accent/10">
-                                    <p className="text-[10px] font-black uppercase tracking-widest text-wl-accent mb-2">Technical Highlight</p>
-                                    <p className="text-sm font-medium leading-relaxed">
-                                        "Our chatbots maintain persistent memory and state, allowing for complex multi-turn conversations that feel human."
-                                    </p>
-                                </div>
-                            </div>
+                        <div className="glass-strong p-16 rounded-[4rem] border border-white/5 relative overflow-hidden">
+                            <h3 className="text-3xl font-bold mb-10 flex items-center gap-4">
+                                <Zap className="w-8 h-8 text-wl-accent" />
+                                What It Does
+                            </h3>
+                            <ul className="space-y-6">
+                                {[
+                                    "Instant replies on website & WhatsApp",
+                                    "Lead capture & qualification",
+                                    "Appointment booking automation",
+                                    "Support ticket reduction"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-4 text-white/60">
+                                        <div className="w-2 h-2 rounded-full bg-wl-accent"></div>
+                                        <span className="text-lg font-medium">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Trial CTA */}
-            <section className="container-custom">
-                <div className="glass-strong p-12 md:p-24 rounded-[4rem] text-center border border-white/10 relative overflow-hidden group">
-                    <Sparkles className="w-12 h-12 text-wl-accent mx-auto mb-10" />
-                    <h2 className="text-3xl md:text-5xl font-black mb-10 leading-tight">Your Business. Our AI. <span className="text-wl-accent">Zero Latency.</span></h2>
-                    <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                        <button onClick={openDemoModal} className="btn-primary h-16 px-12">
-                            Deploy Custom Agent
-                        </button>
-                        <Link href="/services/ai-strategy" className="btn-secondary h-16 px-12">
-                            View Strategy Roadmap
-                        </Link>
+            {/* Why Choose Us */}
+            <section className="section-padding py-32 bg-wl-dark relative">
+                <div className="container-custom">
+                    <div className="glass-strong p-16 md:p-24 rounded-[4rem] border border-wl-accent/10 text-center">
+                        <h2 className="text-4xl md:text-6xl font-black mb-16">Why Businesses <span className="text-wl-accent">Choose This.</span></h2>
+                        <div className="grid md:grid-cols-3 gap-12">
+                            {[
+                                { title: "No Missed Leads", desc: "Never lose a prospect again." },
+                                { title: "Faster Response", desc: "Instant gratification for customers." },
+                                { title: "Lower Costs", desc: "Reduce support team overhead." }
+                            ].map((item, i) => (
+                                <div key={i} className="space-y-6">
+                                    <div className="w-16 h-16 rounded-full bg-wl-accent flex items-center justify-center text-black mx-auto">
+                                        <CheckCircle2 className="w-8 h-8" />
+                                    </div>
+                                    <h4 className="text-2xl font-bold">{item.title}</h4>
+                                    <p className="text-white/40">{item.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Pricing Section */}
+            <section className="section-padding py-32 bg-wl-dark/30">
+                <div className="container-custom text-center">
+                    <h2 className="text-5xl md:text-7xl font-black mb-16 tracking-tighter">💰 Pricing</h2>
+                    <div className="max-w-4xl mx-auto glass-strong p-20 rounded-[4rem] border border-wl-accent/20">
+                        <div className="grid md:grid-cols-2 gap-12 mb-12">
+                            <div className="p-10 rounded-[3rem] bg-white/5 border border-white/10">
+                                <p className="text-[10px] font-black uppercase tracking-widest text-wl-accent mb-4">One-Time Setup</p>
+                                <p className="text-5xl font-black text-white">₹4,999</p>
+                            </div>
+                            <div className="p-10 rounded-[3rem] bg-wl-accent/10 border border-wl-accent/20">
+                                <p className="text-[10px] font-black uppercase tracking-widest text-wl-accent mb-4">Monthly Ongoing</p>
+                                <p className="text-5xl font-black text-white">₹2,999</p>
+                            </div>
+                        </div>
+                        <div className="flex flex-wrap justify-center gap-6">
+                            <button onClick={openDemoModal} className="btn-primary h-20 px-16 text-xl">
+                                Get Started
+                            </button>
+                            <button onClick={openDemoModal} className="btn-secondary h-20 px-16 text-xl">
+                                Start Free Trial
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>

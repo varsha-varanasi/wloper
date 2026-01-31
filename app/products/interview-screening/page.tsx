@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import {
     CheckCircle2, ArrowRight, Zap,
     ShieldCheck, BarChart3, Bot, Users,
-    Cpu, Database, Sparkles
+    Cpu, Database, Sparkles, Activity
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -72,14 +72,19 @@ export default function InterviewScreeningPage() {
                             AI Interview <br /><span className="text-wl-accent">Screening Platform</span>
                         </motion.h1>
 
-                        <motion.p
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="subtitle-lg mx-auto mb-14 text-white/50"
+                            className="mb-14"
                         >
-                            Automate your technical and behavioral assessments with an intelligent AI platform that conducts live interviews and evaluates responses in real-time.
-                        </motion.p>
+                            <p className="subtitle-lg mx-auto mb-6 text-white text-3xl font-bold">
+                                Hire Faster. Screen Smarter. Reduce HR Workload by 60%.
+                            </p>
+                            <p className="text-xl text-white/50 max-w-4xl mx-auto leading-relaxed">
+                                Our AI Interview Screening Platform automatically conducts first-round interviews, evaluates candidate responses, and shortlists only the most relevant profiles — so your team focuses only on the best candidates.
+                            </p>
+                        </motion.div>
 
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -88,137 +93,132 @@ export default function InterviewScreeningPage() {
                             className="flex flex-wrap justify-center gap-6"
                         >
                             <button onClick={openDemoModal} className="btn-primary h-20 px-12 group text-lg">
-                                Request Live Demo
+                                Start Free Trial
                                 <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
                             </button>
-                            <div className="flex items-center gap-4 text-white/40 border border-white/10 px-10 rounded-[2rem] glass-strong">
-                                <ShieldCheck className="w-6 h-6 text-wl-accent" />
-                                <span className="text-[10px] font-black uppercase tracking-widest leading-none">Enterprise Ready</span>
-                            </div>
+                            <button onClick={openDemoModal} className="btn-secondary h-20 px-12 text-lg">
+                                Book Demo
+                            </button>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* Product Snapshot: Three Pillars */}
+            {/* Target Audience & Problems Solved */}
             <section className="section-padding py-32 bg-wl-dark/50 border-y border-white/5">
                 <div className="container-custom">
-                    <div className="grid md:grid-cols-3 gap-12">
-                        <div className="group glass-strong p-12 rounded-[3rem] border border-white/5 hover:border-wl-accent/20 transition-all">
-                            <div className="w-20 h-20 rounded-[2rem] bg-white/5 flex items-center justify-center mb-10 group-hover:bg-wl-accent group-hover:text-black transition-all">
-                                <Zap className="w-10 h-10" />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-6">Zero Friction</h3>
-                            <p className="text-white/40 font-medium leading-relaxed">No software for candidates to download. Built directly for the modern mobile web ecosystem.</p>
+                    <div className="grid lg:grid-cols-2 gap-20">
+                        <div className="glass-strong p-16 rounded-[4rem] border border-white/5 relative overflow-hidden">
+                            <h3 className="text-3xl font-bold mb-10 flex items-center gap-4">
+                                <Users className="w-8 h-8 text-wl-accent" />
+                                Who This Is For
+                            </h3>
+                            <ul className="space-y-6">
+                                {[
+                                    "Recruitment agencies",
+                                    "Startups & growing companies",
+                                    "HR teams with high-volume hiring",
+                                    "Coaching & training institutes"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-4 text-white/60">
+                                        <div className="w-2 h-2 rounded-full bg-wl-accent"></div>
+                                        <span className="text-lg font-medium">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                        <div className="group glass-strong p-12 rounded-[3rem] border border-white/5 hover:border-wl-accent/20 transition-all">
-                            <div className="w-20 h-20 rounded-[2rem] bg-white/5 flex items-center justify-center mb-10 group-hover:bg-wl-accent group-hover:text-black transition-all">
-                                <BarChart3 className="w-10 h-10" />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-6">Data Evidence</h3>
-                            <p className="text-white/40 font-medium leading-relaxed">Every hiring decision is backed by transparent, explainable AI scoring protocols and data logic.</p>
-                        </div>
-                        <div className="group glass-strong p-12 rounded-[3rem] border border-white/5 hover:border-wl-accent/20 transition-all">
-                            <div className="w-20 h-20 rounded-[2rem] bg-white/5 flex items-center justify-center mb-10 group-hover:bg-wl-accent group-hover:text-black transition-all">
-                                <Users className="w-10 h-10" />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-6">Human-Centric</h3>
-                            <p className="text-white/40 font-medium leading-relaxed">Designed to enhance recruiter productivity and streamline technical pipelines for engineers.</p>
+                        <div className="glass-strong p-16 rounded-[4rem] border border-white/5 relative overflow-hidden">
+                            <h3 className="text-3xl font-bold mb-10 flex items-center gap-4">
+                                <Activity className="w-8 h-8 text-red-500" />
+                                What It Solves
+                            </h3>
+                            <ul className="space-y-6">
+                                {[
+                                    "Too many resumes to screen",
+                                    "Slow hiring cycles",
+                                    "HR team burnout",
+                                    "Inconsistent interview quality"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-4 text-white/60">
+                                        <div className="w-2 h-2 rounded-full bg-red-500"></div>
+                                        <span className="text-lg font-medium">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Deep Breakdown Sections */}
+            {/* Deep Breakdown Sections: Key Features */}
             <section className="section-padding py-32 relative">
                 <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-wl-accent/5 rounded-full blur-[120px] pointer-events-none -ml-64" />
 
                 <div className="container-custom">
                     <div className="grid lg:grid-cols-12 gap-20">
                         {/* Sidebar: Feature List */}
-                        <div className="lg:col-span-5">
-                            <div className="sticky top-32 space-y-12">
-                                <h2 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter">Feature <br /><span className="text-wl-accent">Logic Map.</span></h2>
-                                {featureGroups.map((group, idx) => (
-                                    <div key={idx} className="space-y-8">
-                                        <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">{group.title}</h4>
-                                        <div className="space-y-6">
-                                            {group.features.map((f, i) => (
-                                                <div key={i} className="flex gap-6 group">
-                                                    <CheckCircle2 className="w-6 h-6 text-wl-accent shrink-0 group-hover:scale-125 transition-transform" />
-                                                    <div>
-                                                        <h5 className="text-xl font-bold mb-2">{f.name}</h5>
-                                                        <p className="text-white/40 leading-relaxed">{f.desc}</p>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
+                        <div className="lg:col-span-12">
+                            <h2 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter mb-20 text-center">
+                                Key <span className="text-wl-accent">Features.</span>
+                            </h2>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                                {[
+                                    { title: "Automated AI Interviews", icon: Bot, desc: "AI conducts live interviews based on your criteria." },
+                                    { title: "Smart Scoring & Ranking", icon: BarChart3, desc: "Instant evaluation and relative candidate ranking." },
+                                    { title: "Custom Questions", icon: CheckCircle2, desc: "Define per-role interview logic and behavioral triggers." },
+                                    { title: "Scalable for Bulk", icon: Zap, desc: "Screen 1000s of candidates simultaneously." }
+                                ].map((f, i) => (
+                                    <div key={i} className="glass p-10 rounded-[3rem] border border-white/5 group hover:border-wl-accent/20 transition-all">
+                                        <f.icon className="w-12 h-12 text-wl-accent mb-8 group-hover:scale-110 transition-transform" />
+                                        <h4 className="text-2xl font-bold mb-4">{f.title}</h4>
+                                        <p className="text-white/40 leading-relaxed font-medium">{f.desc}</p>
                                     </div>
                                 ))}
-                            </div>
-                        </div>
-
-                        {/* Visual representation: Architecture Image Inserted Here */}
-                        <div className="lg:col-span-7">
-                            <div className="glass-strong rounded-[4rem] border border-white/10 relative overflow-hidden h-[800px] mb-12">
-                                <Image
-                                    src="/images/envato-labs-ai-cc98af26-6a98-45ef-9c86-a4618f68b6e2.jpg"
-                                    alt="Architecture Illustration"
-                                    fill
-                                    className="object-cover opacity-60"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-wl-dark via-wl-dark/40 to-transparent" />
-
-                                <div className="absolute bottom-12 left-12 right-12">
-                                    <h3 className="text-4xl font-black mb-8 flex items-center gap-6">
-                                        <Cpu className="w-12 h-12 text-wl-accent" />
-                                        Neural Architecture
-                                    </h3>
-                                    <div className="grid gap-4">
-                                        {techSpecs.map((spec, i) => (
-                                            <div key={i} className="p-6 rounded-[2rem] bg-black/60 backdrop-blur-xl border border-white/10">
-                                                <p className="text-[9px] font-black uppercase tracking-[0.3em] text-wl-accent mb-2">{spec.label}</p>
-                                                <p className="text-base font-bold text-white/90">{spec.value}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Final Conversion */}
-            <section className="section-padding pt-0 pb-40">
+            {/* Results Section */}
+            <section className="section-padding py-32 bg-wl-dark relative">
                 <div className="container-custom">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        className="glass-strong p-20 lg:p-40 rounded-[4rem] border border-wl-accent/20 text-center relative overflow-hidden"
-                    >
-                        <div className="absolute inset-0 z-0">
-                            <Image
-                                src="/images/envato-labs-ai-ff99b861-f73a-4b32-8972-7e241b722b3b.jpg"
-                                alt="Final Call Image"
-                                fill
-                                className="object-cover opacity-20"
-                            />
-                            <div className="absolute inset-0 bg-wl-dark/60" />
+                    <div className="glass-strong p-16 md:p-24 rounded-[4rem] border border-wl-accent/10">
+                        <h2 className="text-4xl md:text-6xl font-black mb-16 text-center">Results You Can <span className="text-wl-accent">Expect.</span></h2>
+                        <div className="grid md:grid-cols-3 gap-12">
+                            {[
+                                "5× faster shortlisting",
+                                "Reduced hiring costs",
+                                "Consistent candidate evaluation"
+                            ].map((result, i) => (
+                                <div key={i} className="flex flex-col items-center text-center space-y-6">
+                                    <div className="w-16 h-16 rounded-full bg-wl-accent flex items-center justify-center text-black">
+                                        <CheckCircle2 className="w-8 h-8" />
+                                    </div>
+                                    <span className="text-2xl font-bold">{result}</span>
+                                </div>
+                            ))}
                         </div>
-                        <div className="relative z-10">
-                            <Sparkles className="w-16 h-16 text-wl-accent mx-auto mb-10" />
-                            <h2 className="text-5xl md:text-8xl font-black mb-12 leading-tight tracking-tighter">Scalable <br /><span className="text-wl-accent">Assesment Hub.</span></h2>
-                            <div className="flex flex-wrap justify-center gap-6">
-                                <button onClick={openDemoModal} className="btn-primary h-20 px-16 text-xl">
-                                    Contact Sales Pod
-                                </button>
-                                <Link href="/blog" className="btn-secondary h-20 px-16 text-xl">
-                                    Review Research
-                                </Link>
-                            </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Pricing Section */}
+            <section className="section-padding py-32 bg-wl-dark/30">
+                <div className="container-custom text-center">
+                    <h2 className="text-5xl md:text-7xl font-black mb-16 tracking-tighter">💰 Pricing</h2>
+                    <div className="max-w-4xl mx-auto glass-strong p-20 rounded-[4rem] border border-wl-accent/20">
+                        <p className="text-6xl font-black text-white mb-6">Starts from <span className="text-wl-accent">₹2,999</span> <span className="text-2xl text-white/40">/ month</span></p>
+                        <p className="text-xl text-white/50 mb-12">(Custom plans available for agencies & enterprises)</p>
+                        <div className="flex flex-wrap justify-center gap-6">
+                            <button onClick={openDemoModal} className="btn-primary h-20 px-16 text-xl">
+                                Start Free Trial
+                            </button>
+                            <button onClick={openDemoModal} className="btn-secondary h-20 px-16 text-xl">
+                                Book Demo
+                            </button>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
         </div>

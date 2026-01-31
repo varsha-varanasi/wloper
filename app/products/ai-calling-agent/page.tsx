@@ -73,14 +73,19 @@ export default function AICallingAgentPage() {
                             AI Calling Agent for <br /><span className="text-wl-accent">Data & Analysis</span>
                         </motion.h1>
 
-                        <motion.p
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="subtitle-lg mx-auto mb-14 text-white/50"
+                            className="mb-14"
                         >
-                            Scale your data collection and market research with intelligent AI voice agents that conduct human-like conversations and provide instant analytical insights.
-                        </motion.p>
+                            <p className="subtitle-lg mx-auto mb-6 text-white text-3xl font-bold">
+                                Automated Voice Agents That Call, Qualify & Report
+                            </p>
+                            <p className="text-xl text-white/50 max-w-4xl mx-auto leading-relaxed">
+                                Our AI Calling Agents autonomously make calls, collect responses, and generate real-time reports — perfect for lead qualification, surveys, and follow-ups.
+                            </p>
+                        </motion.div>
 
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -89,137 +94,99 @@ export default function AICallingAgentPage() {
                             className="flex flex-wrap justify-center gap-6"
                         >
                             <button onClick={openDemoModal} className="btn-primary h-20 px-12 group text-lg">
-                                Launch Calling Agent
+                                See Sample Call
                                 <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
                             </button>
-                            <div className="flex items-center gap-4 text-white/40 border border-white/10 px-10 rounded-[2rem] glass-strong">
-                                <Activity className="w-6 h-6 text-wl-accent" />
-                                <span className="text-[10px] font-black uppercase tracking-widest leading-none">Real-time Analytics</span>
-                            </div>
+                            <button onClick={openDemoModal} className="btn-secondary h-20 px-12 text-lg">
+                                Request Demo
+                            </button>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* Product Snapshot: Three Pillars */}
+            {/* Target Audience & Capabilities */}
             <section className="section-padding py-32 bg-wl-dark/50 border-y border-white/5">
                 <div className="container-custom">
-                    <div className="grid md:grid-cols-3 gap-12">
-                        <div className="group glass-strong p-12 rounded-[3rem] border border-white/5 hover:border-wl-accent/20 transition-all">
-                            <div className="w-20 h-20 rounded-[2rem] bg-white/5 flex items-center justify-center mb-10 group-hover:bg-wl-accent group-hover:text-black transition-all">
-                                <Zap className="w-10 h-10" />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-6">Mass Scale</h3>
-                            <p className="text-white/40 font-medium leading-relaxed">Conduct thousands of simultaneous calls without any loss in conversation quality or data accuracy.</p>
-                        </div>
-                        <div className="group glass-strong p-12 rounded-[3rem] border border-white/5 hover:border-wl-accent/20 transition-all">
-                            <div className="w-20 h-20 rounded-[2rem] bg-white/5 flex items-center justify-center mb-10 group-hover:bg-wl-accent group-hover:text-black transition-all">
-                                <BarChart3 className="w-10 h-10" />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-6">Live Insights</h3>
-                            <p className="text-white/40 font-medium leading-relaxed">Watch as raw conversations are instantly transformed into structured data points and visual reports.</p>
-                        </div>
-                        <div className="group glass-strong p-12 rounded-[3rem] border border-white/5 hover:border-wl-accent/20 transition-all">
-                            <div className="w-20 h-20 rounded-[2rem] bg-white/5 flex items-center justify-center mb-10 group-hover:bg-wl-accent group-hover:text-black transition-all">
-                                <Search className="w-10 h-10" />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-6">Deep Context</h3>
-                            <p className="text-white/40 font-medium leading-relaxed">Our agents understand nuances, follow-up on interesting points, and dig deeper into respondent logic.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Deep Breakdown Sections */}
-            <section className="section-padding py-32 relative">
-                <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-wl-accent/5 rounded-full blur-[120px] pointer-events-none -ml-64" />
-
-                <div className="container-custom">
-                    <div className="grid lg:grid-cols-12 gap-20">
-                        {/* Sidebar: Feature List */}
-                        <div className="lg:col-span-5">
-                            <div className="sticky top-32 space-y-12">
-                                <h2 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter">Feature <br /><span className="text-wl-accent">Logic Map.</span></h2>
-                                {featureGroups.map((group, idx) => (
-                                    <div key={idx} className="space-y-8">
-                                        <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">{group.title}</h4>
-                                        <div className="space-y-6">
-                                            {group.features.map((f, i) => (
-                                                <div key={i} className="flex gap-6 group">
-                                                    <CheckCircle2 className="w-6 h-6 text-wl-accent shrink-0 group-hover:scale-125 transition-transform" />
-                                                    <div>
-                                                        <h5 className="text-xl font-bold mb-2">{f.name}</h5>
-                                                        <p className="text-white/40 leading-relaxed">{f.desc}</p>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
+                    <div className="grid lg:grid-cols-2 gap-20">
+                        <div className="glass-strong p-16 rounded-[4rem] border border-white/5 relative overflow-hidden">
+                            <h3 className="text-3xl font-bold mb-10 flex items-center gap-4">
+                                <Search className="w-8 h-8 text-wl-accent" />
+                                Ideal For
+                            </h3>
+                            <ul className="space-y-6">
+                                {[
+                                    "Marketing agencies",
+                                    "EdTech & research companies",
+                                    "Survey & feedback campaigns",
+                                    "Lead qualification teams"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-4 text-white/60">
+                                        <div className="w-2 h-2 rounded-full bg-wl-accent"></div>
+                                        <span className="text-lg font-medium">{item}</span>
+                                    </li>
                                 ))}
-                            </div>
+                            </ul>
                         </div>
-
-                        {/* Visual representation: Architecture Image Inserted Here */}
-                        <div className="lg:col-span-7">
-                            <div className="glass-strong rounded-[4rem] border border-white/10 relative overflow-hidden h-[800px] mb-12">
-                                <Image
-                                    src="/images/envato-labs-ai-36c4ce64-9e58-4f59-a78e-403034b187ca.jpg"
-                                    alt="Calling Agent Architecture"
-                                    fill
-                                    className="object-cover opacity-60"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-wl-dark via-wl-dark/40 to-transparent" />
-
-                                <div className="absolute bottom-12 left-12 right-12">
-                                    <h3 className="text-4xl font-black mb-8 flex items-center gap-6">
-                                        <Cpu className="w-12 h-12 text-wl-accent" />
-                                        Advanced Synthesis
-                                    </h3>
-                                    <div className="grid gap-4">
-                                        {techSpecs.map((spec, i) => (
-                                            <div key={i} className="p-6 rounded-[2rem] bg-black/60 backdrop-blur-xl border border-white/10">
-                                                <p className="text-[9px] font-black uppercase tracking-[0.3em] text-wl-accent mb-2">{spec.label}</p>
-                                                <p className="text-base font-bold text-white/90">{spec.value}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="glass-strong p-16 rounded-[4rem] border border-white/5 relative overflow-hidden">
+                            <h3 className="text-3xl font-bold mb-10 flex items-center gap-4">
+                                <Activity className="w-8 h-8 text-wl-accent" />
+                                What It Can Do
+                            </h3>
+                            <ul className="space-y-6">
+                                {[
+                                    "Outbound automated calls",
+                                    "Structured question flows",
+                                    "Real-time reporting & analysis",
+                                    "Sentiment & logic tracking"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-4 text-white/60">
+                                        <div className="w-2 h-2 rounded-full bg-wl-accent"></div>
+                                        <span className="text-lg font-medium">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Final Conversion */}
-            <section className="section-padding pt-0 pb-40">
+            {/* Systematic Features */}
+            <section className="section-padding py-32 relative">
                 <div className="container-custom">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        className="glass-strong p-20 lg:p-40 rounded-[4rem] border border-wl-accent/20 text-center relative overflow-hidden"
-                    >
-                        <div className="absolute inset-0 z-0">
-                            <Image
-                                src="/images/envato-labs-ai-60bf7079-9412-429a-89f0-19949dc9ecc1.jpg"
-                                alt="Final Call Image"
-                                fill
-                                className="object-cover opacity-20"
-                            />
-                            <div className="absolute inset-0 bg-wl-dark/60" />
-                        </div>
-                        <div className="relative z-10">
-                            <Sparkles className="w-16 h-16 text-wl-accent mx-auto mb-10" />
-                            <h2 className="text-5xl md:text-8xl font-black mb-12 leading-tight tracking-tighter">Accelerate <br /><span className="text-wl-accent">Data Strategy.</span></h2>
-                            <div className="flex flex-wrap justify-center gap-6">
-                                <button onClick={openDemoModal} className="btn-primary h-20 px-16 text-xl">
-                                    Start Data Campaign
-                                </button>
-                                <Link href="/contact" className="btn-secondary h-20 px-16 text-xl">
-                                    Talk to Experts
-                                </Link>
+                    <h2 className="text-4xl md:text-6xl font-black mb-16 text-center">Engineered for <span className="text-wl-accent">Precision.</span></h2>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {[
+                            { title: "Voice Fidelity", icon: Phone, desc: "Ultra-natural TTS with adaptive pacing." },
+                            { title: "Live Synthesis", icon: BarChart3, desc: "Raw audio to structured data in <1s." },
+                            { title: "Logic Mapping", icon: Cpu, desc: "Script branches based on user intent." }
+                        ].map((item, i) => (
+                            <div key={i} className="glass p-12 rounded-[3rem] border border-white/5 text-center group hover:border-wl-accent/20 transition-all">
+                                <item.icon className="w-12 h-12 text-wl-accent mx-auto mb-8" />
+                                <h4 className="text-2xl font-bold mb-4">{item.title}</h4>
+                                <p className="text-white/40">{item.desc}</p>
                             </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Pricing Section */}
+            <section className="section-padding py-32 bg-wl-dark/30">
+                <div className="container-custom text-center">
+                    <h2 className="text-5xl md:text-7xl font-black mb-16 tracking-tighter">💰 Pricing</h2>
+                    <div className="max-w-4xl mx-auto glass-strong p-20 rounded-[4rem] border border-wl-accent/20">
+                        <p className="text-6xl font-black text-white mb-6">Starts from <span className="text-wl-accent">₹8</span> <span className="text-2xl text-white/40">/ minute</span></p>
+                        <p className="text-xl text-white/50 mb-12">(Custom monthly plans available for high volume)</p>
+                        <div className="flex flex-wrap justify-center gap-6">
+                            <button onClick={openDemoModal} className="btn-primary h-20 px-16 text-xl">
+                                See Sample Call
+                            </button>
+                            <button onClick={openDemoModal} className="btn-secondary h-20 px-16 text-xl">
+                                Request Demo
+                            </button>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
         </div>
