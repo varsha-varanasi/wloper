@@ -18,16 +18,17 @@
   --max-width: 1400px;
 }
 
-/* Basic resets */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--wl-bg);
+  font-size: 15px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-  background-color: var(--wl-bg);
+  font-style: normal !important;
 }
 
 body {
@@ -178,7 +179,7 @@ h6,
     @apply py-16 md:py-20 lg:py-28;
   }
 
-  /* Consistent Headlines */
+  /* Consistent Headlines - Adjusted for reduction */
   .heading-xl {
     @apply text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[1.1] tracking-[-0.03em];
   }
@@ -205,7 +206,7 @@ h6,
   }
 
   .tag-label {
-    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-wl-accent/10 border border-wl-accent/20 text-[10px] font-bold uppercase tracking-[0.3em] text-wl-accent mb-8;
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-wl-accent/10 border border-wl-accent/20 text-[9px] font-bold uppercase tracking-[0.3em] text-wl-accent mb-8;
   }
 }
 

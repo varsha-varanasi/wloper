@@ -264,7 +264,7 @@ export default function PricingPage() {
                                 className="heading-xl mb-10 tracking-tighter"
                             >
                                 Simple, Transparent <br />
-                                <span className="text-wl-accent text-glow-accent italic">Pricing</span> for Scale.
+                                <span className="text-wl-accent text-glow-accent">Pricing</span> for Scale.
                             </motion.h1>
                             <motion.p
                                 initial={{ opacity: 0, y: 20 }}
@@ -382,7 +382,7 @@ export default function PricingPage() {
                                     <h2 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-none">
                                         {products[activeTab].title}
                                     </h2>
-                                    <p className="text-2xl text-wl-accent font-bold mb-8 italic uppercase tracking-[0.2em]">
+                                    <p className="text-2xl text-wl-accent font-bold mb-8 uppercase tracking-[0.2em]">
                                         {products[activeTab].subtitle}
                                     </p>
                                     <p className="text-xl text-white/40 font-medium leading-relaxed max-w-xl">
@@ -431,7 +431,7 @@ export default function PricingPage() {
                                                     <span className="text-9xl font-black tracking-tighter">$399</span>
                                                     <span className="text-2xl text-white/40 font-bold">/mo</span>
                                                 </div>
-                                                <p className="text-white/40 font-medium italic">Custom scaling for 1000+ employees</p>
+                                                <p className="text-white/40 font-medium">Custom scaling for 1000+ employees</p>
                                                 <div className="mt-20 w-full h-[1px] bg-white/10 relative">
                                                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0A0A0A] px-4 font-black text-[10px] uppercase tracking-widest text-white/20">
                                                         Infrastructure Details
@@ -483,7 +483,7 @@ export default function PricingPage() {
                                                     {plan.unit && <span className="text-lg text-white/40 font-bold">{plan.unit}</span>}
                                                 </div>
                                                 {/* @ts-ignore */}
-                                                {plan.setup && <p className="mt-2 text-sm text-wl-accent font-bold italic">{plan.setup}</p>}
+                                                {plan.setup && <p className="mt-2 text-sm text-wl-accent font-bold">{plan.setup}</p>}
                                             </div>
 
                                             <ul className="space-y-6 mb-14 flex-1 text-left">
@@ -559,7 +559,7 @@ export default function PricingPage() {
                 <div className="container-custom">
                     <div className="grid lg:grid-cols-12 gap-20">
                         <div className="lg:col-span-5">
-                            <h2 className="text-5xl md:text-7xl font-black mb-10 tracking-tighter leading-tight">Got <span className="text-wl-accent italic">Questions?</span></h2>
+                            <h2 className="text-5xl md:text-7xl font-black mb-10 tracking-tighter leading-tight">Got <span className="text-wl-accent">Questions?</span></h2>
                             <p className="text-2xl text-white/40 font-medium leading-relaxed mb-12">
                                 We're here to provide technical clarity and deployment guidance.
                             </p>
@@ -567,7 +567,7 @@ export default function PricingPage() {
                                 <Image src="/images/envato-labs-ai-cc98af26-6a98-45ef-9c86-a4618f68b6e2.jpg" alt="Support" fill className="absolute inset-0 object-cover opacity-5 group-hover:scale-110 transition-transform duration-1000" />
                                 <div className="relative z-10">
                                     <p className="text-sm font-black uppercase tracking-widest text-wl-accent mb-4">Tactical Support</p>
-                                    <p className="text-white/60 mb-8 font-medium italic text-lg leading-relaxed">"Our engineering team is dedicated to ensuring your AI transition is seamless and secure."</p>
+                                    <p className="text-white/60 mb-8 font-medium text-lg leading-relaxed">"Our engineering team is dedicated to ensuring your AI transition is seamless and secure."</p>
                                     <button onClick={openDemoModal} className="flex items-center gap-3 text-white font-black uppercase tracking-widest text-xs group/btn">
                                         Consult with an Expert <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
                                     </button>
@@ -646,7 +646,7 @@ export default function PricingPage() {
             {/* 1️⃣0️⃣ LEGAL & PRICING DISCLAIMER */}
             <footer className="py-20 border-t border-white/5 bg-[#050505]">
                 <div className="container-custom text-center">
-                    <p className="text-sm text-white/20 font-medium max-w-4xl mx-auto leading-relaxed italic">
+                    <p className="text-sm text-white/20 font-medium max-w-4xl mx-auto leading-relaxed">
                         All prices are starting estimates. Final pricing may vary based on usage, integrations, customization, and regional taxes.
                         Wloper Systems reserves the right to adjust architectural protocols per individual security audits.
                         Wloper Systems &copy; {new Date().getFullYear()} - Redefining Intelligence.
