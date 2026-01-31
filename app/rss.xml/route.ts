@@ -31,30 +31,33 @@ export async function GET() {
             imageUrl = post.image.startsWith('http') ? post.image : `${siteUrl}${post.image}`;
         }
 
+        // Clean description for XML
+        const cleanDescription = post.excerpt.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
         return `
         <item>
             <title><![CDATA[${post.title}]]></title>
             <link>${url}</link>
             <guid isPermaLink="true">${url}</guid>
             <pubDate>${pubDate}</pubDate>
-            <category><![CDATA[${post.category}]]></category>
-            <description><![CDATA[${post.excerpt}]]></description>
-            <enclosure url="${imageUrl}" length="12345" type="image/jpeg" />
+            <description><![CDATA[${cleanDescription}]]></description>
+            ${post.author ? `<author>info@wloper.com (${post.author})</author>` : ''}
+            <enclosure url="${imageUrl}" length="0" type="image/jpeg" />
         </item>`;
     }).join('');
 
     const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-    <title>Wloper Blog | AI &amp; Web Engineering Insights</title>
+    <title>Wloper Blog</title>
     <link>${siteUrl}/blog</link>
-    <description>Technical breakdowns and strategic insights from the frontier of AI and Web Engineering by Wloper - India's leading AI and Web Development company.</description>
+    <description>Technical breakdowns and strategic insights from the frontier of AI and Web Engineering.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
     <image>
         <url>${siteUrl}/images/hero-bg.png</url>
-        <title>Wloper Blog | AI &amp; Web Engineering Insights</title>
+        <title>Wloper Blog</title>
         <link>${siteUrl}/blog</link>
     </image>
     ${items}
@@ -63,8 +66,8 @@ export async function GET() {
 
     return new Response(rss, {
         headers: {
-            'Content-Type': 'application/xml; charset=utf-8',
-            'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+            'Content-Type': 'text/xml',
+            'Cache-Control': 's-maxage=3600, stale-while-revalidate',
         },
     });
 }
