@@ -199,8 +199,8 @@ export default function HCMSystemPage() {
                 <div className="container-custom text-center">
                     <h2 className="text-5xl md:text-7xl font-black mb-16 tracking-tighter">💰 Pricing</h2>
                     <div className="max-w-4xl mx-auto glass-strong p-20 rounded-[4rem] border border-wl-accent/20">
-                        <p className="text-6xl font-black text-white mb-6">Starts from <span className="text-wl-accent">₹25,000</span> <span className="text-2xl text-white/40">/ month</span></p>
-                        <p className="text-xl text-white/50 mb-12">(Pricing depends on users & customization)</p>
+                        <p className="text-6xl font-black text-white mb-6">Starts from <span className="text-wl-accent">$399</span> <span className="text-2xl text-white/40">/ month</span></p>
+                        <p className="text-xl text-white/50 mb-12">Designed for enterprise-scale talent and workforce intelligence.</p>
                         <div className="flex flex-wrap justify-center gap-6">
                             <button onClick={openDemoModal} className="btn-primary h-20 px-16 text-xl">
                                 Request Demo

@@ -173,19 +173,32 @@ export default function AICallingAgentPage() {
 
             {/* Pricing Section */}
             <section className="section-padding py-32 bg-wl-dark/30">
-                <div className="container-custom text-center">
-                    <h2 className="text-5xl md:text-7xl font-black mb-16 tracking-tighter">💰 Pricing</h2>
-                    <div className="max-w-4xl mx-auto glass-strong p-20 rounded-[4rem] border border-wl-accent/20">
-                        <p className="text-6xl font-black text-white mb-6">Starts from <span className="text-wl-accent">₹8</span> <span className="text-2xl text-white/40">/ minute</span></p>
-                        <p className="text-xl text-white/50 mb-12">(Custom monthly plans available for high volume)</p>
-                        <div className="flex flex-wrap justify-center gap-6">
-                            <button onClick={openDemoModal} className="btn-primary h-20 px-16 text-xl">
-                                See Sample Call
-                            </button>
-                            <button onClick={openDemoModal} className="btn-secondary h-20 px-16 text-xl">
-                                Request Demo
-                            </button>
-                        </div>
+                <div className="container-custom">
+                    <h2 className="text-5xl md:text-7xl font-black mb-16 tracking-tighter text-center">💰 Pricing</h2>
+                    <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                        {[
+                            { name: 'Pay As You Go', price: '$0.12', unit: '/ minute', desc: 'Best for on-demand outreach', features: ['AI outbound voice calls', 'Structured scripts', 'Call recordings', 'Basic analytics'], highlight: false },
+                            { name: 'High-Volume Plans', price: 'Custom', unit: '', desc: 'For large scale operations', features: ['Bulk calling discounts', 'Advanced reporting', 'Multi-language support', 'Dedicated support'], highlight: true }
+                        ].map((plan, i) => (
+                            <div key={i} className={`glass-strong p-16 rounded-[4rem] border flex flex-col ${plan.highlight ? 'border-wl-accent/30 bg-wl-accent/[0.03]' : 'border-white/5'}`}>
+                                <h3 className="text-3xl font-bold mb-4">{plan.name}</h3>
+                                <p className="text-white/40 font-medium mb-10">{plan.desc}</p>
+                                <div className="mb-12">
+                                    <div className="text-6xl font-black text-wl-accent">{plan.price} <span className="text-xl font-normal text-white/40">{plan.unit}</span></div>
+                                </div>
+                                <ul className="space-y-6 mb-16 flex-1">
+                                    {plan.features.map((f, j) => (
+                                        <li key={j} className="flex items-center gap-4 text-white/60 text-lg">
+                                            <CheckCircle2 className="w-5 h-5 text-wl-accent" />
+                                            {f}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <button onClick={openDemoModal} className={`w-full py-6 rounded-3xl font-black uppercase tracking-widest text-sm transition-all ${plan.highlight ? 'bg-wl-accent text-black shadow-xl hover:shadow-wl-accent/20' : 'bg-white/5 text-white hover:bg-white/10'}`}>
+                                    {plan.name === 'Pay As You Go' ? 'See Sample Call' : 'Request Demo'}
+                                </button>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>

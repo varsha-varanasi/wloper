@@ -176,27 +176,34 @@ export default function AIChatbotPage() {
 
             {/* Pricing Section */}
             <section className="section-padding py-32 bg-wl-dark/30">
-                <div className="container-custom text-center">
-                    <h2 className="text-5xl md:text-7xl font-black mb-16 tracking-tighter">💰 Pricing</h2>
-                    <div className="max-w-4xl mx-auto glass-strong p-20 rounded-[4rem] border border-wl-accent/20">
-                        <div className="grid md:grid-cols-2 gap-12 mb-12">
-                            <div className="p-10 rounded-[3rem] bg-white/5 border border-white/10">
-                                <p className="text-[10px] font-black uppercase tracking-widest text-wl-accent mb-4">One-Time Setup</p>
-                                <p className="text-5xl font-black text-white">₹4,999</p>
+                <div className="container-custom">
+                    <h2 className="text-5xl md:text-7xl font-black mb-16 tracking-tighter text-center">💰 Pricing</h2>
+                    <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                        {[
+                            { name: 'Basic', price: '$49', setup: '+ $79 setup', desc: 'Best for small businesses', features: ['Website chatbot', 'Lead capture', 'FAQ automation'] },
+                            { name: 'Business', price: '$99', desc: 'Ideal for service businesses', features: ['Website + WhatsApp', 'Appointment booking', 'CRM integration'], highlight: true },
+                            { name: 'Advanced', price: 'Custom', desc: 'For complex workflows', features: ['Multiple bots', 'AI trained on your data', 'API access'] }
+                        ].map((plan, i) => (
+                            <div key={i} className={`glass-strong p-12 rounded-[3.5rem] border flex flex-col ${plan.highlight ? 'border-wl-accent/30 bg-wl-accent/[0.03]' : 'border-white/5'}`}>
+                                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                                <p className="text-white/40 text-sm mb-6">{plan.desc}</p>
+                                <div className="mb-8">
+                                    <div className="text-5xl font-black text-wl-accent">{plan.price} <span className="text-sm font-normal text-white/40">/ mo</span></div>
+                                    {plan.setup && <p className="text-xs text-wl-accent/60 font-bold mt-1 uppercase tracking-widest">{plan.setup}</p>}
+                                </div>
+                                <ul className="space-y-4 mb-12 flex-1">
+                                    {plan.features.map((f, j) => (
+                                        <li key={j} className="flex items-center gap-3 text-white/60">
+                                            <CheckCircle2 className="w-4 h-4 text-wl-accent" />
+                                            {f}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <button onClick={openDemoModal} className={`w-full py-4 rounded-2xl font-bold transition-all ${plan.highlight ? 'bg-wl-accent text-black shadow-lg hover:shadow-wl-accent/20' : 'bg-white/5 text-white hover:bg-white/10'}`}>
+                                    {plan.name === 'Business' ? 'Start 7-Day Trial' : plan.price === 'Custom' ? 'Book Demo' : 'Get Started'}
+                                </button>
                             </div>
-                            <div className="p-10 rounded-[3rem] bg-wl-accent/10 border border-wl-accent/20">
-                                <p className="text-[10px] font-black uppercase tracking-widest text-wl-accent mb-4">Monthly Ongoing</p>
-                                <p className="text-5xl font-black text-white">₹2,999</p>
-                            </div>
-                        </div>
-                        <div className="flex flex-wrap justify-center gap-6">
-                            <button onClick={openDemoModal} className="btn-primary h-20 px-16 text-xl">
-                                Get Started
-                            </button>
-                            <button onClick={openDemoModal} className="btn-secondary h-20 px-16 text-xl">
-                                Start Free Trial
-                            </button>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>

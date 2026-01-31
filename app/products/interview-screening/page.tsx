@@ -205,19 +205,31 @@ export default function InterviewScreeningPage() {
 
             {/* Pricing Section */}
             <section className="section-padding py-32 bg-wl-dark/30">
-                <div className="container-custom text-center">
-                    <h2 className="text-5xl md:text-7xl font-black mb-16 tracking-tighter">💰 Pricing</h2>
-                    <div className="max-w-4xl mx-auto glass-strong p-20 rounded-[4rem] border border-wl-accent/20">
-                        <p className="text-6xl font-black text-white mb-6">Starts from <span className="text-wl-accent">₹2,999</span> <span className="text-2xl text-white/40">/ month</span></p>
-                        <p className="text-xl text-white/50 mb-12">(Custom plans available for agencies & enterprises)</p>
-                        <div className="flex flex-wrap justify-center gap-6">
-                            <button onClick={openDemoModal} className="btn-primary h-20 px-16 text-xl">
-                                Start Free Trial
-                            </button>
-                            <button onClick={openDemoModal} className="btn-secondary h-20 px-16 text-xl">
-                                Book Demo
-                            </button>
-                        </div>
+                <div className="container-custom">
+                    <h2 className="text-5xl md:text-7xl font-black mb-16 tracking-tighter text-center">💰 Pricing</h2>
+                    <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                        {[
+                            { name: 'Starter', price: '$39', desc: 'Best for startups & small teams', features: ['AI interviews', 'Candidate scoring', 'Standard templates'] },
+                            { name: 'Growth', price: '$89', desc: 'Ideal for growing teams', features: ['Custom questions', 'Advanced evaluation', 'Priority support'], highlight: true },
+                            { name: 'Enterprise', price: 'Custom', desc: 'For recruitment agencies', features: ['Unlimited volume', 'White-label', 'API & ATS sync'] }
+                        ].map((plan, i) => (
+                            <div key={i} className={`glass-strong p-12 rounded-[3.5rem] border flex flex-col ${plan.highlight ? 'border-wl-accent/30 bg-wl-accent/[0.03]' : 'border-white/5'}`}>
+                                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                                <p className="text-white/40 text-sm mb-8">{plan.desc}</p>
+                                <div className="text-5xl font-black mb-10 text-wl-accent">{plan.price} <span className="text-sm font-normal text-white/40">/ mo</span></div>
+                                <ul className="space-y-4 mb-12 flex-1">
+                                    {plan.features.map((f, j) => (
+                                        <li key={j} className="flex items-center gap-3 text-white/60">
+                                            <CheckCircle2 className="w-4 h-4 text-wl-accent" />
+                                            {f}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <button onClick={openDemoModal} className={`w-full py-4 rounded-2xl font-bold transition-all ${plan.highlight ? 'bg-wl-accent text-black shadow-lg hover:shadow-wl-accent/20' : 'bg-white/5 text-white hover:bg-white/10'}`}>
+                                    {plan.price === 'Custom' ? 'Talk to Sales' : 'Start Free Trial'}
+                                </button>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
