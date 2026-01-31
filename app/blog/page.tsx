@@ -165,22 +165,22 @@ export default function BlogPage() {
                                                     src={
                                                         post.image && post.image !== '/images/hero-bg.png'
                                                             ? post.image
-                                                            : `https://images.unsplash.com/photo-${[
-                                                                '1677442136019-21780ecad995', '1639762681485-074b7f938ba0', '1451187580459-43490279c0fa',
-                                                                '1526374965341-9e6a6e6e6e6e', '1504868584819-f8e8e8e8e8e8', '1558494949-ef2df9e6e6e6',
-                                                                '1573164713988-8665fc963095', '1550751827-4bd374c3f58b', '1485827404512-1c8f7e0e0e0e',
-                                                                '1519389950473-47ba0277781c', '1531297484001-80022131f5a1', '1488590528505-98d2b5aba04b',
-                                                                '1518770660439-4636190af475', '1526628953301-3e589a6a8b74', '1504384308090-c894fdcc538d',
-                                                                '1581091226825-a5a2a0c65a82', '1517694712202-14dd9538aa97', '1526374965341-9e6a6e6e6e6e',
-                                                                '1550751827-4bd374c3f58b', '1573164713988-8665fc963095', '1558494949-ef2df9e6e6e6',
-                                                                '1504868584819-f8e8e8e8e8e8', '1526374965341-9e6a6e6e6e6e', '1485827404512-1c8f7e0e0e0e',
-                                                                '1519389950473-47ba0277781c', '1531297484001-80022131f5a1', '1488590528505-98d2b5aba04b',
-                                                                '1518770660439-4636190af475', '1526628953301-3e589a6a8b74', '1504384308090-c894fdcc538d',
-                                                                '1581091226825-a5a2a0c65a82', '1517694712202-14dd9538aa97', '1526374965341-9e6a6e6e6e6e',
-                                                                '1550751827-4bd374c3f58b', '1573164713988-8665fc963095', '1558494949-ef2df9e6e6e6',
-                                                                '1504868584819-f8e8e8e8e8e8', '1526374965341-9e6a6e6e6e6e', '1485827404512-1c8f7e0e0e0e',
-                                                                '1519389950473-47ba0277781c', '1531297484001-80022131f5a1', '1488590528505-98d2b5aba04b'
-                                                            ][post.id % 42]}?auto=format&fit=crop&w=800&q=80`
+                                                            : `/images/${[
+                                                                'envato-labs-ai-8d9fbd22-1b40-471e-8925-de12b0bf5533.jpg',
+                                                                'envato-labs-ai-a4698812-b585-46ab-b841-f3ece58a93a5.jpg',
+                                                                'envato-labs-ai-6c11c598-851f-40f7-9155-eb9146bff990.jpg',
+                                                                'envato-labs-ai-8c704ec1-bca5-4f0e-9049-c06414cf0508.jpg',
+                                                                'envato-labs-ai-ff99b861-f73a-4b32-8972-7e241b722b3b.jpg',
+                                                                'envato-labs-ai-bce5f816-6df6-4577-a0b5-b11da7c85d69.jpg',
+                                                                'envato-labs-ai-cc98af26-6a98-45ef-9c86-a4618f68b6e2.jpg',
+                                                                'envato-labs-ai-36c4ce64-9e58-4f59-a78e-403034b187ca.jpg',
+                                                                'envato-labs-ai-60bf7079-9412-429a-89f0-19949dc9ecc1.jpg',
+                                                                'envato-labs-ai-6ff54a92-2b68-43ec-8639-abdd5b65ef00.jpg',
+                                                                'envato-labs-ai-7c142eb8-7887-44d9-8de5-3d14c8bbab75.jpg',
+                                                                'envato-labs-ai-a5ed5fd0-3d06-4a07-b41a-7920becd0527.jpg',
+                                                                'envato-labs-ai-b7fc9d9b-9c99-40aa-ab36-c7dfe95fac5a.jpg',
+                                                                'envato-labs-ai-fccc6df9-0659-4f2e-9c05-9c652f034c3f.jpg'
+                                                            ][post.id % 14]}`
                                                     }
                                                     alt={post.title}
                                                     fill

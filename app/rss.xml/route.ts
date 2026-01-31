@@ -25,10 +25,11 @@ export async function GET() {
         const url = `${siteUrl}/blog/${post.slug}`;
         const pubDate = parseDate(post.date).toUTCString();
 
-        // Use post image or a default one
-        const imageUrl = post.image
-            ? (post.image.startsWith('http') ? post.image : `${siteUrl}${post.image}`)
-            : `${siteUrl}/images/hero-bg.png`;
+        // Use post image or a default one - prefer local images
+        let imageUrl = `${siteUrl}/images/hero-bg.png`;
+        if (post.image) {
+            imageUrl = post.image.startsWith('http') ? post.image : `${siteUrl}${post.image}`;
+        }
 
         return `
         <item>
@@ -36,15 +37,14 @@ export async function GET() {
             <link>${url}</link>
             <guid isPermaLink="true">${url}</guid>
             <pubDate>${pubDate}</pubDate>
-            <author><![CDATA[${post.author}]]></author>
             <category><![CDATA[${post.category}]]></category>
             <description><![CDATA[${post.excerpt}]]></description>
-            ${imageUrl ? `<enclosure url="${imageUrl}" type="image/jpeg" />` : ''}
+            <enclosure url="${imageUrl}" length="12345" type="image/jpeg" />
         </item>`;
     }).join('');
 
-    const rss = `<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
     <title>Wloper Blog | AI &amp; Web Engineering Insights</title>
     <link>${siteUrl}/blog</link>
@@ -54,7 +54,7 @@ export async function GET() {
     <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
     <image>
         <url>${siteUrl}/images/hero-bg.png</url>
-        <title>Wloper Blog</title>
+        <title>Wloper Blog | AI &amp; Web Engineering Insights</title>
         <link>${siteUrl}/blog</link>
     </image>
     ${items}
