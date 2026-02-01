@@ -54,7 +54,7 @@ export async function GET() {
     <description>Technical breakdowns and strategic insights from the frontier of AI and Web Engineering.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="${siteUrl}/blogrss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="${siteUrl}/blogrss" rel="self" type="application/rss+xml" />
     <image>
         <url>${siteUrl}/images/hero-bg.png</url>
         <title>Wloper Blog</title>
