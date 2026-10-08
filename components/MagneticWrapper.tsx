@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
 interface MagneticWrapperProps {
@@ -16,41 +16,48 @@ export default function MagneticWrapper({
 }: MagneticWrapperProps) {
     const ref = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(true); // default true — skip on SSR
+    // Cache rect on mouseenter to avoid getBoundingClientRect in every mousemove
+    const cachedRect = useRef<DOMRect | null>(null);
+    const rafId = useRef<number | null>(null);
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 1024);
         checkMobile();
-        window.addEventListener('resize', checkMobile);
+        window.addEventListener('resize', checkMobile, { passive: true });
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (isMobile || !ref.current) return;
+    const handleMouseEnter = useCallback(() => {
+        if (ref.current) cachedRect.current = ref.current.getBoundingClientRect();
+    }, []);
 
+    const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+        if (isMobile || !cachedRect.current) return;
         const { clientX, clientY } = e;
-        const { left, top, width, height } = ref.current.getBoundingClientRect();
-
-        const centerX = left + width / 2;
-        const centerY = top + height / 2;
-
-        const deltaX = clientX - centerX;
-        const deltaY = clientY - centerY;
-
-        setPosition({
-            x: deltaX * strength,
-            y: deltaY * strength
+        if (rafId.current !== null) return; // already scheduled
+        rafId.current = requestAnimationFrame(() => {
+            rafId.current = null;
+            if (!cachedRect.current) return;
+            const { left, top, width, height } = cachedRect.current;
+            setPosition({
+                x: (clientX - (left + width / 2)) * strength,
+                y: (clientY - (top + height / 2)) * strength,
+            });
         });
-    };
+    }, [isMobile, strength]);
 
-    const handleMouseLeave = () => {
+    const handleMouseLeave = useCallback(() => {
+        if (rafId.current !== null) { cancelAnimationFrame(rafId.current); rafId.current = null; }
+        cachedRect.current = null;
         setPosition({ x: 0, y: 0 });
-    };
+    }, []);
 
     return (
         <motion.div
             ref={ref}
             className={className}
+            onMouseEnter={handleMouseEnter}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             animate={{ x: position.x, y: position.y }}

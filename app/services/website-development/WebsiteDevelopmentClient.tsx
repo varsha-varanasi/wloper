@@ -93,7 +93,7 @@ export default function WebsiteDevelopmentClient() {
             <section className="relative min-h-[75vh] flex items-center justify-center pt-36 pb-24 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <Image src="/images/envato-labs-ai-8d9fbd22-1b40-471e-8925-de12b0bf5533.jpg"
-                        alt="Website Development Services" fill priority quality={65} className="object-cover opacity-30" />
+                        alt="Website Development Services" fill priority className="object-cover opacity-30" />
                     <div className="absolute inset-0 bg-gradient-to-b from-wl-dark/80 via-wl-dark/60 to-wl-dark" />
                 </div>
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-wl-accent/5 rounded-full blur-[120px] pointer-events-none" />

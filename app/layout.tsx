@@ -8,6 +8,7 @@ import dynamic from 'next/dynamic';
 import { Space_Grotesk, Manrope } from 'next/font/google';
 import { InterfaceProvider } from "@/context/InterfaceContext";
 import Script from 'next/script';
+import DeferredWidgets from "@/components/DeferredWidgets";
 
 const spaceGrotesk = Space_Grotesk({
     subsets: ['latin'],
@@ -21,10 +22,6 @@ const manrope = Manrope({
     display: 'swap',
 });
 
-const AIAssistant = dynamic(() => import('@/components/AIAssistant'), { ssr: false, loading: () => null });
-const NewsletterPopup = dynamic(() => import('@/components/NewsletterPopup'), { ssr: false, loading: () => null });
-const WhatsAppFloat = dynamic(() => import('@/components/WhatsAppFloat'), { ssr: false, loading: () => null });
-const StickyLeadBar = dynamic(() => import('@/components/StickyLeadBar'), { ssr: false, loading: () => null });
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://wloper.com'),
@@ -341,10 +338,8 @@ export default function RootLayout({
                     <DemoProvider>
                         <ScrollProgress />
                         <Header />
-                        <AIAssistant />
-                        <NewsletterPopup />
-                        <WhatsAppFloat />
-                        <StickyLeadBar />
+                        {/* Defer non-critical floating widgets 3s after load */}
+                        <DeferredWidgets />
                         <main className="min-h-screen">
                             {children}
                         </main>

@@ -3,9 +3,9 @@ const nextConfig = {
     compress: true,
 
     // Target modern browsers only — eliminates legacy Babel polyfills (~12 KiB savings)
-    // This removes transforms for Array.at, Object.fromEntries, etc. that are natively supported
     experimental: {
-        browsersListForSwc: true,
+        // Tree-shake icon & animation libraries — largest unused-JS contributors
+        optimizePackageImports: ['lucide-react', 'framer-motion'],
     },
 
     images: {
@@ -25,8 +25,6 @@ const nextConfig = {
                 pathname: '/**',
             },
         ],
-        deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-        imageSizes: [16, 32, 48, 64, 96, 128, 256],
     },
     compiler: {
         removeConsole: process.env.NODE_ENV === 'production',

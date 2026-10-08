@@ -113,7 +113,7 @@ export default function Footer() {
                         <div className="space-y-6">
                             <Link href="/" prefetch={false} className="inline-block group">
                                 <Image
-                                    src="/images/loper (3).png"
+                                    src="/images/loper-logo.png"
                                     alt="Wloper Systems - Expert AI Product and Website Development Company"
                                     width={160}
                                     height={50}

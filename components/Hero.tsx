@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import CTAButton from './CTAButton';
 import { ArrowRight, Sparkles, Globe, Search, Target, Share2, Smartphone, Code2 } from 'lucide-react';
@@ -25,14 +25,16 @@ export default function Hero() {
     const { openDemoModal } = useDemo();
     const [index, setIndex] = useState(0);
     const [mounted, setMounted] = useState(false);
+    const prefersReduced = useReducedMotion();
 
     useEffect(() => {
         setMounted(true);
+        if (prefersReduced) return;
         const timer = setInterval(() => {
             setIndex((prev) => (prev + 1) % WORDS.length);
         }, 3000);
         return () => clearInterval(timer);
-    }, []);
+    }, [prefersReduced]);
 
     return (
         <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-wl-dark pt-24 pb-12 md:pb-16">
@@ -46,17 +48,15 @@ export default function Hero() {
                     alt=""
                     fill
                     priority
-                    fetchPriority="high"
-                    quality={55}
                     aria-hidden="true"
                     className="object-cover opacity-40"
                     sizes="100vw"
                 />
             </div>
 
-            {/* Animated glow orbs */}
-            <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-wl-accent/8 rounded-full blur-[100px] pointer-events-none animate-pulse" style={{ animationDuration: '4s' }} />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/6 rounded-full blur-[120px] pointer-events-none animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
+            {/* Glow orbs — compositor-only opacity animation, no layout/paint */}
+            <div className="hero-orb hero-orb-1" />
+            <div className="hero-orb hero-orb-2" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-wl-accent/4 rounded-full blur-[160px] pointer-events-none" />
 
             <NeuralBackground />
@@ -64,19 +64,24 @@ export default function Hero() {
             <div className="container-custom relative z-10 w-full">
                 <div className="flex flex-col items-center text-center relative">
 
-                    {/* Floating badges — hidden on mobile, shown on xl */}
-                    {mounted && BADGES.map((badge, i) => (
-                        <motion.div
+                    {/* Floating badges — hidden on mobile, shown on xl; skipped if reduced-motion */}
+                    {mounted && !prefersReduced && BADGES.map((badge, i) => (
+                        <div
                             key={badge.label}
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.8 + badge.delay, type: 'spring', stiffness: 200 }}
-                            className={`absolute hidden xl:flex items-center gap-2 px-4 py-2 rounded-2xl border backdrop-blur-md ${badge.color} ${badge.x} z-20`}
-                            style={{ animation: `float-anim ${4 + i * 0.5}s ease-in-out infinite`, animationDelay: `${i * 0.3}s` }}
+                            className={`absolute hidden xl:flex items-center gap-2 px-4 py-2 rounded-2xl border backdrop-blur-md ${badge.color} ${badge.x} z-20 hero-badge`}
+                            style={{
+                                animationName: 'float-anim',
+                                animationDuration: `${4 + i * 0.5}s`,
+                                animationTimingFunction: 'ease-in-out',
+                                animationIterationCount: 'infinite',
+                                animationDelay: `${i * 0.3}s`,
+                                opacity: 0,
+                                animation: `hero-badge-in 0.4s ${0.8 + badge.delay}s forwards, float-anim ${4 + i * 0.5}s ${0.8 + badge.delay + 0.4}s ease-in-out infinite`,
+                            }}
                         >
                             <badge.icon className="w-3.5 h-3.5 text-white/70" />
                             <span className="text-[11px] font-bold text-white/70 whitespace-nowrap">{badge.label}</span>
-                        </motion.div>
+                        </div>
                     ))}
 
                     {/* Badge */}
@@ -113,23 +118,13 @@ export default function Hero() {
                         </span>
                     </h1>
 
-                    {/* Subheadline */}
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.15 }}
-                        className="text-white/50 max-w-2xl mb-8 text-sm md:text-xl font-medium leading-relaxed"
-                    >
+                    {/* Subheadline — CSS fade-in, no JS */}
+                    <p className="text-white/50 max-w-2xl mb-8 text-sm md:text-xl font-medium leading-relaxed hero-fade-in" style={{ animationDelay: '150ms' }}>
                         Website development, SEO, Google Ads, Meta Ads and AI solutions — everything your business needs to grow online, all under one roof.
-                    </motion.p>
+                    </p>
 
-                    {/* CTAs */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.25 }}
-                        className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-10"
-                    >
+                    {/* CTAs — CSS fade-in */}
+                    <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-10 hero-fade-in" style={{ animationDelay: '250ms' }}>
                         <MagneticWrapper strength={0.3}>
                             <CTAButton onClick={openDemoModal} variant="primary" className="w-full sm:w-auto py-5 sm:py-6 text-lg sm:text-base">
                                 <span className="flex items-center gap-2 justify-center">
@@ -143,21 +138,16 @@ export default function Hero() {
                                 Explore Services
                             </CTAButton>
                         </MagneticWrapper>
-                    </motion.div>
+                    </div>
 
-                    {/* Trust strip */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5 }}
-                        className="flex flex-wrap items-center justify-center gap-8 text-white/25"
-                    >
+                    {/* Trust strip — CSS fade-in */}
+                    <div className="flex flex-wrap items-center justify-center gap-8 text-white/25 hero-fade-in" style={{ animationDelay: '400ms' }}>
                         {['WordPress', 'Shopify', 'Next.js', 'Google Ads', 'Meta Ads', 'SEO'].map((tech) => (
                             <span key={tech} className="text-[11px] font-bold uppercase tracking-widest hover:text-wl-accent transition-colors cursor-default">
                                 {tech}
                             </span>
                         ))}
-                    </motion.div>
+                    </div>
                 </div>
             </div>
 

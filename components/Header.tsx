@@ -155,7 +155,7 @@ export default function Header() {
                     <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center group relative shrink-0">
                         <div className="absolute -inset-2 bg-wl-accent/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         <Image
-                            src="/images/loper (3).png"
+                            src="/images/loper-logo.png"
                             alt="Wloper — Best IT Company for Website Development & AI Solutions"
                             width={160}
                             height={50}

@@ -1,19 +1,16 @@
 'use client';
 
 import Hero from '@/components/Hero';
-import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useDemo } from '@/context/DemoContext';
 import WowStrip from '@/components/WowStrip';
 import { ExternalLink } from 'lucide-react';
-
-// Lazy-load below-fold sections
-const AIProductShowcase = dynamic(() => import('@/components/AIProductShowcase'), { ssr: false, loading: () => null });
-const Services = dynamic(() => import('@/components/Services'), { ssr: false, loading: () => null });
-const WhoWeAre = dynamic(() => import('@/components/WhoWeAre'), { ssr: false, loading: () => null });
-const BlogPreview = dynamic(() => import('@/components/BlogPreview'), { ssr: false, loading: () => null });
-const AROISimulator = dynamic(() => import('@/components/AROISimulator'), { ssr: false, loading: () => null });
-const LeadCapture = dynamic(() => import('@/components/LeadCapture'), { ssr: false, loading: () => null });
+import AIProductShowcase from '@/components/AIProductShowcase';
+import Services from '@/components/Services';
+import WhoWeAre from '@/components/WhoWeAre';
+import BlogPreview from '@/components/BlogPreview';
+import AROISimulator from '@/components/AROISimulator';
+import LeadCapture from '@/components/LeadCapture';
 
 export default function HomeClient() {
     const { openDemoModal } = useDemo();
@@ -29,10 +26,10 @@ export default function HomeClient() {
             {/* 3 — Who We Are (short) */}
             <WhoWeAre />
 
-            {/* 4 — All Services (Moved up) */}
+            {/* 4 — All Services */}
             <Services />
 
-            {/* AI ROI Simulator — Interactive engagement */}
+            {/* AI ROI Simulator */}
             <section className="section-padding overflow-hidden">
                 <div className="container-custom">
                     <div className="text-center mb-16">
@@ -92,7 +89,7 @@ export default function HomeClient() {
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-6 px-8 py-6 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm">
                         <div>
                             <p className="text-lg font-bold text-white">Ready to grow your business?</p>
-                            <p className="text-sm text-white/40">Website development, SEO, Ads & AI — all under one roof.</p>
+                            <p className="text-sm text-white/40">Website development, SEO, Ads &amp; AI — all under one roof.</p>
                         </div>
                         <div className="flex items-center gap-3 shrink-0">
                             <button onClick={openDemoModal} className="btn-primary !py-3 !px-6 !text-sm">
@@ -109,3 +106,4 @@ export default function HomeClient() {
         </div>
     );
 }
+

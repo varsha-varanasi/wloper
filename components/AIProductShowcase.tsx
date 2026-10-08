@@ -95,7 +95,6 @@ export default function AIProductShowcase() {
                                 alt="WLOPER AI Product Ecosystem - Automated Hiring and HCM Systems"
                                 fill
                                 sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 700px, 840px"
-                                quality={65}
                                 className="object-cover"
                                 priority
                             />
